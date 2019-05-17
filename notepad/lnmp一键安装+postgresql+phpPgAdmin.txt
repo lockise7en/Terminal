@@ -1,0 +1,139 @@
+[架设教程]lnmp一键安装+postgresql+phpPgAdmin
+作者：笨小孩 发布于：2012-10-18 15:19 分类：环境架设
+
+环境软件：
+VPS：OpenVZ
+系统：centos5.5
+软件：
+lnmp0.8.tar.gz（http://soft.vpser.net/lnmp/lnmp0.8.tar.gz）、
+postgresql-8.3.18.tar.gz（http://ftp.postgresql.org/pub/source/v8.3.18/postgresql-8.3.18.tar.gz）
+phpPgAdmin-5.0.4.tar.gz
+
+注意：本文的命令行文章直接复制可能会至乱码。
+
+一、安装lnmp
+#cd ~
+#wget -c http://soft.vpser.net/lnmp/lnmp0.8.tar.gz
+#tar zxvf lnmp0.8.tar.gz
+#cd lnmp0.8/
+#./centos.sh
+安装开始过程中需要输入要绑定的域名(建议使用一个二级域名,该域名会绑定到/home/wwwroot/)，回车，再输入要设置的MySQL root的密码，回车，提示”Press any key to start…”，按任意键开始安装。程序会自动安装编译Nginx、PHP、MySQL、phpMyAdmin、Zend这几个软件。
+
+二、安装postgresql
+1.添加用户 创建目录
+#useradd postgres -d /usr/local/pgsql
+#passwd postgres
+New UNIX password: pgsql83
+#mkdir /usr/local/pgsql/
+#mkdir /usr/local/pgsql/data
+#chown -R postgres /usr/local/pgsql
+#chown postgres /usr/local/pgsql/data
+
+2.设置环境变量
+#vi /etc/profile
+export LD_LIBRARY_PATH=/usr/local/pgsql/lib:$LD_LIBRARY_PATH
+export PATH=/usr/local/pgsql/bin:$PATH
+export PGDATA=/usr/local/pgsql/data
+export MANPATH=$MANPATH:/usr/local/pgsql/man
+
+3 安装
+#cd ~
+#wget -c http://ftp.postgresql.org/pub/source/v8.3.18/postgresql-8.3.18.tar.gz
+#tar zxvf postgresql-8.3.18.tar.gz
+#cd postgresql-8.3.18
+#yum -y install -y readline-devel
+#./configure --prefix=/usr/local/pgsql
+#make && make install
+
+4 初始化数据库
+#su postgres
+#/usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data
+
+5 添加开机自启动
+#su root
+#chmod a+x ~/postgresql-8.3.18/contrib/start-scripts/linux
+#cp ~/postgresql-8.3.18/contrib/start-scripts/linux /etc/init.d/postgresql
+#chkconfig --add postgresql
+
+6 换数据库用户postgres的密码
+切换至root重启VPS
+重启完成后：
+#su postgres
+#psql template1 或者 #psql -U postgres
+然后
+ALTER USER postgres WITH PASSWORD 'pgsql83';
+
+7 添加外部的访问连接
+在pg_hba.conf加上
+host all all 0.0.0.0/0 md5
+修改postgresql.conf
+listen_addresses = '*'
+重启postgresql
+#su root
+#/etc/init.d/postgresql restart
+注：postgresql.conf pg_hba.conf 都是放在$PG_DATA目录下，也就是一般的…../data目录下
+启动
+#/usr/local/pgsql/bin/postmaster -i -D /usr/local/pgsql/data &
+or
+#/usr/local/pgsql/bin/pg_ctl -i -D /usr/local/pgsql/data -l logfile start
+关闭
+#kill -INT `head -1 /usr/local/pgsql/data/postmaster.pid`
+
+三、编译php加载pgsql扩展
+1、进入php源代码目录：# cd ~/lnmp0.8/php-5.2.17
+2、再进入要添加的postgresql扩展源码目录：# cd ext/pgsql/
+2、调用已经编译好的php里面的phpize：# /usr/local/php/bin/phpize
+
+安装 readline-devel 包
+# yum -y install -y readline-devel
+3、然后configure：# ./configure --with-php-config=/usr/local/php/bin/php-config --with-pgsql=/usr/local/pgsql
+（/usr/local/pgsql为pgsql的安装目录）
+4、make && make install
+5、 编译之后，自动把pgsql.so放到了默认的php扩展目录下（phpinfo可查看，我的为 /usr/local/php/lib/php/extensions/no-debug-non-zts-20060613），
+
+修改php.ini，在extension_dir = “/usr/local/php/lib/php/extensions/no-debug-non-zts-20060613/”下面加extension = "pgsql.so"
+6、重启php， 命令：/etc/init.d/php-fpm restart
+
+四、配置站点
+1、在/usr/local/nginx/conf/目录下创建vhost文件夹
+创建文件lamp46.com.conf，内容如下：
+server
+{
+listen 80;
+listen 8000;
+server_name www.lamp46.com lamp46.com;
+index index.html index.php;
+root /home/wwwroot/lamp46;
+
+location ~ .*\.(php|php5)?$
+{
+fastcgi_pass unix:/tmp/php-cgi.sock;
+fastcgi_index index.php;
+include fcgi.conf;
+}
+
+location /status {
+stub_status on;
+access_log off;
+}
+
+location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$
+{
+expires 30d;
+}
+
+location ~ .*\.(js|css)?$
+{
+expires 12h;
+}
+}
+重启nginx #/etc/init.d/nginx restart
+
+五、配置phpPgAdmin
+1、将phpPgAdmin-5.0.4.tar.gz上传至/home/wwwroot/lamp46，然后解压，删除phpPgAdmin-5.0.4.tar.gz。
+2、修改配置文件phpPgAdmin/conf/config.inc.php
+$conf['extra_login_security'] = false; #true改为false
+
+$conf['servers'][0]['pg_dump_path'] = ‘/usr/local/pgsql/bin/pg_dump’;
+$conf['servers'][0]['pg_dumpall_path'] = ‘/usr/local/pgsql/bin/pg_dumpall’;
+$conf['servers'][0]['slony_sql'] = ‘/usr/local/pgsql/share’;

@@ -1,0 +1,142 @@
+
+export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://192.168.168.195:2376"
+export DOCKER_CERT_PATH="/root/.docker/machine/machines/default"
+export DOCKER_MACHINE_NAME="default"
+ eval $(docker-machine env)
+ 
+ $Env:DOCKER
+
+ export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://192.168.168.195:2376"
+export DOCKER_CERT_PATH="C:\Users\fengshun\.docker\machine\machines\default"
+export DOCKER_MACHINE_NAME="default"
+eval $("C:\Program Files\Docker\Docker\Resources\bin\docker-machine.exe" env)
+
+$Env:REPO_URL 'https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/'
+$Env:DOCKER_TLS_VERIFY  ="1"
+$Env:DOCKER_HOST  ="tcp://192.168.168.195:237
+$Env:DOCKER_CERT_PATH  ="C:\Users\fengshun\.d
+$Env:DOCKER_MACHINE_NAME  ="default"
+$Env:COMPOSE_CONVERT_WINDOWS_PATHS  ="true"
+ &="C:\Program Files\Docker\Docker\Resources\bin\docker-machine.exe" env | Invoke-Expression
+
+export DOCKER_CERT_PATH '/mnt/c/Users/fengshun/.docker/machine/certs'
+export VSPHERE_BOOT2DOCKER_URL 'https://releases.rancher.com/os/latest/rancheros.iso'
+export VSPHERE_BOOT2DOCKER_URL 'http://192.168.168.2/boot2docker.iso'
+export VSPHERE_BOOT2DOCKER_URL 'http://192.168.168.2/docker/boot2docker_18.02.iso'
+export VSPHERE_BOOT2DOCKER_URL 'http://192.168.168.2/boot2docker.iso'
+export VSPHERE_BOOT2DOCKER_URL 'http://192.168.168.2/docker.iso'
+export VSPHERE_VCENTER '192.168.168.225'
+export VSPHERE_USERNAME 'root'
+export VSPHERE_PASSWORD 'fc123@@@'
+export VSPHERE_NETWORK="VM Network"
+export VSPHERE_DATASTORE 'datastore1'
+docker-machine create -d vmwarevsphere \
+--engine-env sshkeypath=/root/.ssh/id_rsa \
+--engine-registry-mirror=http://docker.mirrors.ustc.edu.cn \
+--engine-registry-mirror=http://g2ql68fp.mirror.aliyuncs.com \
+--engine-registry-mirror=http://registry.docker-cn.com \
+--engine-registry-mirror=http://77f86377.m.daocloud.io default
+
+
+#!/bin/bash
+# Example docker-machine vSphere create
+export VSPHERE_BOOT2DOCKER_URL 'https://releases.rancher.com/os/latest/rancheros.iso'
+
+export DOCKER_HOST="tcp://0.0.0.0:2375"
+
+export VSPHERE_VCENTER="192.168.168.9"
+export VSPHERE_USERNAME="root"
+export VSPHERE_PASSWORD="root123"
+export VSPHERE_NETWORK="VM Network"
+export VSPHERE_DATASTORE="datastore1"
+export VSPHERE_DISK_SIZE='20000'
+export VSPHERE_MEMORY='3000' 
+docker-machine create -d vmwarevsphere \
+--engine-env sshkeypath=~/.ssh/id_rsa \
+--engine-registry-mirror=http://docker.mirrors.ustc.edu.cn \
+--engine-registry-mirror=http://g2ql68fp.mirror.aliyuncs.com \
+--engine-registry-mirror=http://registry.docker-cn.com default
+
+export VSPHERE_BOOT2DOCKER_URL 'http://192.168.168.2/boot2docker.iso'
+export VSPHERE_VCENTER="192.168.168.225"
+export VSPHERE_USERNAME="root"
+export VSPHERE_PASSWORD="fc123@@@"
+export VSPHERE_CPU_COUNT="2"
+export VSPHERE_NETWORK="VM Network"
+export VSPHERE_DATASTORE="datastore1"
+export VSPHERE_DISK_SIZE '50000'
+docker-machine create --driver generic \
+--engine-env tlsverify false \
+--generic-ssh-key ~/.ssh/id_rsa \
+--generic-ip-address 192.168.168.54 \
+--engine-registry-mirror http://77f86377.m.daocloud.io  default
+
+export VSPHERE_VCENTER="192.168.168.225"
+export VSPHERE_USERNAME="root"
+export VSPHERE_PASSWORD="fc123@@@"
+export VSPHERE_NETWORK="VM Network"
+export VSPHERE_DATASTORE="2tb"
+docker-machine create -d vmwarevsphere \
+--engine-registry-mirror http://77f86377.m.daocloud.io docker
+
+"SSHUser":="docker",
+"SSHPassword":="tcuser"
+"SSHKeyPath":="/root/.ssh/id_rsa",
+--engine-env tlsverify=true 
+
+
+docker-machine  create \
+--engine-env sshkeypath=~/.ssh/id_rsa \
+--engine-registry-mirror=http://docker.mirrors.ustc.edu.cn \
+--engine-registry-mirror=http://g2ql68fp.mirror.aliyuncs.com \
+--engine-registry-mirror=http://registry.docker-cn.com \
+--engine-registry-mirror=http://77f86377.m.daocloud.io \
+--virtualbox-share-folder=/volume2/docker -d virtualbox  default 
+
+  default
+  
+docker-machine create \
+--engine-registry-mirror=http://docker.mirrors.ustc.edu.cn \
+--engine-registry-mirror=http://g2ql68fp.mirror.aliyuncs.com \
+--engine-registry-mirror=http://registry.docker-cn.com \
+--engine-registry-mirror http://77f86377.m.daocloud.io  \
+--driver generic \
+--generic-ip-address 192.168.168.54 \
+--generic-ssh-key ~/.ssh/id_rsa \
+docker
+
+docker-machine create -d virtualbox --virtualbox-boot2docker-url=http://releases.rancher.com/os/latest/rancheros.iso  --engine-registry-mirror http://77f86377.m.daocloud.io  rancher
+
+export VIRTUALBOX_BOOT2DOCKER_URL http://192.168.168.2/boot2docker.iso
+
+docker-machine create -d vmwarevsphere vdocker
+
+export PATH="$PATH:/mnt/c/Program Files (x86)/VMware/VMware Workstation"
+export VMWAREWORKSTATION_BOOT2DOCKER_URL="http://192.168.168.11/rancheros.iso"
+export VMWAREWORKSTATION_DISK_SIZE="100000"
+export VMWAREWORKSTATION_CPU_COUNT="1"
+export VMWAREWORKSTATION_MEMORY_SIZE="4096"
+export VMWAREWORKSTATION_NETWORK 'Network2'
+docker-machine create -d vmwareworkstation rancher
+
+VIRTUALBOX
+
+
+export HYPERV_BOOT2DOCKER_URL="http://192.168.168.2/docker/boot2docker.iso"
+export HYPERV_VIRTUAL_SWITCH="Primary Virtual Switch"
+export ENGINE_REGISTRY_MIRROR 'http://77f86377.m.daocloud.io'
+export PATH="/C/Program Files/Docker/Docker/Resources/bin:$PATH"
+docker-machine create -d hyperv vm
+
+$Env:HYPERV_BOOT2DOCKER_URL="http://192.168.168.2/docker/boot2docker.iso"
+$Env:HYPERV_VIRTUAL_SWITCH="Primary Virtual Switch"
+$Env:ENGINE_REGISTRY_MIRROR 'http://77f86377.m.daocloud.io'
+$Env:DOCKER_TLS_VERIFY="1"
+$Env:DOCKER_CERT_PATH="C:\Users\fengshun\.docker\machine\machines\default"
+$Env:DOCKER_MACHINE_NAME="MobyLinuxVM"
+$Env:COMPOSE_CONVERT_WINDOWS_PATHS="true"
+docker-machine create -d hyperv MobyLinuxVM 
+# Run this command to configure your shell:
+# eval $("C:\Program Files\Docker\Docker\Resources\bin\docker-machine.exe" env default)

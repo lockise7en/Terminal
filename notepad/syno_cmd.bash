@@ -1,0 +1,1 @@
+synoservice --disable pkgctl-SynoFinder

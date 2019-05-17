@@ -1,0 +1,30 @@
+Git global setup
+git config --global user.name "lockyse7en"
+git config --global user.email "lockyse7en@outlook.com"
+
+Create a new repository
+git clone ssh://git@192.168.168.2:30001/git/dockerfiles.git
+cd Xunlei-Fastdick
+touch README.md
+git add README.md
+git commit -m "add README"
+git push -u origin master
+
+Existing folder
+cd existing_folder
+git init
+git remote add origin ssh://git@192.168.168.2:30001/git/Xunlei-Fastdick.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+Existing Git repository
+cd existing_repo
+git remote add origin ssh://git@192.168.168.2:30001/git/Xunlei-Fastdick.git
+git push -u origin --all
+git push -u origin --tags
+
+git diff origin/9-4-stable ..origin/9-4-stable-zh >> /d/9-4.diff
+
+
+git diff v9.4.4 ..v9.4.4-zh >> /d/9.4.diff

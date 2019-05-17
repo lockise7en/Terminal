@@ -1,0 +1,586 @@
+官方文件社区帮助Wiki有助于
+页面历史
+登录进行编辑
+ 
+InstallCDCustomization
+介绍
+目录
+
+介绍
+获得ISO
+将CD复制到硬盘驱动器
+使用Preseed文件修改安装程序行为
+更改isolinux.cfg以识别您的preseed
+更改grub.cfg以识别您的preseed
+编写预置文件
+在预置文件中安装额外的软件包
+安装语言支持
+运行最终脚本
+修改池结构以包含更多包
+创建“额外”组件
+生成一个新的ubuntu-keyring .deb来签署你的CD
+使用更新的ubuntu-archive-keyring.gpg生成新的filesystem.squashfs
+使用apt-ftparchive构建存储库
+准备可启动媒体
+构建ISO映像
+将图像刻录到CD，DVD或Blu-ray
+将isohybrid图像放到USB记忆棒上
+验证设备地址或进行备份
+写入USB记忆棒
+最终恢复备份
+测试
+故障排除
+也可以看看
+定制或“重新制作”Ubuntu安装CD的过程并不是特别复杂，但它有点乏味和挑剔。
+
+Ubuntu安装CD（因为Ubuntu 6.06，'替代安装'或'服务器'CD）有三个主要部分：启动加载程序（AMD64 / x86系统上的ISOLINUX，PowerPC上的yaboot）及其配置（启动所有内容） ; debian-installer（也称为di，在这种情况下实际上是一个专门的微型Ubuntu系统）; 和Debian风格的存储库结构，它占用了“pool”和“dists”目录中的磁盘空间。制作新CD可能涉及对所有三个部分的修改。
+
+此页面显示了用于自定义CD的简单配方。它假定您将安装CD的内容复制到本地系统上的/ opt / cd-image /，并在/ opt /中创建其他几个目录。根据需要修改。
+
+IconsPage / note.png您可以使用虚拟Ubuntu会话加速开发周期，例如，使用VirtualBox。然后，您可以使用.ISO文件来测试而不是刻录CD。如果您这样做，请注意您需要在GUEST系统上执行此处描述的所有操作。请注意，对于VirtualBox，在安装期间（主机密钥）-F4将显示安装输出，（主机密钥）-F1将返回到常规状态屏幕。请注意，默认情况下，主机键设置为右Ctrl键。
+
+IconsPage / note.png本指南适用于“替代安装”或“服务器安装”CD。有一个页面指的是桌面（Live）CD的自定义，另一个指导如何在不使用现有CD的情况下创建Live CD。
+
+虽然“服务器安装”图像应该适用于通常的CD媒体，但您也可以使用DVD或BD（蓝光）媒体。在下文中，将“CD”读作“CD，DVD或BD”。
+
+至少从版本12.04开始，图像也可以从USB记忆棒或其他类似硬盘的存储设备上运行。amd64上的USB棒UEFI从14.04开始工作。
+
+获得ISO
+以下是您可以使用的原始图像列表：
+
+类型
+
+Ubuntu 14.04 LTS
+
+Ubuntu 16.04 LTS
+
+Ubuntu 18.04 LTS
+
+Ubuntu 18.10
+
+备用
+
+N / A
+
+N / A
+
+N / A
+
+N / A
+
+服务器
+
+i386 | AMD64
+
+i386 | AMD64
+
+AMD64
+
+AMD64
+
+随着时间的推移，有些人会消失或被取代。但是releases.ubuntu.com有望继续显示一个可用的发布目录列表，其中包含一些* server * .iso映像。
+
+将CD复制到硬盘驱动器
+将整个安装CD复制到硬盘驱动器上的目录中。本指南假设您的CD映像位于/ opt / cd-image /，但您可以将其放在任何您喜欢的位置。它将占用大约1GB的硬盘空间。
+
+如果您有ISO文件，则可以将其挂载并从中复制文件而不将其刻录到CD：
+
+mount -o loop /path/to/iso /some/mountpoint
+使用“Gmount-iso”程序来安装iso文件的GUI方法。您也可以尝试“ISO Master”直接访问iso文件而无需安装。
+
+您可以使用rsync复制CD：
+
+rsync -av /cdrom/ /opt/cd-image
+要不就
+
+
+mkdir -p /opt /cd-image
+cp -rT /cdrom/ /opt/cd-image
+注意：mkdir的-p选项会创建leadin目录（如果它们尚不存在）。在此示例中，如果/ opt尚不存在，则创建它。 
+
+一定要抓住文件夹.disk - 如果你尝试复制/ cdrom / *，它将忽略.disk文件夹，因为Bash将*扩展为“它能看到的一切”。
+
+如果您使用像Nautilus这样的文件管理程序，请务必使用“gksu nautilus”启动它并在“查看”菜单中标记“显示隐藏文件”，否则您会遗漏一些重要文件。复制完成后，如果您不打算使用sudo完成剩余的工作，请从“root”更改文件所有权。
+
+使用Preseed文件修改安装程序行为
+CD启动时，将启动Linux内核并启动安装任务。安装程序的默认行为可以通过使用“preseed”文件进行修改，该文件可以通过debconf或其他上下文提供问题。如果查看安装CD 中的preseed文件夹，您会看到某些选项（例如“server”，“expert”，“oem”）已经分配了预置文件。该安装指南对预置了详细的附录。
+
+假设您在一堆相同的计算机上安装Ubuntu，并且您已经知道某些问题的答案（您所在的国家/地区和时区，您拥有的键盘，应如何配置网络，以及如何分区硬盘等）。您可以在一个非常简单的配置文件中“预设”这些问题的答案。有几种方法可以设置引导加载程序配置。
+
+更改isolinux.cfg以识别您的preseed
+我们将创建一个名为'firewall.seed'的preseed文件，该文件将存在于CD-ROM的/ preseed文件夹中。我们通过修改位于isolinux / isolinux.cfg（或8.10或更高版本，isolinux / text.cfg）中的boot-loader配置文件告诉di在哪里找到此文件，以在内核命令行上传递适当的参数。在/opt/cd-image/isolinux/isolinux.cfg中，添加一个标记为这样的新部分：
+
+
+LABEL防火墙
+  菜单标签^防火墙安装
+  kernel / install / vmlinuz
+  append preseed / file = / cdrom / preseed / firewall.seed debian-installer / locale = en_NZ console-setup / layoutcode = us initrd = / install / initrd.gz ramdisk_size = 16384 root = / dev / ram rw quiet  - 
+如果要将默认选定菜单项设置为自定义种子，请将DEFAULT行更改为“DEFAULT firewall”。
+
+对于使用预定义语言的全自动安装（在此示例中为爱沙尼亚语），您需要添加更多参数：
+
+LABEL防火墙
+  菜单标签^防火墙安装（爱沙尼亚语）
+  kernel / install / vmlinuz
+  append file = / cdrom / preseed / firewall.seed debian-installer / locale = et_EE console-setup / layoutcode = et localechooser / translation / warn-light = true localechooser / translation / warn-severe = true initrd = / install / initrd。 gz ramdisk_size = 16384 root = / dev / ram rw quiet
+ - 
+要使安装程序自动切换默认选项并在超时后开始安装，请将此行添加到isolinux / isolinux.cfg（在所有版本中）。
+
+超时10
+IconsPage / note.png 超时值以十分之一秒为单位，因此超时值10等于一秒。
+
+您必须在命令行上指定区域设置和键盘，因为在加载种子之前会询问这些问题。您也可以在此处设置DEBCONF_PRIORITY，以确保您没有看到任何不必要的debconf问题。
+
+（在Ubuntu 6.06及更早版本中，使用kbd- chooser / method = us而不是console-setup / layoutcode = us。）
+
+更改grub.cfg以识别您的preseed
+我们将创建一个名为'custom.seed'的preseed文件，该文件将存在于CD-ROM的/ preseed文件夹中。我们通过修改位于boot / grub / grub.cfg中的boot-loader配置文件来告诉di在哪里找到这个文件，以在内核命令行上传递适当的参数。在/opt/cd-image/boot/grub/grub.cfg中，添加一个标记为这样的新部分：
+
+
+menuentry“安装Ubuntu服务器自定义”{
+  设置gfxpayload =保持
+  linux / install / vmlinuz file = / cdrom / preseed / custom.seed debian-installer / locale = en_US console-setup / layoutcode = us quiet ---
+  initrd /install/initrd.gz
+}
+编写预置文件
+预置文件每行有4个字段：
+
+将获取此命令的程序的标识
+将传递其值的变量的名称
+变量类型
+变量的值
+它看起来像这样（来自16.04 CD上的默认ubuntu-server.seed）：
+
+＃默认情况下建议LVM。
+di partman-auto / init_automatically_partition string some_device_lvm
+di partman-auto / init_automatically_partition看错了
+＃安装Ubuntu Server种子。
+tasksel tasksel / force-tasks字符串服务器
+＃仅安装基本语言包。让tasksel询问任务。
+di pkgsel / language-pack-patterns字符串
+＃没有语言支持包。
+di pkgsel / install-language-support boolean false
+＃仅在安装了其他操作系统时询问UTC问题。
+di clock-setup / utc-auto布尔值为true
+＃详细输出，无启动启动画面。
+di debian-installer / quiet boolean false
+di debian-installer / splash boolean false
+＃安装debconf oem-config前端（如果是OEM模式）。
+di oem-config-udeb / frontend string debconf
+＃在grub中等待两秒钟
+di grub-installer / timeout string 2
+＃默认情况下，添加网络和任务oem-config步骤。
+oem-config oem-config /步骤多选语言，时区，键盘，用户，网络，任务
+IconsPage / important.png di期望变量类型和变量值之间只有一个制表符或空格（任何其他空格都被视为值的一部分）
+
+创建预置文件的最简单方法是从示例开始并修改它：
+
+Ubuntu安装指南（16.04）提供了许多常见的preseed指令的示例。（请记住，您可能需要修改一些以使用旧版本。）
+
+您可以查看Debian的wiki页面，预先安装安装程序 - 6.06及更高版本与Etch和更新版本的Debian安装程序一致，尽管有一些重要的差异适用于预播。
+
+如果找不到您要查找的选项，可以使用debconf-get-selections根据您自己的安装时间选择生成全面的预置文件
+
+debconf-get-selections用法：
+
+sudo apt-get install debconf-utils＃它是debconf-utils包的一部分。
+debconf-get-selections --installer> somefile.txt
+debconf-get-selections >> somefile.txt
+这将输出您在整个安装过程中选择的所有debconf选项的列表; 你可以选择这个选项并将它们放入你的preseed文件中。
+
+IconsPage / warning.pngdebconf-get-selections 在变量类型和变量值之间打印2个空格。在将行放入预置文件之前，您需要将其更改为一个空格。
+
+在预置文件中安装额外的软件包
+IconsPage / important.png 自Ubuntu 6.06以来，base-config已从debian-installer中删除。
+
+在Ubuntu 6.06及更早版本中：
+
+
+di pkgsel / install-pattern string~t ^ ubuntu-standard $ | ~n ^ openssh-server $
+在Ubuntu 8.04和更新版本中:(包可以用逗号和/或空格分隔，并继续使用反斜杠的另一行）：
+
+
+di pkgsel / include string gstreamer0.10-plugins-base \
+ gstreamer0.10-plugins-good \
+ gstreamer0.10-plugins-ugly \
+ gstreamer0.10-plugins的坏
+IconsPage / warning.png安装程序无法安装依赖于通常在已安装系统中运行但未在Debian安装程序环境中运行的服务的软件包。其中一个例子是在安装时创建或修改数据库的软件包，并且需要运行postgresql或mysql服务器。在这种情况下，您需要使用postinst脚本，在/ target chroot中启动必要的数据库服务器，然后调用“apt-install”（如果在chroot环境之外）或apt-get（在chroot内）。
+
+安装语言支持
+使用不同的机制来安装其他语言。在专家模式下预先安装安装程序提出的详细区域设置问题。有关您可以在此处使用的区域设置名称，请参阅/ usr / share / i18n / SUPPORTED的第一列。例如，要添加对孟加拉语和泰米尔语的支持，请使用以下行：
+
+
+di localechooser / supported-locales multiselect bn_IN，ta_IN
+运行最终脚本
+您可以在安装的最后部分运行脚本。以下示例运行已复制到setup / install文件夹中的安装CD上的脚本。此脚本在目标环境中运行，因此可以运行已安装在目标系统上的任何语言（例如Python或Perl）的脚本。
+
+
+di preseed / late_command string chroot / target bash /cdrom/setup/install/settings.sh
+IconsPage / warning.png上述命令可能无法在8.10或更高版本上运行; 要将脚本复制到目标然后执行它，请尝试以下操作：
+
+
+di preseed / late_command string cp /cdrom/finisher/finisher.sh / target / root /; chroot / target chmod + x /root/finisher.sh; chroot / target bash /root/finisher.sh
+通常，通过late_command从种子文件运行的脚本无法与用户交互。如果您需要进行交互，通常有三种选择：
+
+创建一个与debconf交互的自定义​​UDEB，并将其包含在CD中。
+创建一个'firstrun'脚本，该脚本在系统首次启动时执行，并在完成时禁用自身。
+直接在脚本中访问debconf。
+
+IconsPage / warning.png通过late_command运行的尝试运行“chroot / target apt-get ...”（或类似）的预置脚本可能会遇到问题（例如，在某些软件包的postinst阶段找不到文件描述符3，破折号就是一个例子）。这是由您的脚本从已经运行的安装程序继承环境变量引起的。要解决此问题，请在调用apt-get之前清除脚本中的环境变量：
+
+取消DEBCONF_REDIR
+取消DEBCONF_FRONTEND
+取消设置DEBIAN_HAS_FRONTEND
+取消DEBIAN_FRONTEND
+修改池结构以包含更多包
+构建自己的安装CD的主要动机可能是修改安装的软件包; 特别是你可能想要一些包添加到CD。
+
+最简单的方法是构建一个'extras'存储库结构，只包含额外的.debs，并在重建.ISO映像之前将它们合并到CD文件层次结构中。本指南将指导您完成此操作。
+
+这需要您生成包文件，用于定义存储库中的文件; 为您的Packages文件编制索引的Release文件，以及已签名的Release.gpg文件，将存储库批准为官方文件。
+
+创建“额外”组件
+IconsPage / important.png以下示例引用了Ubuntu 16.04（“xenial”）。在适当的地方替换您的版本。
+
+为新组件创建目录（在适当的地方替换您的版本）：
+
+
+cd / opt / cd-image
+mkdir -p pool / extras /
+将你想要的所有额外的.debs放入你的CD 池中。
+
+在脚本页面上有一个有用的脚本，它将从CD映像中删除当前未安装的所有软件包。您需要运行apt-ftparchive（下面）来生成Packages文件。
+
+生成一个新的ubuntu-keyring .deb来签署你的CD
+为了签署Release文件，我们需要使用GPG。然后，安装系统将根据包ubuntu-keyring中保存的公钥检查签名。您没有与随附的ubuntu-keyring中的一个匹配的私钥，因此我们需要构建一个自定义版本的ubuntu-keyring包。如果你还没有安装gnupg软件包，请安装它。
+
+要创建签名密钥，请输入gpg --gen-key。接受默认值（对于此用途，可以使用“No expiry”）。对于您的真实姓名和电子邮件地址，您可能希望使用“XXX签名密钥”和“ packages@xxx.example.org ”之类的内容。输入适当的密码。
+
+在另一个目录（我使用/ opt / build /）中，我们将下载ubuntu-keyring包的源代码，解压缩它，添加我们自己的GPG密钥，然后重建包。这些步骤将2个Ubuntu公共签名密钥导入主密钥环，然后将它们与您自己的公共签名密钥一起导出到替换密钥环中。“YOURKEYID”应该替换为gpg在您执行--list-keys命令时告诉您的8位十六进制代码。“签名密钥名称”是您在上一步中运行gpg --gen-key时使用的名称。
+
+为了澄清，下面是一个'gpg --list-keys'响应示例。在这个例子中，“YOURKEYID”紧跟在以'pub'开头的行上的'/'后面（在这个例子中是'437D05B5'）。
+
+
+gpg --list-keys
+pub 1024D / 437D05B5 2006-09-08
+uid XXX签署密钥<packages@xxx.example.org>
+sub 2048g / 79164387 2006-09-08
+如果你更改了包的版本号（例如使用dch），那么请确保你选择的版本号不包含“ - ”字符：如果是，那么你将把包转换为“原生”格式你必须做一些额外的步骤。使用版本号（例如“ 2012.05.19 + custom1 ”）更简单，将首选本地部分放在“ + ”字符后面。
+
+这是一个示例，您需要自定义以适合您自己的设置：
+
+IconsPage / important.png以下示例引用了Ubuntu 16.04（“xenial”）。在适当的地方替换您的版本。
+
+
+cd / opt / build
+sudo apt-get install fakeroot＃需要你的系统上可能没有安装的fakeroot软件包。
+apt-get source ubuntu-keyring
+cd ubuntu-keyring-2012.05.19 / keyrings
+gpg --import <ubuntu-archive-keyring.gpg
+gpg --list-keys“签名密钥名称”
+gpg --export FBB75451 437D05B5 C0B21F32 EFE21092 YOURKEYID> ubuntu-archive-keyring.gpg
+cd ..＃你现在在ubuntu-keyring-2012.05.19上
+dpkg-buildpackage -rfakeroot -m“你的名字<your.email@your.host>” -  kYOURKEYID
+cd ..＃您现在位于您启动的目录中，在示例中为/ opt / build
+cp ubuntu-keyring * deb / opt / cd-image / pool / main / u / ubuntu-keyring
+您将得到安装程序的udeb文件和系统的.deb文件。这两个文件都需要复制到CD 的主要组件中，因为CD不会检查extras目录。
+
+使用更新的ubuntu-archive-keyring.gpg生成新的filesystem.squashfs
+为了防止在安装过程中出现问题，我们需要通过更新刚刚导出的ubuntu-archive-keyring.gpg来重新生成filesystem.squashfs。有三种方法可供替换：
+
+$ chroot环境的/ usr /共享/钥匙扣/ Ubuntu的归档keyring.gpg
+$ chroot /等/公寓/ trusted.gpg
+$ chroot环境的/ var / lib中/公寓/钥匙扣/ Ubuntu的归档keyring.gpg
+此外，filesystem.size还需要更新：
+
+cd new-squashfs-root
+du -sx --block-size = 1 ./ | cut -f1> /opt/cd-image/install/filesystem.size
+使用apt-ftparchive构建存储库
+apt-ftparchive builds the Packages and Packages.gz files, needed by the installer. In order to use apt-ftparchive we will need to provide it with some configuration and some index files.
+
+IconsPage / important.png If you will be adding .deb files to pool/universe (eg. customizing xubuntu) you will also need to wget extra.universe and universe files.
+
+We will put the index files in /opt/indices:
+
+mkdir -p /opt/indices /opt/apt-ftparchive
+cd /opt/indices/
+DIST=xenial
+for SUFFIX in extra.main main main.debian-installer restricted restricted.debian-installer; do
+  wget http://archive.ubuntu.com/ubuntu/indices/override.$DIST.$SUFFIX
+done
+Create the files apt-ftparchive-deb.conf, apt-ftparchive-udeb.conf, apt-ftparchive-extras.conf, and release.conf in a directory (/opt/apt-ftparchive), substituting /opt/cd-image/ for the path to your CD image directory, and /opt/indices/ for the location of the index files, if they differ.
+
+IconsPage / important.png The .conf files shown here are sufficient if you are ONLY making changes to .deb files under pool/main and pool/restricted. If you are adding security updates to a Xubuntu customized CD, though, you will be updating .deb files under pool/universe also, so you will need to add lines to apt-ftparchive-deb.conf for universe, similar to the lines shown for main. You will also need to run extraoverride.pl for universe as well as for main - see below.
+
+/opt/apt-ftparchive/apt-ftparchive-deb.conf:
+
+Dir {
+  ArchiveDir "/opt/cd-image/";
+};
+
+TreeDefault {
+  Directory "pool/";
+};
+
+BinDirectory "pool/main" {
+  Packages "dists/xenial/main/binary-amd64/Packages";
+  BinOverride "/opt/indices/override.xenial.main";
+  ExtraOverride "/opt/indices/override.xenial.extra.main";
+};
+
+BinDirectory "pool/restricted" {
+ Packages "dists/xenial/restricted/binary-amd64/Packages";
+ BinOverride "/opt/indices/override.xenial.restricted";
+};
+
+Default {
+  Packages {
+    Extensions ".deb";
+    Compress ". gzip";
+  };
+};
+
+Contents {
+  Compress "gzip";
+};
+The ExtraOverride component above is needed to add the Task: line to main packages, referenced from the preseed file with ~t<task name>. This is not supplied - but can be extracted from the existing main Packages file with the simple perl script below.
+
+\#!/usr/bin/env perl
+# extraoverride.pl
+# generate ExtraOverride file
+# use as follows :-
+# extraoverride.pl < /opt/cd-image/dists/xenial/main/binary-amd64/Packages >> /opt/indices/override.xenial.extra.main
+
+while (<>) {
+        chomp;
+        next if /^ /;
+        if (/^$/ && defined($task)) {
+                print "$package Task $task\n";
+                undef $package;
+                undef $task;
+        }
+        ($key, $value) = split /: /, $_, 2;
+        if ($key eq 'Package') {
+                $package = $value;
+        }
+        if ($key eq 'Task') {
+                $task = $value;
+        }
+}
+IconsPage / note.png If customizing Xubuntu, and adding new .deb files to pool/universe, run this script for the universe repository also.
+
+IconsPage / note.png The ExtraOverride process can be optional to skip it.
+
+/opt/apt-ftparchive/apt-ftparchive-udeb.conf:
+
+Dir {
+  ArchiveDir "/opt/cd-image/";
+};
+
+TreeDefault {
+  Directory "pool/";
+};
+
+BinDirectory "pool/main" {
+  Packages "dists/xenial/main/debian-installer/binary-amd64/Packages";
+  BinOverride "/opt/indices/override.xenial.main.debian-installer";
+};
+
+BinDirectory "pool/restricted" {
+  Packages "dists/xenial/restricted/debian-installer/binary-amd64/Packages";
+  BinOverride "/opt/indices/override.xenial.restricted.debian-installer";
+};
+
+Default {
+  Packages {
+    Extensions ".udeb";
+    Compress ". gzip";
+  };
+};
+
+Contents {
+  Compress "gzip";
+};
+/opt/apt-ftparchive/apt-ftparchive-extras.conf:
+
+Dir {
+  ArchiveDir "/opt/cd-image/";
+};
+
+TreeDefault {
+  Directory "pool/";
+};
+
+BinDirectory "pool/extras" {
+  Packages "dists/xenial/extras/binary-amd64/Packages";
+};
+
+Default {
+  Packages {
+    Extensions ".deb";
+    Compress ". gzip";
+  };
+};
+
+Contents {
+  Compress "gzip";
+};
+IconsPage / important.png You need to build the Packages file in dists/xenial/extras/binary-amd64/Packages using dpkg-scanpackages. See here for an explanation. 
+
+IconsPage / important.png The following example of creating Packages references Ubuntu 16.04 ("xenial"). Substitute your version where appropriate. Use apt-ftparchive to finish above step.
+
+
+cd /opt/cd-image
+apt-ftparchive packages pool/extras > dists/stable/extras/binary-amd64/Packages
+gzip -c dists/stable/extras/binary-amd64/Packages | tee dists/stable/extras/binary-amd64/Packages.gz > /dev/null
+/opt/apt-ftparchive/release.conf
+
+This is the configuration file for apt-ftparchive. Change to suit your distribution version:
+
+APT::FTPArchive::Release::Origin "Ubuntu";
+APT::FTPArchive::Release::Label "Ubuntu";
+APT::FTPArchive::Release::Suite "xenial";
+APT::FTPArchive::Release::Version "16.04";
+APT::FTPArchive::Release::Codename "xenial";
+APT::FTPArchive::Release::Architectures "amd64";
+APT::FTPArchive::Release::Components "main restricted extras";
+APT::FTPArchive::Release::Description "Ubuntu 16.04 LTS";
+To build the repository, sign it, and update the MD5SUM file, you can use a script like this:
+
+
+BUILD=/opt/cd-image
+APTCONF=/opt/apt-ftparchive/release.conf
+DISTNAME=xenial
+
+pushd $BUILD
+apt-ftparchive -c $APTCONF generate /opt/apt-ftparchive/apt-ftparchive-deb.conf
+apt-ftparchive -c $APTCONF generate /opt/apt-ftparchive/apt-ftparchive-udeb.conf
+apt-ftparchive -c $APTCONF generate /opt/apt-ftparchive/apt-ftparchive-extras.conf
+apt-ftparchive -c $APTCONF release $BUILD/dists/$DISTNAME > $BUILD/dists/$DISTNAME/Release
+
+gpg --default-key "YOURKEYID" --output $BUILD/dists/$DISTNAME/Release.gpg -ba $BUILD/dists/$DISTNAME/Release
+find . -type f -print0 | xargs -0 md5sum > md5sum.txt
+popd
+"YOURKEYID" is the key id you put in your own compiled keyring package before.
+
+Preparing the bootable medium
+At this point, you have a directory which is ready to be collected into an .ISO file and then burnt to a CD or copied to a USB stick.
+
+Building the ISO image
+x86 and AMD64
+
+
+IMAGE=custom.iso
+BUILD=/opt/cd-image/
+
+mkisofs -r -V "Custom Ubuntu Install CD" \
+            -cache-inodes \
+            -J -l -b isolinux/isolinux.bin \
+            -c isolinux/boot.cat -no-emul-boot \
+            -boot-load-size 4 -boot-info-table \
+            -o $IMAGE $BUILD
+x86 and AMD64 with isohybrid
+
+The original i386 and amd64 ISOs have a Master Boot Record (MBR) which makes them bootable from USB stick via legacy BIOS firmware.
+
+# The MBR x86 machine code bytes from the original ISO are known to match
+# the isolinux.bin file inside that ISO. So copy them to a file in /tmp/.
+OLD_IMAGE=/path/to/iso
+MBR_FILE=/tmp/ubuntu_isohybrid_mbr.img
+dd if="$OLD_IMAGE" bs=1 count=446 of="$MBR_FILE"
+
+IMAGE=custom.iso
+BUILD=/opt/cd-image/
+
+xorriso -as mkisofs -r -V "Custom Ubuntu Install CD" \
+            -cache-inodes -J -l \
+            -isohybrid-mbr "$MBR_FILE" \
+            -partition_offset 16 \
+            -c isolinux/boot.cat \
+            -b isolinux/isolinux.bin \
+               -no-emul-boot -boot-load-size 4 -boot-info-table \
+            -o "$IMAGE" \
+            "$BUILD"
+            "$BUILD"
+
+rm "$MBR_FILE"
+AMD64 with isohybrid and UEFI
+
+Additionally to the MBR for legacy BIOS, the amd64 ISOs since 14.04 can boot from CD and from USB stick via the modern UEFI firmware. Its entry point is marked for USB stick by the MBR partition entry 2, which points to the data content of file /boot/grub/efi.img. Together with UEFI bootability from CD this is achieved by the additional options from -eltorito-alt-boot to -isohybrid-gpt-basdat.
+
+OLD_IMAGE=/path/to/iso
+MBR_FILE=/tmp/ubuntu_isohybrid_mbr.img
+dd if="$OLD_IMAGE" bs=1 count=446 of="$MBR_FILE"
+
+IMAGE=custom.iso
+BUILD=/opt/cd-image/
+
+xorriso -as mkisofs -r -V "Custom Ubuntu Install CD" \
+            -cache-inodes -J -l \
+            -isohybrid-mbr "$MBR_FILE" \
+            -c isolinux/boot.cat \
+            -b isolinux/isolinux.bin \
+               -no-emul-boot -boot-load-size 4 -boot-info-table \
+            -eltorito-alt-boot \
+            -e boot/grub/efi.img \
+               -no-emul-boot -isohybrid-gpt-basdat \
+            -o "$IMAGE" \
+            "$BUILD"
+
+rm "$MBR_FILE"
+Power PC
+
+Download the HFS map, then use the following command:
+
+IMAGE=custom.iso
+BUILD=/opt/cd-image/
+
+mkisofs -r -V "Custom Ubuntu Install CD" \
+            --netatalk -hfs -probe -map hfs.map \
+            -chrp-boot -iso-level 2 -part -no-desktop \
+            -hfs-bless $BUILD/install \
+            -hfs-volid Ubuntu/PowerPC_hardy \
+            -o $IMAGE $BUILD
+ia64
+
+IMAGE=custom.iso
+BUILD=/opt/cd-image/
+
+mkisofs -r -V 'Custom Ubuntu Install CD' \
+        -o $IMAGE -no-emul-boot \
+        -J -b boot/boot.img -c boot/boot.catalog $BUILD
+$IMAGE is just the location of your iso image.
+Burning the image to CD, DVD, or Blu-ray
+
+sudo xorriso -as cdrecord dev=/dev/sr0 blank=as_needed -v $IMAGE
+The first optical drive of a contemporary GNU/Linux system has address /dev/sr0. If in doubt, run the following command to learn about the existing drives and their /dev file adresses.
+
+sudo xorriso -devices
+If your drive or media are old, then you might burn a lot of coasters in experimenting with this process. Re-usable media can ease the pain: CD-RW, DVD-RW, DVD+RW, DVD-RAM, BD-RE.
+
+Putting an isohybrid image onto USB stick
+If the x86 and AMD image was made by xorriso with isohybrid options, or if the x86 and AMD image was postprocessed by SYSLINUX program isohybrid, then it will boot from USB stick or hard disk, too.
+
+Such an image is not to be unpacked and installed to the USB stick by a program like 'Rufus' or 'UNetbootin', but rather to be written plainly to the base device file of the USB stick. This implies that the partition table of the stick will be overwritten and thus all data on the stick will become unaccessible, if not overwritten.
+
+Verify device address or make a backup
+The main problem on a GNU/Linux system is that you need superuser power to overwrite the whole USB stick, and that this power suffices to also spoil the content of your hard disk.
+
+So first verify that the device file address really leads to the intended device (e.g. by reading a few megabytes and watching it blink). If the USB stick is supposed to be Linux device "/dev/sdh":
+
+sudo umount /dev/sdh*
+dd if=/dev/sdh of=/dev/null bs=1024 count=100000
+or by making a backup of its complete content in a compressed disk file:
+
+sudo umount /dev/sdh*
+dd if=/dev/sdh | gzip >"$HOME"/red_usb_stick.gz
+(Your /dev/sd address will probably end by a lower letter than "h". But this paragraph is all about not to spoil /dev/sda and other hard disks by mistake.)
+
+Write to USB stick
+Once you are convinced that this is the right device file address, copy the ISO image onto the USB stick by:
+
+sudo dd if="$IMAGE" bs=1M of=/dev/sdh ; sync
+Eventually restore backup
+To later restore the original content of the USB stick, take the same care to really use the correct address and then:
+
+dd if="$HOME"/red_usb_stick.gz | sudo gunzip >/dev/sdh

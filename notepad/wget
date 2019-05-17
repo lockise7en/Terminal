@@ -1,0 +1,16 @@
+Downloading an Entire Web Site with wget
+Sep 05, 2008	 By Dashamir Hoxha
+ inHOW-TOs
+If you ever need to download an entire Web site, perhaps for off-line viewing, wget can do the
+job—for example:
+
+$ wget \
+     --recursive \ 递归
+     --page-requisites \ 仅本网
+     --html-extension \ 仅路径内
+     --convert-links \zhuanhuanhtml为本地
+     --restrict-file-names=windows \文件名修改为WINDOWS 适用
+     --domains website.org \
+     --no-parent \不覆盖
+         www.website.org/tutorials/html/
+This command downloads the Web site www.website.org/tutorials/html/.

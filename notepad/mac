@@ -1,0 +1,55 @@
+bond0     Link encap:Ethernet  HWaddr 6e:5a:6a:41:4f:1a  
+          UP BROADCAST MASTER MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+ens33     Link encap:Ethernet  HWaddr 00:0c:29:85:74:53  
+          inet addr:192.168.168.164  Bcast:192.168.168.255  Mask:255.255.255.0
+          inet6 addr: fe80::c239:5cec:16d:9a68/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:1030387 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:309573 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:1442342433 (1.4 GB)  TX bytes:25178771 (25.1 MB)
+
+ens38     Link encap:Ethernet  HWaddr 00:0c:29:85:74:5d  
+          inet addr:192.168.168.174  Bcast:192.168.168.255  Mask:255.255.255.0
+          inet6 addr: fe80::6830:2635:3029:3f75/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:378 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:60 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:44333 (44.3 KB)  TX bytes:14085 (14.0 KB)
+
+ens39     Link encap:Ethernet  HWaddr 00:0c:29:85:74:67  
+          inet addr:192.168.168.184  Bcast:192.168.168.255  Mask:255.255.255.0
+          inet6 addr: fe80::6f20:f3ef:3286:cb18/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:391 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:61 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:47638 (47.6 KB)  TX bytes:14109 (14.1 KB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:765 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:765 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:74562 (74.5 KB)  TX bytes:74562 (74.5 KB)
+		  
+: ens33: <BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master bond0 state UP group default qlen 1000
+    link/ether 00:0c:29:85:74:53 brd ff:ff:ff:ff:ff:ff
+3: ens34: <BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master bond0 state UP group default qlen 1000
+    link/ether 00:0c:29:85:74:5d brd ff:ff:ff:ff:ff:ff
+4: ens35: <BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master bond0 state UP group default qlen 1000
+    link/ether 00:0c:29:85:74:67 brd ff:ff:ff:ff:ff:ff
+5: bond0: <BROADCAST,MULTICAST,MASTER,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 00:0c:29:85:74:5d brd ff:ff:ff:ff:ff:ff
+    inet 192.168.168.174/24 brd 192.168.168.255 scope global dynamic bond0
+       valid_lft 79222sec preferred_lft 79222sec
+    inet6 fe80::1be4:8e4b:d3bf:c916/64 scope link 
+       valid_lft forever preferred_lft forever

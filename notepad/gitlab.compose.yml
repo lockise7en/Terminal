@@ -1,0 +1,24 @@
+  # gitlab:
+    # image: 'twang2218/gitlab-ce-zh:11.1.4'
+    # container_name: gitlab
+    # restart: unless-stopped
+    # hostname: 'gitlab.lockyse7en.com'
+    # logging:
+      # driver: "syslog"
+      # options:  
+        # syslog-address: "tcp://127.0.0.1:1514"
+        # tag: "gitlab"
+    # networks:
+      # - harbor
+    # ports:
+    # - 30080:80
+    # - 22:22
+    # environment:
+      # TZ: 'Asia/Shanghai'
+      # GITLAB_OMNIBUS_CONFIG: |
+        # external_url 'http://gitlab.lockyse7en.com'
+        # gitlab_rails['time_zone'] = 'Asia/Shanghai'
+    # volumes:
+      # - ./common/config/gitlab:/etc/gitlab
+      # - /data/gitlab/data:/var/opt/gitlab
+      # - /data/gitlab/logs:/var/log/gitlab

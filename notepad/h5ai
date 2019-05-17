@@ -1,0 +1,67 @@
+server {
+	listen 80;
+	root /opt/wwwroot/h5ai/;
+	index index  index.html  index.php  /_h5ai/public/index.php;
+	try_files $uri $uri/ =404;
+	location /_h5ai/ {
+		root /opt/wwwroot/h5ai/;
+		}
+	location ~ \.php(?:$|/) {
+    fastcgi_split_path_info ^(.+\.php)(/.+)$; 
+    fastcgi_pass unix://run/php/php7.0-fpm.sock;
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    include fastcgi_params;
+	}
+}
+server {
+    listen 81;
+    server_name localhost;
+    root /opt/wwwroot/default/;
+    index index.html index.htm index.php tz.php;
+			
+	location ~ \.php(?:$|/) {
+    fastcgi_split_path_info ^(.+\.php)(/.+)$; 
+    fastcgi_pass unix://run/php/php7.0-fpm.sock;
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    include fastcgi_params;
+	}
+}
+server {
+		listen	82;
+		server_name	localhost;
+		location ~ {
+		root	/opt/wwwroot/asp/.sync/;	#网站的根目录
+		index	soft-center.asp index.html index.htm index.php tz.php Default.aspx default.aspx index.aspx index.asp Index.aspx index.html index.htm default.htm;
+		fastcgi_pass	127.0.0.1:9000;	#fastcgi要监听的端口号,与后面mono-fastcgi-server2要监听的端口号要一至
+		fastcgi_param	SCRIPT_FILENAME	$document_root$fastcgi_script_name;
+		include	/etc/nginx/fastcgi_params;
+	}
+}
+server {
+    listen 443;
+    server_name hub.lockyse7en.com;
+    location / {
+        proxy_pass https://127.0.0.1:14443;
+    }
+    error_page 404 /404.html;
+        location = /40x.html {
+    }
+    error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+    }
+}
+server {
+    listen       84;
+    server_name localhost;
+    location / {
+        proxy_pass http://127.0.0.1:9000;
+    }
+    error_page 404 /404.html;
+        location = /40x.html {
+    }
+    error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+    }
+}

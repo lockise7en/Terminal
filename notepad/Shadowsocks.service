@@ -1,0 +1,12 @@
+[Unit]
+Description=Shadowsocks proxy server
+
+[Service]
+User=www-shadow
+Group=www-shadow
+Type=simple
+ExecStart=/usr/local/bin/ssserver -c /etc/shadowsocks/shadowsocks.json -a shadowsocks -v start
+ExecStop=/usr/local/bin/ssserver -c /etc/shadowsocks/shadowsocks.json -a shadowsocks -v stop
+
+[Install]
+WantedBy=multi-user.target

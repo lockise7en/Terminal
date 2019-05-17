@@ -1,0 +1,25 @@
+# This is a configuration file. All lines starting with # will be ignored.
+#
+# WARNING: this file is maintained by configuration scripts of the apt-cacher-ng
+# package. All manual changes WILL BE LOST after the next package upgrade as
+# long as a line looking exactly like #09f369bf9c82a2210934e82213360226
+# is found inside. Remove or modify that line to stop auto-updates of this file.
+#09f369bf9c82a2210934e82213360226
+
+
+http://mirrors.aliyun.com/ubuntu/
+http://mirrors.nwafu.edu.cn/ubuntu/
+http://mirror.lzu.edu.cn/ubuntu/
+http://mirrors.sohu.com/ubuntu/
+http://mirrors.cqu.edu.cn/ubuntu/
+http://mirrors.opencas.org/ubuntu/
+http://mirrors.cn99.com/ubuntu/
+http://mirrors.yun-idc.com/ubuntu/
+http://ftp.sjtu.edu.cn/ubuntu/
+http://mirrors.njupt.edu.cn/ubuntu/
+http://mirrors.tuna.tsinghua.edu.cn/ubuntu/
+http://mirrors.ustc.edu.cn/ubuntu/
+http://mirrors.huaweicloud.com/repository/ubuntu/
+http://mirrors.nju.edu.cn/ubuntu/
+http://archive.ubuntu.com/ubuntu/
+http://mirrors.ustc.edu.cn/ubuntu/

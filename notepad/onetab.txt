@@ -1,0 +1,341 @@
+https://www.easyuefi.com/faq/en-US/How-to-use-EasyUEFI.html | How to use EasyUEFI? - EasyUEFI
+https://www.easyuefi.com/thanks-install.html | Thanks for installing EasyUEFI
+https://www.easyuefi.com/faq/en-US/How-to-use-EasyUEFI.html | How to use EasyUEFI? - EasyUEFI
+http://192.168.168.2:5555/ | Nas - Synology DiskStation
+https://github.com/chenhw2/aliyun-ddns-cli | chenhw2/aliyun-ddns-cli: ALiDDNS - Dynamic DNS CLI for [aliyun.com]
+https://github.com/chenhw2/aliyun-ddns-cli/tree/master/example | aliyun-ddns-cli/example at master · chenhw2/aliyun-ddns-cli
+https://translate.googleusercontent.com/translate_f | https://translate.googleusercontent.com/translate_f
+http://tool.chinaz.com/dns/?type=1&host=lockyse7en.com&ip= | “lockyse7en.com”A记录/cname检测结果--Dns查询|dns查询--站长工具
+https://beego.me/docs/install/bee.md | Bee 工具的使用 - beego: 简约 & 强大并存的 Go 应用框架
+https://beego.me/quickstart | 快速入门 - beego: 简约 & 强大并存的 Go 应用框架
+https://github.com/search?q=%E7%A6%BB%E7%BA%BF | Search · 离线
+https://github.com/beego/website | beego/website: beego website
+http://192.168.168.3:8082/docs/intro/Introduction | 192.168.168.3:8082/docs/intro/Introduction
+https://github.com/GitbookIO/gitbook | GitbookIO/gitbook: 📝 Modern documentation format and toolchain using Git and Markdown
+https://github.com/beego/beedoc/blob/master/zh-CN/install/install.md | beedoc/install.md at master · beego/beedoc
+https://www.google.com/search?q=aliyun-ddns-cli+%E6%B3%9B%E5%9F%9F%E5%90%8D&oq=aliyun-ddns-cli++%E6%B3%9B%E5%9F%9F%E5%90%8D&aqs=chrome..69i57.10217j0j1&sourceid=chrome&ie=UTF-8 | aliyun-ddns-cli 泛域名 - Google 搜索
+http://gjx.8800.org:8088/index.php/post/75.html | 曾几荷时-使用DOCKER安装阿里云的DDNS
+https://github.com/chenhw2/aliyun-ddns-cli/issues/10 | 有否考虑支持同时更新多个子域名？ · Issue #10 · chenhw2/aliyun-ddns-cli
+https://www.google.com/search?ei=lkwXXJilOYnI8wXgnpCAAg&q=%22%24%40%22+%E5%91%BD%E4%BB%A4&oq=%22%24%40%22+%E5%91%BD%E4%BB%A4&gs_l=psy-ab.3..0i7i30l10.45041.53930..54842...0.0..1.5468.11510.0j2j5-1j9-2......0....1..gws-wiz.HTHYwn6FeXI | "$@" 命令 - Google 搜索
+https://blog.csdn.net/clozxy/article/details/5818465 | exec 命令的用法 - clozxy的专栏 - CSDN博客
+https://blog.csdn.net/sunnyliqian/article/details/50244273 | linux之exec命令详解 - sunnyliqian的博客 - CSDN博客
+http://c.biancheng.net/cpp/view/2739.html | Shell特殊变量：Shell $0, $#, $*, $@, $?, $$和命令行参数_C语言中文网
+http://192.168.168.3:5854/
+http://localhost:42543/b69b9f272484235f32668f9837252034/?utm_campaign=existing&utm_content=&utm_medium=lantern&utm_source=windows#/ | 蓝灯专业版
+
+https://stackoverflow.com/questions/31528812/how-to-use-proxy-pac-file-for-python-urllib-or-request | How to use Proxy PAC file for python urllib or request? - Stack Overflow
+https://www.google.com/search?q=ubuntu+install+clover&oq=ubuntu+++install++clover&aqs=chrome..69i57j0.56016j0j1&sourceid=chrome&ie=UTF-8 | ubuntu install clover - Google 搜索
+https://github.com/m13253/clover-linux-installer | m13253/clover-linux-installer: Install Clover UEFI emulation environment from Linux
+https://sourceforge.net/projects/cloverefiboot/ | Clover EFI bootloader download | SourceForge.net
+https://www.google.com/search?q=ubuntu+CramFS&oq=ubuntu+CramFS&aqs=chrome..69i57j69i60l2j69i65j69i59l2.2007j0j4&sourceid=chrome&ie=UTF-8 | ubuntu CramFS - Google 搜索
+https://askubuntu.com/questions/1015675/triple-boot-ubuntu-using-clover-windows-10-macos-ubuntu | Triple Boot Ubuntu using Clover (Windows 10, MacOS & Ubuntu) - Ask Ubuntu
+https://github.com/npitre/cramfs-tools | npitre/cramfs-tools: Tools to create a cramfs filesystem image
+https://blog.csdn.net/q553716434/article/details/52290870 | 解压 使用squashfs工具创建的 xx.squashfs.img文件 - sunshine - CSDN博客
+https://www.fengbohello.top/archives/squashfs-tools-cmd | squashfs 文件操作命令 -- 郝峰波
+http://os.51cto.com/art/201109/291541.htm | Linux中squashfs格式固件解包的过程 - 51CTO.COM
+http://www.51cto.com/php/viewart.php?artID=291544 | www.51cto.com/php/viewart.php?artID=291544
+https://unix.stackexchange.com/questions/94270/how-to-install-squashfs-tools-on-ubuntu | linux - How to install squashfs-tools on Ubuntu? - Unix & Linux Stack Exchange
+https://www.google.com/search?q=ubuntu+uefi+repair&oq=ubuntu+uefi+re&aqs=chrome.1.69i57j0l5.16767j0j4&sourceid=chrome&ie=UTF-8 | ubuntu uefi repair - Google 搜索
+https://askubuntu.com/questions/831216/how-can-i-reinstall-grub-to-the-efi-partition | boot - How can I reinstall GRUB to the EFI partition? - Ask Ubuntu
+https://help.ubuntu.com/community/UEFI | UEFI - Community Help Wiki
+https://www.google.com/search?q=grub2+ubuntu+img&oq=grub2+ubuntu++img&aqs=chrome..69i57.15553j0j1&sourceid=chrome&ie=UTF-8 | grub2 ubuntu img - Google 搜索
+https://askubuntu.com/questions/766539/open-core-img-in-grub2 | boot - Open core.img in GRUB2 - Ask Ubuntu
+https://help.ubuntu.com/community/Grub2/Displays | Grub2/Displays - Community Help Wiki
+https://help.ubuntu.com/community/Grub2/ISOBoot | Grub2/ISOBoot - Community Help Wiki
+https://www.dedoimedo.com/computers/grub-2.html | GRUB 2 bootloader - Full tutorial
+https://www.ostechnix.com/configure-grub-2-boot-loader-settings-ubuntu-16-04/ | Configure GRUB2 Boot Loader Settings In Ubuntu 16.04 - OSTechNix
+https://www.google.com/search?q=clover+grub2+grlder&oq=clover++grub2++grlder&aqs=chrome..69i57.31499j0j1&sourceid=chrome&ie=UTF-8 | clover grub2 grlder - Google 搜索
+https://github.com/beatfan/UEFI_grub2 | beatfan/UEFI_grub2: uefi 版本 grub2，可以引导多系统，以及linux的安装
+https://github.com/search?q=winbuild | Search · winbuild
+https://www.google.com/search?q=2K3PE&oq=2K3PE&aqs=chrome..69i57&sourceid=chrome&ie=UTF-8 | 2K3PE - Google 搜索
+https://github.com/DrDonk/unlocker | DrDonk/unlocker: VMware Workstation macOS
+http://bbs.wuyou.net/forum.php | 论坛 - 无忧启动论坛 - Powered by Discuz!
+https://zhuanlan.zhihu.com/p/37314255 | Ubuntu 18.04 LTS 安装、美化 - 知乎
+https://www.jianshu.com/p/023bd569ab71 | （详细）ubuntu-16 安装 gnome-3.20主题及插件 - 简书
+https://www.omgubuntu.co.uk/2016/05/install-gnome-3-20-ubuntu-16-04-lts | How To Install GNOME 3.20 on Ubuntu 16.04 LTS
+https://www.google.com/search?q=gnome3-team%2Fgnome3&oq=gnome3-team%2Fgnome3&aqs=chrome..69i57j69i58&sourceid=chrome&ie=UTF-8 | gnome3-team/gnome3 - Google 搜索
+https://lists.ubuntu.com/archives/ubuntu-gnome/2017-March/004230.html | GNOME3 PPA End of Life Announcement
+https://lists.ubuntu.com/archives/ubuntu-gnome/2017-March/004230.html | GNOME3 PPA End of Life Announcement
+http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/dists/xenial/main/binary-amd64/ | Index of /gnome3-team/gnome3-staging/ubuntu/dists/xenial/main/binary-amd64
+chrome-extension://caodelkhipncidmoebgbbeemedohcdma/html/links.html | Extracted Links for http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/g/gnome-shell/
+http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/dists/xenial/main/binary-amd64/Packages.gz | 
+https://www.google.com/search?q=gnome3&oq=gnome3&aqs=chrome..69i57j35i39j69i60l3j0.19440j0j1&sourceid=chrome&ie=UTF-8 | gnome3 - Google 搜索
+https://www.ubuntu.com.cn/desktop/ubuntu-kylin-zh-CN | Ubuntu 桌面版 | Ubuntu
+https://wiki.ubuntu.com.cn/%E9%A6%96%E9%A1%B5 | Ubuntu中文
+https://www.ubuntu.com/zh-CN | 404: Page not found | Ubuntu
+
+http://192.168.168.2:5555/ | Nas - Synology DiskStation
+http://localhost:42543/b69b9f272484235f32668f9837252034/?utm_campaign=startup&utm_content=&utm_medium=lantern&utm_source=windows#/ | 蓝灯专业版
+https://www.google.com/search?ei=PAQUXOfYLIua8wX-35-YBw&q=ubuntu+%E5%AE%8C%E6%95%B4+%E7%9B%AE%E5%BD%95+&oq=ubuntu+%E5%AE%8C%E6%95%B4+%E7%9B%AE%E5%BD%95+&gs_l=psy-ab.3...12778.12778..13216...0.0..0.217.217.2-1......0....1..gws-wiz.ShyjZUsYjMw | ubuntu 完整 目录 - Google 搜索
+http://localhost/E%3A/Virtual%20Machines/iso/repo/aptoncd/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%20(2)/local | E:\Virtual Machines\iso\repo\aptoncd\新建文件夹 (2)\local - Everything
+https://www.google.com.hk/search?q=TEAWEB&oq=tea&aqs=chrome.0.69i59j69i57j69i65l3j69i60.1640j0j1&sourceid=chrome&ie=UTF-8&gws_rd=cr | TEAWEB - Google 搜索
+https://www.mongodb.com/dr/repo.mongodb.org/apt/ubuntu/dists/xenial/mongodb-org/4.0/multiverse/binary-amd64/mongodb-org-server_4.0.4_amd64.deb/download | Thank you for downloading MongoDB | MongoDB
+https://github.com/TeaWeb/build/releases | Releases · TeaWeb/build
+https://github.com/mongodb/mongo/releases/tag/r4.0.4 | Release r4.0.4 · mongodb/mongo
+https://docs.mongodb.com/manual/release-notes/ | Release Notes — MongoDB Manual
+https://ubuntuforums.org/showthread.php?t=2384864 | [ubuntu] Please recommend a method for FULL system backup
+https://www.ezeelinux.com/talk/ | EzeeTalk
+http://ppa.launchpad.net/nemh/systemback/ubuntu/pool/main/s/systemback/ | Index of /nemh/systemback/ubuntu/pool/main/s/systemback
+chrome-extension://caodelkhipncidmoebgbbeemedohcdma/html/links.html | Extracted Links for http://ppa.launchpad.net/nemh/systemback/ubuntu/pool/main/s/systemback/
+https://blog.csdn.net/yybj/article/details/43086393 | E: dpkg 被中断，您必须手工运行 sudo dpkg --configure -a 解决此问题 - FUNY丶 - CSDN博客
+https://blog.csdn.net/ycl295644/article/details/44536297 | dpkg 被中断,您必须手工运行 sudo dpkg –configure -a解决此问题 - 守枫竹清 - CSDN博客
+https://askubuntu.com/questions/163200/e-dpkg-was-interrupted-run-sudo-dpkg-configure-a | E: dpkg was interrupted... run 'sudo dpkg --configure -a' - Ask Ubuntu
+https://blog.csdn.net/sinat_39150454/article/details/73466542 | 已解决“pkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem” - ikinest - CSDN博客
+https://www.google.com.hk/search?q=ubuntu+live+cd&oq=ubuntu+live+cd&aqs=chrome..69i57j0l5.5456j1j1&sourceid=chrome&ie=UTF-8&gws_rd=cr | ubuntu live cd - Google 搜索
+https://help.ubuntu.com/community/LiveCD | LiveCD - Community Help Wiki
+https://wiki.ubuntu.com.cn/LiveCD | LiveCD - Ubuntu中文
+http://ppa.launchpad.net/ondrej/php/ubuntu/pool/main/p/ | ppa.launchpad.net/ondrej/php/ubuntu/pool/main/p/
+chrome-extension://caodelkhipncidmoebgbbeemedohcdma/html/links.html | Extracted Links for http://ppa.launchpad.net/ondrej/php/ubuntu/pool/main/p/
+http://ppa.launchpad.net/ondrej/php/ubuntu/pool/main/a/ | Index of /ondrej/php/ubuntu/pool/main/a
+https://mirrors.ustc.edu.cn/apache/README.html | https://mirrors.ustc.edu.cn/apache/README.html
+https://mirrors.ustc.edu.cn/ubuntu-ports/ | Index of /ubuntu-ports/
+https://mirrors.ustc.edu.cn/help/pypi.html | PyPI 镜像源使用帮助 — USTC Mirror Help 文档
+https://mirrors.ustc.edu.cn/ | USTC Open Source Software Mirror
+https://www.google.com.hk/search?q=ubuntu+%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95&oq=ubuntu+sougoy&aqs=chrome.1.69i57j0l5.6816j1j1&sourceid=chrome&ie=UTF-8&gws_rd=cr | ubuntu 搜狗输入法 - Google 搜索
+https://pinyin.sogou.com/linux/?r=pinyin | 搜狗输入法 for linux
+http://archive.ubuntukylin.com:10006/ubuntukylin/pool/main/s/sogoupinyin/ | Index of /ubuntukylin/pool/main/s/sogoupinyin
+https://dl.google.com/linux/chrome/deb/ | Error 404 (Not Found)!!1
+https://www.google.com/search?ei=T6gUXICfNYKG8wXz4buoDQ&q=ubuntu+apt-get+install++mono&oq=ubuntu+apt-get+install++mono&gs_l=psy-ab.3...42056.42951..43752...0.0..0.0.0.......0....1..gws-wiz.M3gp5blnEHg | ubuntu apt-get install mono - Google 搜索
+https://askubuntu.com/questions/510056/how-to-install-google-chrome | software installation - How to install Google Chrome - Ask Ubuntu
+https://linuxize.com/post/how-to-install-google-chrome-web-browser-on-ubuntu-18-04/ | How to Install Google Chrome Web Browser on Ubuntu 18.04 | Linuxize
+https://www.mono-project.com/docs/getting-started/install/linux/ | Install Mono on Linux | Mono
+https://www.mono-project.com/docs/ | 文档| 单
+https://www.jianshu.com/p/268064e67719 | GPG入门指南（加密/签名） - 简书
+https://www.google.com/search?q=gpg+.gpg&oq=gpg+.gpg&aqs=chrome..69i57.7956j0j1&sourceid=chrome&ie=UTF-8 | gpg .gpg - Google 搜索
+https://www.google.com/search?q=gpg+%E7%AD%BE%E5%90%8D+%E5%90%8E%E7%BC%80&oq=gpg++%E7%AD%BE%E5%90%8D++%E5%90%8E%E7%BC%80&aqs=chrome..69i57.12136j0j1&sourceid=chrome&ie=UTF-8 | gpg 签名 后缀 - Google 搜索
+http://www.ruanyifeng.com/blog/2013/07/gpg.html | GPG入门教程 - 阮一峰的网络日志
+https://gpg4win.org/get-gpg4win.html | Gpg4win - Get Gpg4win
+http://www.wallcopper.com/os/482.html | GnuPG生成单独的签名文件(GnuPG Detached Signature) | 等闲之辈莫等闲
+http://www.voidcn.com/article/p-pcacmrlz-uw.html | gpg加密与签名 - 程序园
+http://www.runoob.com/linux/linux-shell-test.html | Shell test 命令 | 菜鸟教程
+http://192.168.168.3:3142/ | Not Found or APT Reconfiguration required
+
+https://www.google.com/search?q=deb+local+repo&ei=Zo8SXJuiMI7i8wXOjauQDQ&start=10&sa=N&ved=0ahUKEwib7Yilo53fAhUO8bwKHc7GCtIQ8NMDCKkB&biw=1240&bih=782&dpr=1.38 | deb local repo - Google 搜索
+https://linuxconfig.org/easy-way-to-create-a-debian-package-and-local-package-repository | Easy way to create a Debian package and local package repository - LinuxConfig.org
+https://www.google.com/search?q=opkg+local+repository&oq=opkg+local+&aqs=chrome.1.69i57j0l5.5144j0j4&sourceid=chrome&ie=UTF-8 | opkg local repository - Google 搜索
+https://forum.arduino.cc/index.php?topic=237178.0 | Setup local packages repository
+https://blog.zhenglei.net/?p=255269 | Setup mirror of Openwrt package repository | Leic's Blog
+chrome://history/ | 历史记录
+https://www.google.com/search?ei=NpASXPKhJITb8QXX0YWgBQ&q=ubuntu%3A16.04++uefi+repair&oq=ubuntu%3A16.04++uefi+repair&gs_l=psy-ab.3...21310.23509..23871...0.0..0.460.2124.0j3j0j1j3......0....1..gws-wiz.......0j0i7i10i30j0i8i30.IIX-baIYZRE | ubuntu:16.04 uefi repair - Google 搜索
+https://askubuntu.com/questions/831216/how-can-i-reinstall-grub-to-the-efi-partition | boot - How can I reinstall GRUB to the EFI partition? - Ask Ubuntu
+https://help.ubuntu.com/community/UEFI | UEFI - Community Help Wiki
+https://wiki.debian.org/GrubEFIReinstall | GrubEFIReinstall - Debian Wiki
+https://superuser.com/questions/376470/how-to-reinstall-grub2-efi | linux - How to reinstall GRUB2 EFI? - Super User
+https://askubuntu.com/questions/796749/unable-to-boot-newly-installed-ubuntu-16-04-using-uefi-mode | partitioning - Unable to boot newly installed Ubuntu 16.04 using UEFI mode? - Ask Ubuntu
+https://ubuntuforums.org/showthread.php?t=2389398 | Fixing grub Boot repair EFI mode
+
+http://192.168.168.2:5555/ | Nas - Synology DiskStation
+http://192.168.168.1/Main_Login.asp | ASUS Login
+https://translate.google.com/translate?hl=zh-CN&sl=en&u=https://en.wikipedia.org/wiki/Paper&prev=search | Google 翻译
+https://acme-v01.api.letsencrypt.org/ | Boulder: The Let's Encrypt CA
+https://letsencrypt.org/ | Let's Encrypt - Free SSL/TLS Certificates
+http://192.168.168.13/cgi-bin/luci/admin/system/fstab | lede - 挂载点 - LuCI
+http://bbs.pcbeta.com/viewthread-1197452-1-1.html | 幸运草Clover引导UEFI纯GPT分区多系统 ML Lion Win8 Win7 ubuntu FusionDrive同样适用-远景论坛-微软极客社区
+chrome://settings/passwords | 设置
+https://www.techspot.com/ | TechSpot : Tech Enthusiasts, Power Users, Gamers
+https://sourceforge.net/projects/cloverefiboot/ | Clover EFI bootloader download | SourceForge.net
+https://wiki.archlinux.org/index.php/Clover_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87) | Clover (简体中文) - ArchWiki
+https://github.com/Clover-EFI-Bootloader/clover | Clover-EFI-Bootloader/clover
+https://www.google.com/search?q=Clover+3.4.5&oq=Clover+3.4.5&aqs=chrome..69i57j69i60j69i61j0l2.1191j0j1&sourceid=chrome&ie=UTF-8 | Clover 3.4.5 - Google 搜索
+
+https://github.com/novaeye/gitlab-ce | novaeye/gitlab-ce: gitlab-ce with zh-cn patch and subgit
+https://github.com/beginor/docker-gitlab-ce | beginor/docker-gitlab-ce: GitLab CE zh-cn docker file
+http://www.6vhao.tv/e/search/result/?searchid=202019 | 搜索：迈克 杰克逊
+https://www.synology.cn/zh-cn/support/download/DS916+#utilities | 下载中心 - DS916+ | Synology群晖科技官网
+https://vmware.github.io/vic/ | VMware®的vSphere Integrated Containers Engine
+https://github.com/vmware/vic | vmware/vic: vSphere Integrated Containers Engine is a container runtime for vSphere.
+https://hub.docker.com/r/codingwell/rpi-raspbian-qemu/ | codingwell/rpi-raspbian-qemu - Docker Hub
+https://github.com/balena-io-playground | balena playground
+https://github.com/balena-io | balena
+https://www.google.com/search?q=opkg+pkgconfig&oq=opkg++pkgconfig&aqs=chrome..69i57.2064j0j1&sourceid=chrome&ie=UTF-8 | opkg pkgconfig - Google 搜索
+https://stackoverflow.com/questions/42454889/libcurl-pkg-config-path-issue-for-opkg-on-ubuntu | libcurl PKG_CONFIG_PATH issue for opkg on Ubuntu - Stack Overflow
+http://192.168.168.2:5555/ | Nas - Synology DiskStation
+https://hub.docker.com/r/sameersbn/gitlab/ | sameersbn/gitlab - Docker Hub
+https://hub.docker.com/r/sameersbn/gitlab/~/dockerfile/ | sameersbn/gitlab - Docker Hub
+https://hub.docker.com/r/gogs/gogs/ | gogs/gogs - Docker Hub
+https://github.com/twang2218/gitlab-ce-zh/blob/master/11.0/Dockerfile | gitlab-ce-zh/Dockerfile at master · twang2218/gitlab-ce-zh
+http://192.168.168.2:5555/ | Nas - Synology DiskStation
+https://www.google.com.sg/search?q=pkg-config+%E7%94%A8%E6%B3%95&oq=pkg-config+%E7%94%A8%E6%B3%95&aqs=chrome..69i57j0l2.4728j0j1&sourceid=chrome&ie=UTF-8 | pkg-config 用法 - Google 搜索
+https://blog.csdn.net/luotuo44/article/details/24836901 | pkg-config的一些用法 - luotuo44的专栏 - CSDN博客
+https://www.google.com.sg/search?q=%E8%BF%88%E5%85%8B+%E6%9D%B0%E5%85%8B%E9%80%8A+mv&spell=1&sa=X&ved=0ahUKEwjt-b6StJffAhUW5o8KHbszCmEQBQgoKAA&biw=1862&bih=919 | 迈克 杰克逊 mv - Google 搜索
+https://www.bilibili.com/video/av12893705/?spm_id_from=333.788.videocard.15 | 迈克尔杰克逊-1995年MTV颁奖典礼表演（超高清）_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili
+http://www.internetdownloadmanager.com/support/firefox8_integration.html | Internet Download Manager Integration guide for Firefox
+http://www.nginx.cn/4658.html | nginx的location、root、alias指令用法和区别 – 运维与架构 - nginx.cn
+http://192.168.168.3/ | Welcome to nginx!
+https://forum.ubuntu.com.cn/viewtopic.php?t=134333 | [经验分享]定制ubuntu-livecd的iso - Ubuntu中文论坛
+https://www.google.com.sg/search?q=ubuntu16.04+%E9%94%90%E9%80%9F%E5%AE%89%E8%A3%85%E4%B8%80%E9%94%AE%E5%8C%85&oq=ubuntu16.04++%E9%94%90%E9%80%9F%E5%AE%89%E8%A3%85%E4%B8%80%E9%94%AE%E5%8C%85+&aqs=chrome..69i57.8440j0j1&sourceid=chrome&ie=UTF-8 | ubuntu16.04 锐速安装一键包 - Google 搜索
+https://www.google.com.sg/search?q=ubuntu+16.04+%E9%94%90%E9%80%9F%E5%AE%89%E8%A3%85%E4%B8%80%E9%94%AE%E5%8C%85&spell=1&sa=X&ved=0ahUKEwiWma6Gi5jfAhWCvbwKHRDZAwMQBQgpKAA | ubuntu 16.04 锐速安装一键包 - Google 搜索
+http://xiaofd.win/onekey-ruisu.html | ubuntu一键更换内核 安装锐速 - 16.04 14.04可用 - 狗仔小分队的博客
+http://192.168.168.3/ | Welcome to nginx!
+
+https://github.com/SynoCommunity/spksrc | SynoCommunity/spksrc: Cross compilation framework to create native packages for the Synology's NAS
+https://github.com/mistzzt/spksrc-deprecated | mistzzt/spksrc-deprecated: Configurations for spksrc to compile open-vm-tools for the Synology DSM running on ESXi
+https://github.com/gits68/spksrc/tree/master/cross | spksrc/cross at master · gits68/spksrc
+https://github.com/ymartin59/spksrc/tree/master/cross | spksrc/cross at master · ymartin59/spksrc
+https://github.com/lockyse7en | lockyse7en (lockyse7en)
+https://github.com/yale-wp/docker-xpenology-open-vm-tools | yale-wp/docker-xpenology-open-vm-tools: A Docker container to run open-vm-tools on a Xpenology DSM running on VMware ESXi.
+http://192.168.168.2:5555/ | Nas - Synology DiskStation
+https://www.google.com.hk/search?newwindow=1&safe=strict&ei=G7b4W5nbBseG8wXvhZ-oDQ&q=+synology+6.2+open-vm-tools&oq=+synology+6.2+open-vm-tools&gs_l=psy-ab.3...49799.56910..57086...0.0..0.0.0.......0....1..gws-wiz.9SP_cQ4ZkXw | synology 6.2 open-vm-tools - Google 搜索
+https://xpenology.com/forum/topic/7733-open-vmtools-for-dsm-61-on-esxi-65/ | Open vmtools for dsm 6.1 on esxi 6.5 - Third Party Packages - XPEnology Community
+https://idmedia.no/projects/xpenology/vmware-tools-for-xpenology-running-on-esxi/ | VMware Tools for XPenology running on ESXi | IDmedia
+https://idmedia.no/projects/xpenology/installing-vmware-tools-for-xpenology/ | Installing VMware Tools for XPenology | IDmedia
+https://www.google.com.hk/search?newwindow=1&safe=strict&q=open+vm+tools+6.1_10+1.15+spk&sa=X&ved=2ahUKEwjZ1NzF_OveAhVHw7wKHe_CB9UQ1QIoAnoECAYQAw&cshid=1543026216468000 | open vm tools 6.1_10 1.15 spk - Google 搜索
+https://github.com/TonyRL/spksrc-origin/releases | Releases · TonyRL/spksrc-origin
+https://www.google.com.hk/search?q=apr-1.5.2.tar.bz2&oq=apr-1.5.2.tar.bz2&aqs=chrome..69i57.335j0j1&sourceid=chrome&ie=UTF-8 | apr-1.5.2.tar.bz2 - Google 搜索
+http://mirror.23media.de/apache/apr/ | Index of /apache/apr
+https://archive.apache.org/dist/apr/ | Index of /dist/apr
+https://www.google.com.hk/search?q=serf-1.2.0.tar.bz2&oq=serf-1.2.0.tar.bz2&aqs=chrome..69i57.767j0j1&sourceid=chrome&ie=UTF-8 | serf-1.2.0.tar.bz2 - Google 搜索
+https://archive.apache.org/dist/serf/ | Index of /dist/serf
+https://www.google.com.hk/search?q=libcap-2.22.tar.gz&oq=libcap-2.22.tar.gz&aqs=chrome..69i57.1095j0j1&sourceid=chrome&ie=UTF-8 | libcap-2.22.tar.gz - Google 搜索
+https://osdn.net/search/?ie=UTF-8&t=soft&scope=all&q=node-v0.12.2.tar.gz | Search - OSDN
+http://ftp.ntu.edu.tw/linux/libs/security/linux-privs/libcap2/ | Index of /linux/libs/security/linux-privs/libcap2/
+https://www.google.com.hk/search?q=node-v0.12.2.tar.gz&oq=node-v0.12.2.tar.gz&aqs=chrome..69i57j69i60.959j0j1&sourceid=chrome&ie=UTF-8 | node-v0.12.2.tar.gz - Google 搜索
+https://www.google.com.hk/search?q=apr-util-1.5.4.tar.bz2&oq=apr-util-1.5.4.tar.bz2&aqs=chrome..69i57.751j0j4&sourceid=chrome&ie=UTF-8 | apr-util-1.5.4.tar.bz2 - Google 搜索
+http://www.linuxfromscratch.org/blfs/view/7.9/general/apr-util.html | Apr-Util-1.5.4
+http://www.linuxfromscratch.org/blfs/view/7.8/general/apr-util.html | Apr-Util-1.5.4
+https://distfiles.macports.org/nodejs/ | 404 Not Found
+https://distfiles.macports.org/nodejs/ | 404 Not Found
+https://nodejs.org/en/blog/release/v0.12.12/
+https://nodejs.org/en/blog/release/v0.12.2/
+https://www.google.com.hk/search?q=iksemel-1.4.tar.gz&oq=iksemel-1.4.tar.gz&aqs=chrome..69i57j0l5.815j0j1&sourceid=chrome&ie=UTF-8 | iksemel-1.4.tar.gz - Google 搜索
+https://src.fedoraproject.org/lookaside/pkgs/iksemel/iksemel-1.4.tar.gz/532e77181694f87ad5eb59435d11c1ca/ | Index of /lookaside/pkgs/iksemel/iksemel-1.4.tar.gz/532e77181694f87ad5eb59435d11c1ca
+https://www.google.com.hk/search?q=dnscrypt-proxy-1.9.5.tar.bz2&oq=dnscrypt-proxy-1.9.5.tar.bz2&aqs=chrome..69i57j69i65.1455j0j1&sourceid=chrome&ie=UTF-8 | dnscrypt-proxy-1.9.5.tar.bz2 - Google 搜索
+https://launchpad.net/ubuntu/+source/dnscrypt-proxy/1.9.5-1 | 1.9.5-1 : dnscrypt-proxy package : Ubuntu
+https://repology.org/metapackage/dnscrypt-proxy/packages | dnscrypt-proxy packages - Repology
+https://www.google.com.hk/search?q=harbor+synology&oq=harbor+synology+&aqs=chrome..69i57.4407j1j1&sourceid=chrome&ie=UTF-8 | harbor synology - Google 搜索
+https://www.google.com.hk/search?q=git+web+server&oq=gitweb&aqs=chrome.1.69i57j0l5.8639j1j1&sourceid=chrome&ie=UTF-8 | git web server - Google 搜索
+
+https://www.google.co.jp/search?q=FydeOS&oq=FydeOS&aqs=chrome..69i57j0l5.2831j1j4&sourceid=chrome&ie=UTF-8 | FydeOS - Google 搜索
+https://fydeos.com/download/ | 下载 FydeOS
+https://fydeos.com/ | FydeOS - 面向未来的云驱动操作系统 | 为中国用户打造的 Chrome OS
+chrome://downloads/ | 下载内容
+https://www.google.com.hk/search?q=libappindicator3.so.1&oq=libappindicator3.so.1&aqs=chrome..69i57j0l5.1245j0j1&sourceid=chrome&ie=UTF-8 | libappindicator3.so.1 - Google 搜索
+https://stackoverflow.com/questions/49965949/where-is-libappindicator3-so-1 | google chrome - Where is libappindicator3.so.1? - Stack Overflow
+https://mirrors.dotsrc.org/fedora-epel/7/x86_64/Packages/
+https://rpmfind.net/linux/rpm2html/search.php?query=libappindicator3.so.1()(64bit)
+https://www.yuzhi100.com/article/debian-9-landeng-wufaqidong-libappindicator3 | Debian 9 安装蓝灯Lantern后无法启动：libappindicator3.so.1 No such file or directory | Debian - 与知
+https://www.google.com.hk/search?q=libappindicator3.so.1+%E7%BC%96%E8%AF%91&safe=strict&ei=zrL3W_6ELsyFvQTyiLiYCA&start=10&sa=N&ved=0ahUKEwj-o42hhereAhXMQo8KHXIEDoMQ8NMDCI8B&biw=1302&bih=567 | libappindicator3.so.1 编译 - Google 搜索
+https://www.bbsmax.com/R/LPdoB7vG53/ | 记录一些在VPS上折腾的东西 - 相关文章
+https://jingyan.baidu.com/article/2c8c281da05ca00008252ad6.html | kali linux lantern无法启动_百度经验
+https://www.google.com.hk/search?safe=strict&q=opensuse+libappindicator3+so+1+64bit&sa=X&ved=2ahUKEwj-o42hhereAhXMQo8KHXIEDoMQ1QIoA3oECAYQBA | opensuse libappindicator3 so 1 64bit - Google 搜索
+https://www.google.com.hk/search?safe=strict&ei=XrP3W_XqCcb4vgT3no_QDA&q=+Tiny+Core+Linux+libappindicator3&oq=+Tiny+Core+Linux+libappindicator3&gs_l=psy-ab.3...59589.59589..60365...0.0..0.308.308.3-1......0....1j2..gws-wiz.wHMh0gRM61k | Tiny Core Linux libappindicator3 - Google 搜索
+https://distrowatch.com/dwres.php?resource=compare-packages&firstlist=biolinux&secondlist=arch&firstversions=0&secondversions=0&showall=yes | DistroWatch.com: Put the fun back into computing. Use Linux, BSD.
+https://luckychance10.com/?u=30wweky&o=pvkptz3&t=main7_7&c_id=bd1fab19-8065-400e-9b58-52a0d6892235 | 恭喜！
+https://textiline.com.br/?vce=yang1006/lantern/compare/valencia...duckAndroid:valencia | https://textiline.com.br/?vce=yang1006/lantern/compare/valencia...duckAndroid:valencia
+https://github.com/boot2docker/boot2docker | GitHub - boot2docker/boot2docker: Lightweight Linux for Docker
+https://www.google.com.hk/search?safe=strict&ei=N7T3W8DKIoGGvQTAr63YDg&q=tinycorelinux+appindicator&oq=tinycorelinux+appindicator&gs_l=psy-ab.3..33i160.4192.9504..10136...0.0..0.415.2642.2-1j6j1......0....1j2..gws-wiz.......0i67j0i30j0i10i30.XQK77XXQLdE | tinycorelinux appindicator - Google 搜索
+http://tinycorelinux.net/dCore/x86/ubuntu_xenial_main_i386_Packages | tinycorelinux.net/dCore/x86/ubuntu_xenial_main_i386_Packages
+http://tinycorelinux.net/7.x/x86_64/tcz/ | tinycorelinux.net/7.x/x86_64/tcz/
+http://tinycorelinux.net/dCore/x86/ubuntu_xenial_main_i386_Packages | tinycorelinux.net/dCore/x86/ubuntu_xenial_main_i386_Packages
+http://tinycorelinux.net/5.x/x86/tcz/src/transmission/transmission-compile.txt | tinycorelinux.net/5.x/x86/tcz/src/transmission/transmission-compile.txt
+http://tinycorelinux.net/7.x/x86_64/tcz/src/transmission/compile_transmission | tinycorelinux.net/7.x/x86_64/tcz/src/transmission/compile_transmission
+http://tinycorelinux.net/5.x/x86/tcz/src/transmission/transmission-compile.txt | tinycorelinux.net/5.x/x86/tcz/src/transmission/transmission-compile.txt
+chrome://history/ | 历史记录
+
+https://www.v2ray.com/chapter_00/install.html | 下载安装 · Project V 官方网站
+https://www.v2ray.com/chapter_02/01_overview.html | 文件格式 · Project V 官方网站
+https://www.v2ray.com/chapter_00/command.html | 命令行参数 · Project V 官方网站
+https://github.com/lockyse7en/boot2docker/blob/master/doc/BUILD.md | boot2docker/BUILD.md at master · lockyse7en/boot2docker
+https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=0&rsv_idx=1&tn=baidu&wd=ps%20cc2018%20cd%20key&rsv_pq=f1bb594500005b01&rsv_t=0625u1G5IH3uewGx6ZNNJ%2BfGaYNPXVKVbIQma9O4WxL7lLxBuZruzEPz0gs&rqlang=cn&rsv_enter=1&rsv_sug3=10&rsv_sug1=5&rsv_sug7=100&sug=ps%2520cc2018&rsv_n=1&rsv_sug2=0&inputT=10933&rsv_sug4=10933 | ps cc2018 cd key_百度搜索
+https://blog.csdn.net/qq_34173549/article/details/79740840 | Ps 2018CC 正版下载+破解方式（可破解adobe所有软件）+破解方式指导（可用） - LYoungJ的博客 - CSDN博客
+https://pan.baidu.com/s/1-MWJvuuUO1l6ED2JkSsSiw#list/path=%2F | ps_免费高速下载|百度网盘-分享无限制
+https://blog.csdn.net/qq_34173549/article/details/81512721 | Photoshop CC 2018 软件安装包+破解教程 - LYoungJ的博客 - CSDN博客
+https://www.google.com.sg/search?q=xforce+keygen+64&ei=U7j2W6SqMor68QWs0oqQDg&start=10&sa=N&ved=0ahUKEwjkn_SwlujeAhUKfbwKHSypAuIQ8NMDCKoB&biw=1862&bih=919 | xforce keygen 64 - Google 搜索
+https://www.reddit.com/r/MSToolkit/comments/99duj9/xforce_keygen_2018/ | Xforce Keygen 2018 : MSToolkit
+chrome-extension://bigefpfhnfcobdlfbedofhhaibnlghod/mega/secure.html#fm/jfhWmCia | MEGA
+https://www.google.com.sg/search?q=ps+cc+2017+key&oq=ps+cc+2017+key&aqs=chrome..69i57j0l4.8183j0j1&sourceid=chrome&ie=UTF-8 | ps cc 2017 key - Google 搜索
+https://www.facebook.com/licensekeyandsoftwareserialnumbers/posts/adobe-photoshop-cc-2017-serial-keysflskjridfjxmxcjdadobe-photoshop-cc-2017-seria/339730353105451/ | Adobe Photoshop CC 2017 serial key... - Share Your Product License key and Software Serial numbers | Facebook
+https://192.168.168.1:8443/blocking.asp?cat_id=39 | Wireless Router RT-AC68U - Blocking Page
+https://www.google.com.sg/search?q=ps+cc+2017&oq=ps+cc+2017&aqs=chrome..69i57j69i59j0l4.4903j0j1&sourceid=chrome&ie=UTF-8 | ps cc 2017 - Google 搜索
+https://adobe-photoshop.en.softonic.com/ | Adobe Photoshop CC - Download
+https://creative.adobe.com/zh-cn/products/download/photoshop?promoid=YP7XGCTC&mv=other | Adobe Creative Cloud
+http://174.127.195.163/bbs/thread-7745891-1-1.html | 【版区推荐】柚木Rio巅峰之作——iptd999 [121P+5gif] - Asia Star Favorites Chat | 亚洲AV女优讨论区 - SexInSex! Board
+http://174.127.195.163/bbs/forum-276-1.html | Anime Package | 成人ACG(漫画)打包分享区 - SexInSex! Board
+http://174.127.195.163/bbs/thread-7840350-1-1.html | 11月22日 最新人妻・熟女 112218_384-裸露圍裙做飯！太田ゆうか [vip9912] - Asia Authorship Seed | 亚洲成人无码原创区 - SexInSex! Board
+http://174.127.195.163/bbs/forumdisplay.php?fid=27&filter=type&typeid=191 | Anime Fans Castle | H游戏卡通漫画区 - SexInSex! Board
+https://www.javbus.men/uncensored/genre/gre134/2 | 第2頁 - 綁縛 - 無碼類別 - 影片 - JavBus
+https://www.javbus.men/uncensored/genre/gre121/9 | 第9頁 - 凌辱 - 無碼類別 - 影片 - JavBus
+https://www.javbus.men/111617_606 | 111617_606 大絶頂イキまくり！ランジェリーナ！ - JavBus
+https://www.javbus.men/080416_353 | 080416_353 この夏、パリピ乱交！ - JavBus
+https://adobeid-na1.services.adobe.com/renga-idprovider/pages/delegation/login/google?client_id=CreativeCloudInstaller_v1_0&callback=https%3A%2F%2Fims-na1.adobelogin.com%2Fims%2Fadobeid%2FCreativeCloudInstaller_v1_0%2FAdobeID%2Fdevice%3Fredirect_uri%3Dhttps%253A%252F%252Foobe.adobe.com%252F%26state%3D%257B%2522ac%2522%253A%2522CCInstaller%2522%252C%2522av%2522%253A%25224.7.0.400%2522%252C%2522di%2522%253Anull%252C%2522mc%2522%253Anull%252C%2522pl%2522%253Anull%257D%26device_id%3D2eedc7fc5e6e93e1527a496d2a4e63bf0ba04700ff10e518b3d1786b7e5c307d-3c911d1baf30c86b7ebdb3193666c13a0b4182804a2db137a242ed5a20d7bdd5%26device_name%3D15AFBD878CD343B8ADFED26FFFE5E7A2%26scope%3Dopenid%252CAdobeID%252Ccreative_cloud%252Ccreative_sdk%252Cread_organizations%252Csao.cce_private%252Cadditional_info.account_type&denied_callback=https%3A%2F%2Fims-na1.adobelogin.com%2Fims%2Fdenied%2FCreativeCloudInstaller_v1_0%3Fredirect_uri%3Dhttps%253A%252F%252Foobe.adobe.com%252F%26response_type%3Ddevice%26state%3D%257B%2522ac%2522%253A%2522CCInstaller%2522%252C%2522av%2522%253A%25224.7.0.400%2522%252C%2522di%2522%253Anull%252C%2522mc%2522%253Anull%252C%2522pl%2522%253Anull%257D&display=web_v2&locale=zh_CN&relay=43289f94-8337-417a-8660-3aba13902ef6&state=%7B%22ac%22%3A%22CCInstaller%22%2C%22av%22%3A%224.7.0.400%22%2C%22di%22%3Anull%2C%22mc%22%3Anull%2C%22pl%22%3Anull%7D&flow=true&flow_type=device&idp_flow_type=login&ctx_id=WAM_PHSP_19&delegated_request_id=1542905335918-c9c32155-4e39-4233-987e-14e0d485df7d&remember_me=false&s_account=adbadobenonacdcprod%2Cadbims&delegated_auth_party=delegate | Adobe ID
+http://localhost:5484/b69b9f272484235f32668f9837252034/?utm_campaign=startup&utm_content=&utm_medium=lantern&utm_source=windows#/ | 蓝灯专业版
+
+https://github.com/shadowsocks/libQtShadowsocks | shadowsocks/libQtShadowsocks: A lightweight and ultra-fast shadowsocks library written in C++14 with Qt framework
+https://gist.github.com/librehat/c6a04effc8936ff93be5 | shadowsocks-server.bat
+https://github.com/shadowsocks/shadowsocks-qt5/ | shadowsocks/shadowsocks-qt5: A cross-platform shadowsocks GUI client
+https://github.com/shadowsocks/libQtShadowsocks/wiki/Installation | Installation · shadowsocks/libQtShadowsocks Wiki
+https://github.com/zhou0/shadowsocks-perl | zhou0/shadowsocks-perl: An asynchronous, non-blocking shadowsocks client and server written in Perl.
+https://github.com/thebengeu/boot2docker-experimental | thebengeu/boot2docker-experimental: Builds customized Boot2Docker ISO containing Docker's experimental build
+
+http://192.168.168.2:5555/ | Nas - Synology DiskStation
+https://www.synology.com/zh-cn/knowledgebase/DSM/tutorial/Backup_Restore/How_to_enable_CBT_manually_for_a_virtual_machine | 如何为虚拟机手动启用 CBT | Synology群晖科技官网
+https://mir.lockyse7en.com/
+https://www.google.com.hk/search?newwindow=1&safe=strict&ei=KeP1W__FH5KK8gWA3rT4Dg&q=h5ai+background&oq=h5ai+background&gs_l=psy-ab.3...87555.87555..88610...0.0..0.0.0.......0....1j2..gws-wiz.yTzUwK1EuyI | h5ai background - Google 搜索
+https://www.so6.org/post-101.html | H5ai - 强大美观的目录列表程序
+https://gist.github.com/bugsysop/2861874 | h5ai (0.20) unminified style sheet
+https://github.com/lrsjng/h5ai/issues/666 | Dark Theme · Issue #666 · lrsjng/h5ai
+https://www.htcp.net/3643.html | h5ai 目录列表程序完整安装使用教程 | 云梦
+https://www.htcp.net/3067.html | WHMCS v7.6.1 原版下载及开心版授权安装 | 云梦
+https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019 | Microsoft Evaluation Center
+https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019 | Microsoft Evaluation Center
+https://cloudblogs.microsoft.com/windowsserver/2018/11/13/update-on-windows-server-2019-availability/ | Update on Windows Server 2019 availability - Windows Server Blog
+https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewserver?wa=wsignin1.0 | Download Windows Server Insider Preview
+https://www.iplaysoft.com/windows-server-2019.html | 微软 Windows Server 2019 服务器版操作系统 MSDN 原版 ISO 镜像下载 | 异次元软件下载
+https://dl.iplaysoft.com/files/4876.html | Windows Server 2019 系统镜像下载 | 异次元下载页面
+https://pan.baidu.com/s/1w-f43A4TYvYwZj1q_60NzQ?errno=0&errmsg=Auth%20Login%20Sucess&&bduss=&ssnerror=0&traceid= | cn_windows_server_2019_x64_dvd_2d80e042.iso_免费高速下载|百度网盘-分享无限制
+https://github.com/luodaoyi/kms-server | luodaoyi/kms-server: a docker image for kms
+https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys | KMS client setup keys | Microsoft Docs
+https://blog.csdn.net/cike0cop/article/details/81097823 | windows server 2016 激活 - coplin - CSDN博客
+https://03k.org/kms.html | 本站上线KMS服务~一句命令激活windows/office | 零散坑
+
+chrome-extension://ghgabhipcejejjmhhchfonmamedcbeod/gFRK.html | Privacy & Security News
+https://www.javbus.men/search/%E5%8F%8B%E7%94%B0%E5%BD%A9%E4%B9%9F%E9%A6%99/2 | 第2頁 - 友田彩也香 - 搜尋 - 影片
+https://www.javbus.men/uncensored/star/2jd/2 | 第2頁 - 波多野結衣 - 女優 - 影片 - JavBus
+http://81.4.123.217/binaries/x86-64/archive/seafile-server_6.2.2-1_x86-64.ipk | 81.4.123.217/binaries/x86-64/archive/seafile-server_6.2.2-1_x86-64.ipk
+
+https://github.com/LinRs/pandownload | LinRs/pandownload: just a mirror of freeware "PanDownload"
+https://github.com/onisuly/PanDownloader | onisuly/PanDownloader: 简易的百度网盘分段下载加速器
+http://192.168.168.30:5000/?timestamp=1541830697 | 192.168.168.30:5000/?timestamp=1541830697
+http://192.168.168.2:5555/ | Nas - Synology DiskStation
+https://hub.docker.com/r/tunathu/tunasync-scripts/ | tunathu/tunasync-scripts - Docker Hub
+http://tool.chinaz.com/dns/?type=1&host=pkg.entware.net&ip= | “pkg.entware.net”A记录/cname检测结果--Dns查询|dns查询--站长工具
+http://pkg.entware.net/binaries/x86-64/archive/ | Index of /binaries/x86-64/archive/
+https://www.google.com.sg/search?q=yundownload&oq=yundownload&aqs=chrome..69i57j0l5.3967j0j1&sourceid=chrome&ie=UTF-8 | yundownload - Google 搜索
+https://pandownload.com/document/download.html | 文件下载 | PanDownload
+http://pandownload.com/2.0.5 | 
+https://docs.docker.com/registry/recipes/nginx/ | Authenticate proxy with nginx | Docker Documentation
+https://www.hotcleaner.com/cache-viewer.html | 
+
+https://www.google.com.sg/search?q=exsi+%E9%A2%84%E7%95%99+%E5%86%85%E5%AD%98&oq=exsi++%E9%A2%84%E7%95%99+%E5%86%85%E5%AD%98&aqs=chrome..69i57.27485j0j9&sourceid=chrome&ie=UTF-8 | exsi 预留 内存 - Google 搜索
+https://www.google.com.sg/search?q=esxi+%E9%A2%84%E7%95%99+%E5%86%85%E5%AD%98&spell=1&sa=X&ved=0ahUKEwib4s2ptc7eAhVLVH0KHdatDxMQkeECCCgoAA | esxi 预留 内存 - Google 搜索
+http://192.168.168.2:5555/ | Nas - Synology DiskStation
+https://www.apple.com/cn/itunes/download/ | iTunes - 立即下载 iTunes - Apple (中国)
+https://support.apple.com/kb/DL1816?viewlocale=en_US&locale=en_US | Download iTunes 12.4.3 for Windows (64-bit - for older video cards)
+https://github.com/tuna/tunasync/blob/master/docs/zh_CN/get_started.md | tunasync/get_started.md at master · tuna/tunasync
+https://github.com/tuna/tunasync/blob/master/docs/zh_CN/workers.conf | tunasync/workers.conf at master · tuna/tunasync
+https://github.com/tuna/tunasync/releases/tag/v0.3.3 | Release v0.3.3 · tuna/tunasync
+https://github.com/getlantern/proxysetup | getlantern/proxysetup: proxysetup is a command-line utility that allows managing Macintosh proxy settings via the networksetup program without having to sudo or supply one's password
+https://github.com/getlantern/lantern/blob/devel/Dockerfile | lantern/Dockerfile at devel · getlantern/lantern
+https://github.com/getlantern/http-proxy | getlantern / http-proxy：支持TLS的HTTP代理
+https://github.com/getlantern/proxy | getlantern/proxy: Golang library for core proxying logic
+https://github.com/getlantern/proxysetup | getlantern/proxysetup: proxysetup is a command-line utility that allows managing Macintosh proxy settings via the networksetup program without having to sudo or supply one's password
+https://github.com/getlantern/sysproxy-cmd | getlantern/sysproxy-cmd: Command-line tool for setting HTTP(S) system proxy
+https://github.com/getlantern/loconf | getlantern/loconf
+https://github.com/getlantern/context | getlantern/context
+https://github.com/getlantern/enproxy | getlantern/enproxy: Chained HTTP proxy that supports arbitrary TCP traffic tunneled over HTTP proxies using encapsulated HTTP requests
+https://github.com/getlantern/www | getlantern/www: The new website of lantern
+https://github.com/getlantern/mirror | getlantern/mirror
+https://www.google.com.sg/search?q=tuna+gitlab&oq=tuna+gitlab&aqs=chrome..69i57j69i65.18807j0j4&sourceid=chrome&ie=UTF-8 | tuna gitlab - Google 搜索
+https://mirror.tuna.tsinghua.edu.cn/help/gitlab-ce/ | Gitlab Ce | 镜像站使用帮助 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror
+https://github.com/Entware/Entware-ng/wiki/Install-on-Synology-NAS | Install on Synology NAS · Entware/Entware-ng Wiki
+http://pkg.entware.net/binaries/ | Index of /binaries/
+http://pkg.entware.net/binaries/x86-64/ | Index of /binaries/x86-64/
+http://pkg.entware.net/binaries/armv7/ | Index of /binaries/armv7/
+http://localhost/
+http://mirror.neu.edu.cn/ | OpenSource Mirrors
+http://mirror.neu.edu.cn/ | OpenSource Mirrors
+http://mirror.neu.edu.cn/ | OpenSource Mirrors
+http://mirror.neu.edu.cn/fedora/linux/updates/21/x86_64/ | Index of /fedora/linux/updates/21/x86_64/
+https://copr.fedorainfracloud.org/coprs/lantw44-arm-linux-gnueabi-toolchain/ | Not Found
+https://dl.bintray.com/vmware/photon_release_2.0_x86_64/ | https://dl.bintray.com/vmware/photon_release_2.0_x86_64/
+https://mirrors.ustc.edu.cn/help/fedora.html | Fedora 源使用帮助 — USTC Mirror Help 文档

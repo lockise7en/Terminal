@@ -1,0 +1,17 @@
+server {
+        listen       80;
+        #域名
+        server_name  huruji3.com www.huruji3.com;
+
+        location / {
+             #node.js应用的端口
+             proxy_pass http://127.0.0.1:3000;
+             root blog;
+       }
+        #静态文件交给Nginx直接处理
+        location ~ *^.+\.(css | js | txt | swf | mp4)$ {
+            root E:\huruji\blog\wechat_v1.1\public;
+             access_log off;
+            expires 24h;
+       }
+    }

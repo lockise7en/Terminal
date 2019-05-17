@@ -1,0 +1,80 @@
+mkswap /dev/sda3
+swapon /dev/sdb1
+mkswap /tmp/mnt/sda1/swapfile
+
+dd if=/dev/zero of=/volume3/swapfile3 bs=1024 count=10240000
+1、显示硬盘及所属分区情况。在终端窗口中输入如下命令：
+sudo fdisk -lu
+２、对硬盘进行分区。在终端窗口中输入如下命令：
+sudo fdisk /dev/sdb
+sudo mkfs  ext3 /dev/sda3
+mkfs.ext4 -L /dev/sdb1 /mnt/volume
+mkfs.ext3 /dev/sda3
+mkfs.ntfs /dev/sdc5 
+vfat
+blkid
+三、挂载硬盘分区 | Mount hard disk partition
+1、显示硬盘挂载情况。在终端窗口中输入如下命令：
+sudo df -l
+新硬盘分区没有挂载，无法进入和查看。
+
+在终端窗口中输入如下命令：
+sudo mount -t ext4 
+blkid
+
+mount -t /dev/sda3 /mnt/volume
+说明：
+指定硬盘分区文件系统类型为ext4 ，同时将 /dev/sdb 分区挂载到目录 /devdata。
+/dev/mapper/cl_centos-swap swap                    swap    defaults        0 0
+~
+
+再次在终端窗口中输入如下命令：
+sudo df -l blkid  vi /etc/fstab
+  /dev/sda2 
+  
+   UUID=1284dc93-8856-4f24-a36b-08cf65861624
+# /home was on /dev/sda3
+UUID=31ab7b55-6553-4902-806a-76566f173e59       /dev/sda3        ext4     noauto,users,exec    0 0 # Added by TC
+# boot2docker-data  on /dev/sda2
+UUID=047fe620-d8f1-454f-8d5c-64604b52f7e6       /dev/sda2        ext4     noauto,users,exec    0 0 # Added by TC
+# /volume1  was on /dev/sdb1
+UUID=1284dc93-8856-4f24-a36b-08cf65861624       /volume1     ext4     defaults     0     0
+ 1284dc93-8856-4f24-a36b-08cf65861624
+２、配置硬盘在系统启动自动挂载。在文件 vi /etc/fstab 中加入如下配置：
+# /var/lib/docker was on /dev/sda2
+UUID=cf41ba67-571c-41f3-9863-85e13bd15375    /volume1     ext4     defaults     0     2
+
+ 8e741058-4404-409d-b1a3-87f25a4fb495
+
+fdisk blkid
+-b <sectorsize>    指定每个分区的大小。也可以执行fdisk device（如：fdisk /dev/sdb）后，在系统提示时指定。
+-l    列出指定的外围设备的分区表状况。如果仅执行 fdisk -l ，系统会列出已知的分区。
+-u   搭配"-l"参数列表，会用分区数目取代柱面数目，来表示每个分区的起始地址。
+-s <parttion>       将指定的分区的大小输出到标准输出上，单位为区块。
+-v   显示fdisk的版本信息。
+
+mkfs -V   显示简要的使用方法。
+-t <fstype>   指定要建立何种文件系统，如：ext3, ext4。
+fs   指定建立文件系统时的参数。
+-v   显示版本信息与详细的使用方法。
+ UUID="1284dc93-8856-4f24-a36b-08cf65861624
+mount
+
+-a    加载文件/etc/fstab中设置的所有设备。
+-f     不实际加载设备。可与-v等参数同时使用以查看mount的执行过程。
+-F    需与-a参数同时使用。所有在/etc/fstab中设置的设备会被同时加载，可加快执行速度。
+-t vfstype   指定加载的文件系统类型，如：ext3, ext4。
+-L label      给挂载点指定一个标签名称。
+-l     显示分区的label。
+-h    显示帮助信息。
+-v    显示mount的版本信息。
+device       要挂载的分区或文件。如果device是一个文件，挂载时须加上 -o loop参数。
+dir             分区的挂载点。
+esxcli software vib install -d "/vmfs/volumes/datastore1/VMware_bootbank_esx-ui_1.14.0-4940836.vib" 
+
+vmkfstools -z /vmfs/devices/disks/t10.ATA_____ST2000DM0012D1ER164__________________________________Z4Z1BHHT /vmfs/volumes/datastore1/23TB.vmdk
+vmkfstools -z /vmfs/devices/disks/t10.ATA_____ST2000DM006_________________________________________Z4ZBKXAM /vmfs/volumes/datastore1/Z4ZBKXAM
+/t10.ATA_____ST2000DM006_________________________________________Z4ZBKXAM
+vmkfstools -z /vmfs/devices/disks/diskname/vmfs/volumes/datastorename/vmfolder/vmname.vmdk
+
+t10.ATA_____ST2000DM0012D1ER164__________________________________Z4Z1BHHT

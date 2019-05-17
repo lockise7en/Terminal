@@ -1,0 +1,25 @@
+#!/bin/bash
+read -r -p "Clean the docker containers or images? [C/i/q] " input
+case $input in
+    [cC])
+		echo "docker rm containers"
+		docker rm $(docker ps -a -q)
+		exit 0
+		;;
+    [iI])
+		
+		echo "docker rmi images "
+		docker rmi $(docker images -q -f "dangling=true")
+		exit 0
+       		;;
+
+    [qQ])
+		echo "No"
+       		;;
+
+    *)
+	echo "Invalid input..."
+	exit 1
+	;;
+esac
+

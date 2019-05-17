@@ -1,0 +1,97 @@
+phpPgAdmin on DSM 6.0
+Unread post  by enzolino » Sun Oct 16, 2016 5:41 pm
+
+I found a solution how to make phpPgAdmin work on DSM 6.0.
+
+Yiannis made a video: https://youtu.be/2z8lSlh3xBw
+
+And I just wrote the tutorial:
+
+Login to Putty as admin. Get permanent sudo
+sudo -i
+
+create folder:
+mkdir /usr/syno/synoman/phpsrc
+
+download and install in DSM6.x: 
+PhpPgAdmin
+
+Create file: 
+vi /usr/local/etc/nginx/conf.d/www.phppgadmin.conf
+
+Instert:
+
+location ~ ^/phpPgAdmin/ {
+fastcgi_read_timeout 300;
+root /usr/syno/synoman/phpsrc;
+location ~ ^/phpPgAdmin/(.*)/\. {
+deny all;
+}
+location ~* \.(jpg|jpeg|png|gif|css|js|ico)$ {
+expires max;
+log_not_found off;
+}
+
+location ~* \.php(/|$) {
+include fastcgi.conf;
+fastcgi_pass unix:/run/php-fpm/php56-fpm.sock;
+fastcgi_index index.php;
+}
+}
+location = /phpPgAdmin {
+fastcgi_read_timeout 300;
+root /usr/syno/synoman/phpsrc;
+try_files $uri/ /phpPgAdmin/index.php$is_args$args;
+}
+
+
+alter rights:
+chmod 755 /usr/local/etc/nginx/conf.d/www.phppgadmin.conf
+
+reload nginx:
+nginx -s reload
+
+vi /usr/local/etc/php56/conf.d/user-settings.ini
+
+add after ".....home" 
+::/usr/syno/synoman/phpsrc/phpPgAdmin
+
+"Esc" :wq
+
+reboot synology
+
+login to putty and get permanent sudo:
+sudo -i
+
+login postgres:
+su - postgres
+psql
+
+list user and roles:
+\du
+
+create admin user in postgres:
+CREATE USER admin PASSWORD 'xyz';
+ALTER USER admin WITH SUPERUSER;
+ALTER USER admin WITH CREATEDB;
+ALTER USER admin WITH CREATEROLE;
+\du
+
+add 'localhost# to phppgadmin:
+cd /usr/syno/synoman/phpsrc/phpPgAdmin/conf
+vi config.inc.php
+
+change the line: $conf['servers'][0]['host'] = '';
+to: $conf['servers'][0]['host'] = 'localhost';
+
+change extra_login_security to false:
+$conf['extra_login_security'] = false;
+
+Exit with :wq
+
+vi /etc/postgresql/pg_hba.conf
+
+i for insert:
+host	all	admin	127.0.0.1/32	trust
+
+you should be able to login now. if not restart phpPgAdmin in DSM

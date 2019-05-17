@@ -1,0 +1,16 @@
+#!/bin/bash
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+case $1 in
+    start)
+	nohup sh -c "lantern -headless true -readableconfig true -obfs4-distBias true -addr 0.0.0.0:8787 -startup=true -role=client &> /dev/null"  >/dev/null
+	nohup lantern -headless -readableconfig true -obfs4-distBias true -addr 0.0.0.0:18787 true >/dev/null 2>&1 &
+	exit 1
+	;;
+    stop) 
+	kill $(pgrep -l lantern)
+	exit 1
+    exit 0
+    ;;
+esac

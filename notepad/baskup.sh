@@ -1,0 +1,1 @@
+/proc  /tmp /mnt /run /var/cache/apt/archives /usr//linux-headers* /home/*/.gvfs /home/*/.cache /home/*/.local/share/Trash

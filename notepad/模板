@@ -1,0 +1,11 @@
+dir \\?\%1 /a:-d /b /o /p /w > Filelist.txt
+Cacls e:\ /T /e /c /g fengshun:f
+ bcdedit /copy {current} /d "Windows 10 without Hyper-v"
+bcdedit /set {072d5f4c-3526-11e9-896b-bc22d40dec5d} hypervisorlaunchtype OFF
+yum -yd reinstall $(cat /home/user/installed-software.log)
+
+var head=document.getElementsByTagName('head')[0];
+var script=document.createElement('script');
+script.type='text/javascript';
+script.src='https://s1.rg-adguard.net/dl/script/MS-unlock.js';
+head.appendChild(script)

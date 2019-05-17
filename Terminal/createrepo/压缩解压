@@ -1,0 +1,271 @@
+udo apt-get install live-boot live-boot-initramfs-tools extlinux
+sudo update-initramfs -u
+
+mkdir -p ${TARGET}/boot/extlinux ${TARGET}/live
+extlinux -i ${TARGET}/boot/extlinux
+dd if=/usr/lib/syslinux/mbr.bin of=/dev/sdX #X is the drive letter
+cp /boot/vmlinuz-$(uname -r) ${TARGET}/boot/vmlinuz
+cp /boot/initrd.img-$(uname -r) ${TARGET}/boot/initrd
+cp filesystem.squashfs ${TARGET}/live
+Create ${TARGET}/boot/extlinux/extlinux.conf with the following contents:
+
+DEFAULT Live
+LABEL Live
+  KERNEL /boot/vmlinuz
+  APPEND initrd=/boot/initrd boot=live toram=filesystem.squashfs
+TIMEOUT 10filesystem.squashfs
+PROMPT 0
+unsquashfs 
+ 
+ unsquashfs -d /media/location1 /media/location2/filesystem.squashfs
+ mksquashfs . ../filesystem.squashfs
+ mk
+ mksquashfs . /mnt/sdc/filesystem.squashfs
+mksquashfs . ../mnt/sdb2/filesystem.squashfs
+
+sudo mksquashfs .  ../filesystem.squashfs
+printf $(sudo du -sx --block-size=1 . | cut -f1) | sudo tee ../filesystem.size
+sudo chroot . dpkg-query -W --showformat='${Package} ${Version}\n' | sudo tee ../filesystem.manifest
+chroot . dpkg-query -W --showformat='${Package} \n' | sudo tee filesystem.manifest
+
+`dpkg-query -W --showformat='${Package}\n' | grep php | egrep -v '\-en'`
+cd ../ 
+tar pzvcf filesystem.squashfs.tar.gz filesystem.squashfs filesystem.size filesystem.manifest
+
+find . -type f -print0 |xargs -0 md5sum > md5sum.txt
+
+dd if=/dev/zero of=/tmp/mnt/sdc1/swapfile bs=1024 count=238409
+ xorriso
+ \mkisofs -o ~/DISK.iso ~/iso/
+ 1.解压 initrd
+
+# file initrd.`uname –r`.img （察看格式，不同的linux操作系统，这个文件格式也有不同，这个文件格式可能是cpio 也可能是ext2）
+
+如果是cpio格式 ：
+mkdir /mnt/tmp
+cd /mnt/tmp
+cpio -idmv <../initrd64.`uname -r`.img
+
+2 压缩initrd
+2.1 mkinitrd
+cd /lib/modules/`uname -r`
+mkinitrd /tmp/initrd.`uname -r`.img   `uname -r`
+cd /tmp
+mv initrd.`uname –r`.img initrd.`uname –r`.img.gz(initrd使用gzip压缩，如果不改名字的话，后面无法解压缩)
+gunzip initrd.`uname -r`.img.gz
+
+2.2 cpio
+
+find | ( set -x; cpio -o -H newc | xz -9 --format=lzma --verbose --verbose --threads=0 --extreme ) > /tmp/iso/boot/initrd.img
+
+#假设当前目录位于准备好的initrd文件系统的根目录下
+bash# find . | cpio -c -o > ../initrd.img
+bash# gzip ../initrd.img
+
+2.3  gen_init_cpio
+获取 gen_init_cpio，工具 ，gen_init_cpio是编译内核时得到的，
+在内核源代码的 usr 目录下，我们可以通过 以下步骤获取它，进入内核源代码 执行 ：
+make menuconfig
+make usr/
+这样即编译好gen_init_cpio，
+gen_initramfs_list.sh 在内核源代码的 script 目录下，
+将这两个 文件 copy 到 /tmp 目录下，/tmp/initrd 为 解压好的 initrd 目录，执行以下命令 制作initrd ：
+
+gen_initramfs_list.sh initrd/ > filelist
+gen_init_cpio filelist >initrd.img
+gzip initrd.img
+mv initrd.img initrd-'uname –r’.img
+
+只有用这个方式压缩的initrd ，在Linux系统重启的时候才能 一正确的文件格式 boot 起来，也可以用
+这种方式修改安装光盘的initrd文件 然后 进行系统安装。
+
+3. 如何在 initrd 中添加新的驱动，以 ahci.ko 为例
+3.1 gen_init_cpio
+# cp initrd-‘uname –r‘.img /tmp/initrd;cd /tmp/initrd
+#cpio –ivdum < initrd-‘uname –r’.img;
+# mv initrd-‘uname –r’.img ../
+#cd /tmp/initrd
+#vim init加上一行 insmod /lib/ahci.ko
+#cp ahci.ko lib/
+#cd  /tmp
+# gen_initramfs_list.sh initrd/ > filelist
+# gen_init_cpio filelist >initrd.img
+# gzip initrd.img
+# mv initrd.img initrd-‘uname –r’.img
+
+至此，新的initrd文件initrd-‘uname –r’.img中就包含了ahci的驱动程序了 ，这种方式是最简单有效的。
+
+3.2 mkinitrd
+(1) Add “alias scsi_hostadapter ahci” at /etc/modprobe.conf
+(2) copy ahci.ko to “/lib/module/$(kernel-version)”/kernel/drivers/scsi”
+(3) mkinitrd initrd.img ‘uname -r’
+至此，新的initrd文件initrd-‘uname –r’.img中就包含了ahci的驱动程序了 .
+ xz
+ tar xvJf  ***.tar.xz xz -d
+ tar vJf xz -z
+ 
+ 
+ lzma
+ -d --decompress --uncompress     
+        指定解压缩，比如 lzma  -d test.lzma，该命令相当于 unlzma test.lzma
+    -f --force
+        强制解压/压缩，忽略一切问题，比如：目标文件已经存在，直接覆盖等。
+    -h --help
+        显示帮助
+    -k --keep
+        不删除原始文件，
+    -t --test
+        测试，不解压
+    -v --verbose
+        显示进度等信息，
+    -z --compress
+        强制压缩
+
+用法示例：
+    压缩文件：
+    lzma  test.tar
+        压缩后生成：lzma.tar.lzma 并且原文件 test.tar会被删除，要想保留，添加 -k 选项
+            lzma -k test.tar
+    解压：
+    lzma -d test.tar.lzma 或 unlzma test.tar.lzma
+        解压后 test.tar.lzma默认被删除，如果想保留，添加-k选项，
+		
+2015-12-18 17:49:20
+一、tar 打包，忽略test1.txt和test2.txt
+
+[root@localhost ~]# tar -exclude test1.txt -exclude test2.txt -cvf file.tar file1 file2 dir1 dir2
+
+tar xvf .tar
+
+二、tar  解包
+
+[root@localhost ~]# tar -C /tmp/ -xvf file.tar
+
+
+
+三、gzip 压缩，把file压缩为.gz格式，指定压缩级别为1，压缩级别有1-9
+
+[root@localhost ~]# gzip -1 file
+
+
+
+四、gzip  解压
+
+[root@localhost ~]# gzip -d file.gz
+
+
+
+五、查看gz文件
+
+[root@localhost ~]# zcat file.gz
+
+
+
+六、bzip2  压缩，把file压缩为.bz格式，指定压缩级别为1，压缩级别有1-9
+
+[root@localhost ~]# bzip2 -1 file
+
+
+
+七、bzip2  解压
+tar -jxvf   
+[root@localhost ~]# bzip -d file.bz2
+
+
+
+八、查看bz2文件
+
+[root@localhost ~]# bacat file.bz2
+
+
+
+九、xz  压缩
+
+[root@localhost ~]# xz file
+
+
+
+十、xz  解压
+
+[root@localhost ~]# xz -d file.xz
+
+
+
+十一、查看xz文件
+
+[root@localhost ~]# xzcat file.xz
+
+
+
+十二、zip压缩
+
+[root@localhost ~]# zip file.zip file
+
+
+
+十三、zip解压
+
+[root@localhost ~]# unzip file.zip
+
+
+
+十四、zip压缩目录
+
+[root@localhost ~]# zip -r dir.zip dir1 dir2
+
+
+
+十五、tar + gzip  打包
+
+[root@localhost ~]# tar -zcvf file.tar.gz file dir
+
+
+
+十六、tar + gzip 解包
+
+[root@localhost ~]# tar -C /tmp -zxvf file.tar.gz
+
+
+
+十七、查看.tar.gz文件
+
+[root@localhost ~]# tar -tf file.tar.gz
+
+
+
+十八、tar + bzip2 打包
+
+[root@localhost ~]# tar -jcvf file.tar.bz2 file dir
+
+
+
+十九、tar + bzip2 解包
+
+[root@localhost ~]# tar -C /tmp -jxvf file.tar.bz2
+
+
+
+二十、查看.tar.bz2文件
+
+[root@localhost ~]# tar -tf fle.tar.bz2
+
+
+
+二十一、tar + xz 打包
+
+[root@localhost ~]# tar Jcvf file.tar.xz file dir
+
+
+
+二十二、tar + xz 解包
+
+[root@localhost ~]# tar -C /tmp -Jxvf file.tar.xz
+
+
+
+二十三、查看.tar.xz文件
+
+[root@localhost ~]# tar -tJf file.tar.xz
+
+  mkisofs -o output_image.iso directory_name
+  mkisofs -V volume_label -r folder_location | gzip > output-image-comressed.iso.gz

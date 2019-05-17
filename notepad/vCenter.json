@@ -1,0 +1,26 @@
+{
+	"__comments":
+		[
+		"Sample template to deploy a vCenter Server with an embedded Platform Services
+			Controller. Please see full_conf.json for the complete list of vCSA deployment
+			configurations."
+		],
+	"deployment":
+	{
+		"esx.hostname":"192.168.168.2",
+		"esx.datastore":"datastore1",
+		"esx.username":"root",
+		"esx.password":"fc123@@@",
+		"deployment.option":"tiny",
+		"deployment.network":"VM Network",
+		"appliance.name":"vCenter Server",
+		"appliance.thin.disk.mode":true
+	},
+	"vcsa":
+	{
+		"system":
+	{
+		"root.password":"fc123@@@",
+		"ssh.enable":true
+	}
+}

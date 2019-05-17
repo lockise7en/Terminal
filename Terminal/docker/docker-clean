@@ -1,0 +1,31 @@
+#!/bin/bash
+read -r -p "Clean the docker containers or images? [C/i/l/q] " input
+case $input in
+    [cC])
+		echo "docker rm containers"
+		docker rm $(docker ps -a -q)
+		exit 0
+		;;
+    [iI]) 
+		echo "docker rmi images "
+		docker rmi $(docker images -q -f "dangling=true")
+		exit 0
+       		;;
+	[lL]) 
+		echo "docker clean  containers logs"
+		find /var/packages/Docker/target/docker -type f -name "*.log" -delete
+		exit 0
+       		;;
+    [qQ])
+		echo "No"
+       		;;
+
+    *)
+	echo "Invalid input..."
+	exit 1
+	;;
+esac
+
+# DPkg::Post-Invoke { "rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true"; };
+# APT::Update::Post-Invoke { "rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true"; };
+# Dir::Cache::pkgcache ""; Dir::Cache::srcpkgcache "";

@@ -1,0 +1,19 @@
+办法如下：
+sudo mv /var/lib/dpkg/info /var/lib/dpkg/info.bak //现将info文件夹更名
+sudo mkdir /var/lib/dpkg/info //再新建一个新的info文件夹
+sudo apt-get update
+// 不用解释了吧
+apt-get -f install xxx
+sudo mv /var/lib/dpkg/info/* /var/lib/dpkg/info.bak
+//执行完上一步操作后会在新的info文件夹下生成一些文件，现将这些文件全部移到info.bak文件夹下
+sudo rm -rf /var/lib/dpkg/info //把自己新建的info文件夹删掉
+sudo mv /var/lib/dpkg/info.bak /var/lib/dpkg/info //把以前的info文件夹重新改回名字
+到此问题顺利解决
+
+第二种方法：
+for i in /usr/share/fonts/X11/* /usr/share/fonts/truetype/*
+do sudo touch "$i"
+done
+第三种方法：
+sudo apt-get update --fix-missing
+sudo apt-get autoremove && sudo apt-get clean && sudo apt-get install -f

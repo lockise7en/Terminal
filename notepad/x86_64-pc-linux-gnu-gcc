@@ -1,0 +1,5 @@
+CC= /usr/local/x86_64-pc-linux-gnu/bin/x86_64-pc-linux-gnu-gcc
+CXX=usr/local/x86_64-pc-linux-gnu/bin/x86_64-pc-linux-gnu-g++
+LD= /usr/local/x86_64-pc-linux-gnu/bin/x86_64-pc-linux-gnu-ld
+CFLAGS += -I/usr/local/x86_64-pc-linux-gnu/x86_64-pc-linux-gnu/libc/include
+LDFLAGS += -L/usr/local/x86_64-pc-linux-gnu/x86_64-pc-linux-gnu/libc/libusr/local/x86_64-pc-linux-gnu/bin/

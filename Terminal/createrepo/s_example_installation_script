@@ -1,0 +1,81 @@
+# usage 
+# update-learningexchange.sh kubuntu|ubuntu|xubuntu
+
+# a very primitive script with no structure of controls etc
+# no default behaviour, etc etc
+# all ofthis should be trivial to implement but my 
+# bash syntax sucks
+# obvious thing to do would be to convert to python
+# & add a simple gtk front end too
+# but I'm rushed at the moment
+
+# Notes;Bugs:
+# REMEMBER: this absolutely will not work if you haven't built a new version of ubuntu-keyring 
+# package & included that in $STAGE/pool/extras/!  You do that thus:
+# apt-get source ubuntu-keyring
+# cd ubuntu-keyring-version-info/keyring
+# gpg --import < ubuntu-server-keyring.gpg
+# gpg --output=ubuntu-server-keyring.gpg --export "ubuntu" "Your Name"
+# dpkg-buildpackage -rfakeroot -m"My Name <my.email@my.hosts>"
+# cp ../ubuntu-keyring*deb $BUILD/pool/extras/
+
+
+# VARIABLES
+# this script relies on the existence of several files and directories:
+
+# Original = $ORIG: location of the "clean", unmodified CD .iso
+# CD mount point = $MOUNT: mount point of clean CD
+# Staging area = $STAGE: where you keep all your files
+#   this area should include $component dirs isolinux/, pool/, and dists/ at a minimum
+#   as written the script assumes you have a directory pool/extras with your 
+#   extra debs, and that dists/bionic/extras/binary-amd64/Release exists (copy it over 
+#   from dists/bionic/$component/binary-amd64, and replace "$component" with "extras")
+#   There is no doubt a better way to do this but it involves work...
+# Building Area = $BUILD: location where your changes are merged into the "clean" directory \
+#   structure.
+# Image location = $IMAGE: name of the new .iso file you want to build
+# apt.conf file = $APTCONF: location of the file used to feed instructions to apt-ftparchive
+
+ORIG="/var/www/jigdo/$1-bionic-install-i386.iso"
+STAGE="/home/matt/LearningExchangeCD/$1/"
+MOUNT=/mnt/iso/
+BUILD="/volume2/cd-image/cdrom"
+IMAGE="/yeowe/usr/cdbuilder/$1-learningexchange.iso"
+APTCONF=/volume2/cd-image/apt.conf 
+
+
+# sync with latest image
+sudo umount $MOUNT
+sudo mount $ORIG $MOUNT -o loop
+# sudo rsync -azvb --delete --exclude="language-pack*" --backup-dir=/yeowe/usr/cdbuilder/old/ $MOUNT $BUILD
+sudo rsync -azvb --delete  $MOUNT $BUILD
+# now get rid of the old ubuntu-keyring package
+sudo rm -r $BUILD/pool/u/ubuntu-keyring/
+# note I've excluded a few files, shouldn't matter much for you I reckon
+sudo rsync -avzb --exclude='*~' --exclude='INSTRUCTIONS.txt' --backup-dir=/yeowe/usr/cdbuilder/old/ --exclude='example-preseed.txt' $STAGE $BUILD
+
+# generate Packages, Release, Release.gpg
+# first thing to realize is, that we only need to generate the Packages files,
+# the top-level Release file, and top-level Release.gpg.  
+# everything else should be in your $STAGE file structure or usable unchanged 
+# in the original form
+
+# remove Release file otherwise you'll have trouble writing to it.  
+sudo rm $BUILD/dists/bionic/Release*
+# ubuntu-keyring must be included in $component/, so $component NEEDS to be rebuilt!
+for component in $component main; do
+    sudo apt-ftparchive packages "$BUILD/pool/$component/" > "$BUILD/dists/bionic/$component/binary-amd64/Packages"
+    gzip -c "$BUILD/dists/bionic/$component/binary-amd64/Packages" | \
+        sudo tee "$BUILD/dists/bionic/$component/binary-amd64/Packages.gz" > /dev/null
+done
+APTCONF=/volume2/cd-image/apt.conf 
+sudo apt-ftparchive -c $APTCONF release $BUILD/dists/bionic > $BUILD/dists/bionic/Release
+ho -e "Date: `LANG=C date -Ru`" >>  $BUILD/dists/bionic/Release 
+# gpg options: -ba = armored, detached-sig
+sudo gpg --output $BUILD/dists/bionic/Release.gpg -ba $BUILD/dists/bionic/Release
+
+# build the actual image.  Note the options to mkisofs, which make the image bootable
+sudo chown -R root:root $BUILD/isolinux  $BUILD/preseed 
+sudo mkisofs -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -J -hide-rr-moved -o $IMAGE -R $BUILD/
+
+# burn the image to 2nd cd drive on most setups

@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+       "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=8">
+      <meta name="MSSmartTagsPreventParsing" content="true">
+      <title>Apt-Cacher NG Command And Control Page</title>
+      <link rel="stylesheet" type="text/css" href="/style.css">
+   </head>
+   <body>
+      <div align="center">
+         <div class="title maxwid"><span>用于gitlab的Apt-Cacher NG维护页面</span></div>
+         <a name="stats"></a>
+      <div class="visarea maxwid" style="text-align:left">
+         <h2>转移统计</h2>
+         <table border=0 cellpadding=2 cellspacing=1 bgcolor="black">
+            <tr>
+               <td class="coltitle" rowspan=3>Period</td>
+               <td class="coltitle" colspan=8>Cache efficiency</td>
+            </tr>
+            <tr>
+               <td class="coltitle"><span>&nbsp;</span></td>
+               <td class="coltitle" colspan=3>Requests</td>
+               <td class="coltitle"><span>&nbsp;</span></td>
+               <td class="coltitle" colspan=3>Data</td>
+            </tr>
+            <tr bgcolor="white">
+               <td class="coltitle"><span>&nbsp;</span></td>
+               <td class="coltitle">Hits</td>
+               <td class="coltitle">Misses</td>
+               <td class="coltitle">Total</td>
+               <td class="coltitle"><span>&nbsp;</span></td>
+               <td class="coltitle">Hits</td>
+               <td class="coltitle">Misses</td>
+               <td class="coltitle">Total</td>
+            
+            </tr>
+            ${statsRow}
+         </table>
+         <br>
+         注意：数据表是基于当前日志文件创建的。由于先前的日志文件优化，可能偏离实际请求计数。
+         <h2>配 置 说 明</h2>
+         请访问任何无效的下载 <a href="/">用户配置说明</a>.对于系统管理员，请阅读手册 <a href="/acng-doc/html/index.html">manual</a> ( 或参见本地文件系统 中的在线系统文档 <a href="http://${serverip}/doc/apt-cacher-ng/html/index.html">online</a> resp. in the <a href="file:///usr/share/doc/apt-cacher-ng/html/index.html">local filesystem</a>).
+
+         <form action="#bottom">
+
+         <h2>索引更新和处理选项</h2>
+         可以在此用户界面中设置常规行为和索引更新配置的临时选项。它们仅与下面触发的过期和导入功能相关。 
+         <br />
+         <label><input type="checkbox" name="abortOnErrors" value="aOe" ${aOeDefaultChecked}> 在索引更新步骤期间停止处理错误</label>
+               <br>
+         <label>      <input type="checkbox" name="beVerbose" value="bV"> 更冗长</label>
+               <br>
+               <label><input type="checkbox" name="forceRedownload" value="fRd"> 强制下载索引文件（即使是新文件）</label>
+               <br>
+               <!--input type="checkbox" name="jsMode" value="js" checked> Auto-scrolling (requires JavaScript)
+               <br-->
+
+         <h2>呼 气</h2>
+         <p>
+         在服务器上删除文件时，需要使用过期机制从本地缓存中删除文件，例如，更新软件包的软件版本并更换软件包文件时。
+		 当客户端使用稳定系统分发时很少需要这样做，但是使用波动较大的不稳定分支需要不时地清理本地缓存。
+		 ACNG包含帮助程序代码以自动识别未引用的文件（使用下面的按钮执行）。 
+		 
+
+         <br>
+         <b>警告：</b>此操作可能会重新下载所有索引文件。当前实现不支持基于delta的索引文件重建（“pdiff”机制）。
+         </p>
+            <p>
+            <h3>扫描和半自动到期</h3>
+            默认方法会更新索引文件，检查缓存中存在的文件并可选择删除它们。检查包括文件名比较和可选的文件内容验证或目录位置比较。未在任何索引文件中列出或具有不正确内容的文件将在以后的某个会话中标记为删除，或者可以通过使用以下控件触发的直接用户操作删除。
+            <p></p>
+            <!--/td>
+         </tr>
+         <tr>
+            <td valign=top-->
+               <label><input type="checkbox" name="skipHeadChecks" value="sHC"> 跳过标头检查（更快，没有检测到错误的元数据）</label>
+               <br>
+               <label><input type="checkbox" name="byPath" value="bP" id="idBP" onChange="endis();"> <i>通过文件名和文件目录验证（小心使用），</i></label>
+               <br>
+               <label><input type="checkbox" name="byChecksum" value="bS" id="idBS" onChange="endis();">
+                  <i>然后通过校验和 (<font color=red>SLOW</font>), 验证文件内容，同时检测损坏的文件，</i>
+               </label>
+               <br>
+               <label><input type="checkbox" name="truncNow" value="tN" id="idTN"> <i>然后立即截断损坏的文件。</i></label>
+               <br>
+               <label><input type="checkbox" name="incomAsDamaged" value="iad" id="idIAD"> <i>将不完整文件视为已损坏。 </i></label>
+               <br>
+               <label><input type="checkbox" name="purgeNow" value="pN"> 扫描</label>
+               <br>
+               <script type="text/javascript">
+document.getElementById("idBS").disabled="disabled";
+document.getElementById("idTN").disabled="disabled";
+document.getElementById("idIAD").disabled="disabled";
+document.getElementById("idBS").checked=false;
+document.getElementById("idTN").checked=false;
+document.getElementById("idIAD").checked=false;
+function endis()
+{
+   endisCb('idBP', 'idBS');
+   endisCb('idBS', 'idTN');
+   endisCb('idBS', 'idIAD');
+}
+function endisCb(idCon, idWhat)
+{
+   var pCon=document.getElementById(idCon);
+   var pWhat=document.getElementById(idWhat);
+   if(pCon.checked)
+      pWhat.disabled="";
+   else
+   {
+      pWhat.checked=false;
+      pWhat.disabled="disabled";
+   }
+   // pWhat.onchange(); // no longer works with Firefox/IE :-( Using the alternative method too...
+   /*var fireOnThis = document.getElementById('idWhat');
+   var evObj = document.createEvent('HTMLEvents');
+   evObj.initEvent( 'change', true, true );
+   fireOnThis.dispatchEvent(evObj);
+   */
+}
+</script>
+               <br>
+               <input type="submit" name="doExpire" value="Start Scan and/or Expiration">
+
+               <h3>Direct actions</h3>
+               <input type="submit" name="justShow" value="Show unreferenced">
+               <input type="submit" name="justRemove" value="Delete unreferenced">
+               <input type="submit" name="justShowDamaged" value="Show damaged">
+               <input type="submit" name="justRemoveDamaged" value="Delete damaged">
+               <input type="submit" name="justTruncDamaged" value="Truncate damaged">
+            <h2>导 入</h2>
+            <p>
+            从外部源导入包文件适用于以下情况：
+	    <p>
+            可以将文件分配给已知的下载位置。在索引文件中找到位置时，这些位置将变为已知位置。但是，此索引文件必须存在于包缓存中，因此至少有一个客户端需要下载它们，即在配置为与ACNG一起使用的客户端系统上运行“ apt-get update ”。有关详细信息，请参阅ACNG手册。
+
+            <p>
+            <!--
+            </li>
+         </ul>
+         -->
+         满足所有条件后， <!--for one of the described ways,--> 将文件放入 "_import" 目录, e.g. <i>/var/cache/apt-cacher-ng/_import/</i>.
+         子目录和符号链接都可以。然后运行导入。    </p>
+            <p>
+            <input type="submit" name="doImport" value="Start Import">
+            </p>
+            <h2>引导式预先缓存（镜像）</h2>
+            <p>
+            Apt-Cacher NG支持在指定的索引文件集中引用的大量下载包文件。这是使用PrecacheFor配置选项配置的（有关详细信息，请参阅配置示例和手册）。
+
+            <p>
+            在特殊情况下，此功能可用于创建本地部分镜像，其中包的缓存内部结构主要表示远程包存档的内容，并包括可能要下载的所有内容。
+
+            <p>
+            <label><input type="checkbox" name="calcSize" value="cs" checked="checked"> 计算并显示下载大小</label>
+            <br>
+            <label><input type="checkbox" name="doDownload" value="dd"> 下载包文件 </label>
+            <br>
+            <label><input type="checkbox" name="asNeeded" value="an" checked="checked"> 限制与先前缓存的文件相关的包 </label>
+            <br>
+            <label><input type="checkbox" name="skipIxUp" value="si"> 不要更新索引文件</label>
+            <br>
+            <label><input type="checkbox" name="useDebDelta" value="ud"> 尽可能使用Debdelta（实验性）</label>
+            <p>
+            <input type="submit" name="doMirror" value="Start Mirroring">
+            </p>
+
+         </form>
+
+            <h2>文件类型模式跟踪</h2>
+            <p>
+            本节提供了一个简单的工具，可用于识别配置可能需要的新文件名模式，以便正确处理新文件类型。如果apt-cacher-ng作者可能对其他用户有用，请将您的发现提供给他们。 
+
+            <a name="trace"></a>
+             模式扩展的当前值：
+            <br>
+            <pre>SPfilePatternEx: ${cfg:SPfilePatternEx}
+VfilePatternEx: ${cfg:VfilePatternEx}
+PfilePatternEx: ${cfg:PfilePatternEx}</pre>
+	    <form action="#trace" method="get">
+               <span style="white-space:nowrap;">
+                  当前模式：
+                  <font style="display:${:/cfg:patrace/inline/none};white-space:nowrap;">
+                     <font style="color:red;font-weight:bold;white-space:nowrap;">Active</font>
+                     (watching download activity)
+                  </font>
+                  <font style="display:${:/cfg:patrace/none/inline};white-space:nowrap;">not tracing
+                  </font>
+               </span>
+               <span>
+		    <input type="submit" name="doTraceStart" value="Start Tracing" ${:/cfg:patrace/disabled/}>
+                    <input type="submit" name="doTraceStop" value="Stop Tracing" ${:/cfg:patrace//disabled}>
+                    <input type="submit" name="doTraceClear" value="Clear Trace Data">
+                 </span>
+                    <p>当前收集的文件路径未包含在已配置的模式中： 
+                    <input type="submit" name="doTraceRefresh${random}" value="Refresh">
+                    <pre><br>${curPatTraceCol}</pre>
+	    </form>
+</tr>
+         ${footer}
+      </div>
+   </div>
+   </body>
+</html>
+

@@ -1,0 +1,30 @@
+##
+## 32-bit Mingw-w64 repository mirrorlist
+##
+
+## Primary
+## msys2.org
+Server = http://mir.lockyse7en.com/msys2/mingw/i686
+SigLevel = Optional TrustAll
+##
+## 64-bit Mingw-w64 repository mirrorlist
+##
+
+## Primary
+## msys2.org
+Server = http://mir.lockyse7en.com/msys2/mingw/x86_64
+SigLevel = Optional TrustAll
+
+##
+## MSYS2 repository mirrorlist
+##
+
+## Primary
+## msys2.org
+Server = http://mir.lockyse7en.com/msys2/msys/$arch
+SigLevel = Optional TrustAll
+
+# Git for Windows
+Server = http://mir.lockyse7en.com/git-for-windows/pacman/mingw/$arch/
+Server = http://mir.lockyse7en.com/git-for-windows/pacman/msys2/$arch/
+SigLevel = Optional TrustAll

@@ -1,0 +1,25 @@
+#!/bin/bash
+# Example docker-machine vSphere create
+export VSPHERE_BOOT2DOCKER_URL='http://192.168.168.2/dl/boot2docker.iso'
+export VSPHERE_CPU_COUNT=2
+export VSPHERE_MEMORY_SIZE=4096
+export VSPHERE_DISK_SIZE=30000
+export VSPHERE_USERNAME="root"
+export VSPHERE_PASSWORD="fc123@@@"
+export VSPHERE_VCENTER="192.168.168.225"
+export VSPHERE_NETWORK="VM Network"
+export VSPHERE_DATASTORE="datastore1"
+export SSHPASSWORD="fc123@@"
+docker-machine  create --vmwarevsphere-boot2docker-url=http://192.168.168.2/dl/boot2docker.iso  \
+--engine-env="SSHPassword"="fc123@@@" \
+--engine-registry-mirror=https://docker.mirrors.ustc.edu.cn --engine-registry-mirror=http://77f86377.m.daocloud.io -d vmwarevsphere default
+
+docker-machine create -d vmwarevsphere vdocker
+
+export PATH="$PATH:/mnt/c/Program Files (x86)/VMware/VMware Workstation"
+export VMWAREWORKSTATION_BOOT2DOCKER_URL="http://192.168.168.11/rancheros.iso"
+export VMWAREWORKSTATION_DISK_SIZE="100000"
+export VMWAREWORKSTATION_CPU_COUNT="1"
+export VMWAREWORKSTATION_MEMORY_SIZE="4096"
+export VMWAREWORKSTATION_NETWORK='Network2'
+docker-machine create -d vmwareworkstation rancher

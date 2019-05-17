@@ -1,0 +1,492 @@
+####预配置文件的内容（用于拉伸）
+###本地化
+＃仅预置区域设置语言，国家和区域设置。
+d-i debian-installer / locale string en_US
+
+＃这些值也可以单独预先选择，以获得更大的灵活性。
+#d -i debian-installer / language string en
+#d -i debian-installer / country string NL
+#d -i debian-installer / locale string en_GB.UTF-8
+＃（可选）指定要生成的其他语言环境。
+#d -i localechooser / supported-locales multiselect en_US.UTF-8，nl_NL.UTF-8
+
+＃键盘选择。
+＃禁用自动（交互式）键映射检测。
+d-i console-setup / ask_detect布尔值false
+d-i keyboard-configuration / xkb-keymap选择我们
+＃选择所选布局的变体：
+#d -i keyboard-configuration / xkb-keymap选择我们（dvorak）
+#d -i keyboard-configuration / toggle选择No toggling
+
+###网络配置
+＃完全禁用网络配置。这对cdrom非常有用
+＃在网络问题的非联网设备上安装，
+＃警告和长时间超时是一件麻烦事。
+#d -i netcfg / enable boolean false
+
+#netcfg将选择具有链接的接口（如果可能）。这样做
+＃如果有多个接口，则跳过显示列表。
+d -i netcfg / choose_interface选择auto
+
+
+
+＃设置不同的链路检测超时（默认为3秒）。
+＃值被解释为秒。
+#d -i netcfg / link_wait_timeout string 10
+
+＃如果你有一个慢的dhcp服务器，安装程序超时等待
+＃it，这可能很有用。
+#d -i netcfg / dhcp_timeout string 60
+#d -i netcfg / dhcpv6_timeout string 60
+
+＃如果您希望手动配置网络，请取消注释此行和
+＃下面的静态网络配置。
+#d -i netcfg / disable_autoconfig boolean true
+
+＃如果您希望预配置文件在带有和的系统上运行
+＃没有dhcp服务器，取消注释这些行和静态网络
+＃配置如下。
+#d -i netcfg / dhcp_failed note
+#d -i netcfg / dhcp_options选择手动配置网络
+
+＃静态网络配置。
+＃
+#IPv4示例
+#d -i netcfg / get_ipaddress string 192.168.1.42
+#d -i netcfg / get_netmask string 255.255.255.0
+#d -i netcfg / get_gateway string 192.168.1.1
+#d -i netcfg / get_nameservers string 192.168.1.1
+#d -i netcfg / confirm_static布尔值为true
+＃
+#IPv6示例
+#d -i netcfg / get_ipaddress string fc00 :: 2
+#d -i netcfg / get_netmask string ffff：ffff：ffff：ffff ::
+#d -i netcfg / get_gateway string fc00 :: 1
+#d -i netcfg / get_nameservers string fc00 :: 1
+#d -i netcfg / confirm_static布尔值为true
+
+＃从dhcp分配的任何主机名和域名优先于
+＃值设置在这里。但是，设置值仍会阻止问题
+＃来自显示，即使值来自dhcp。
+d -i netcfg / get_hostname string unassigned-hostname
+d -i netcfg / get_domain string unassigned-domain
+
+＃如果要强制使用主机名，无论DHCP是什么
+#server返回或IP的反向DNS条目是什么，取消注释
+＃并调整以下行。
+#d -i netcfg / hostname string somehost
+
+＃禁用恼人的WEP密钥对话框。
+d -i netcfg / wireless_wep string
+＃一些ISP使用的古怪的dhcp主机名作为排序密码。
+#d -i netcfg / dhcp_hostname string萝卜
+
+＃如果网络或其他硬件需要非免费固件，您可以
+＃配置安装程序始终尝试加载它，而不提示。要么
+＃更改为false以禁用询问。
+#d -i hw-detect / load_firmware布尔值为true
+
+###网络控制台
+＃如果要使用网络控制台，请使用以下设置
+#infonent通过SSH进行远程安装。只有你这才有意义
+＃打算手动执行剩余的安装。
+#d -i anna / choose_modules string network-console
+#d -i network-console / authorized_keys_url string http://10.0.0.1/openssh-key
+#d -i network-console / password password r00tme
+#d -i network-console / password-again password r00tme
+＃如果您更喜欢使用基于密钥的身份验证，请使用此选项
+#d -i network-console / authorized_keys_url http：// host / authorized_keys
+
+###镜像设置
+＃如果选择ftp，则不需要设置镜像/国家/地区字符串。
+#d -i mirror / protocol string ftp
+d-i镜像/国家字符串手册
+d-i mirror / http / hostname string archive.ubuntu.com
+d -i mirror / http /目录字符串/ ubuntu
+d-i mirror / http / proxy string
+
+＃或者：默认情况下，安装程序使用CC.archive.ubuntu.com
+#CC是所选国家/地区的ISO-3166-2代码。你可以预知这个
+＃这样它就可以不问。
+#d -i mirror / http / mirror选择CC.archive.ubuntu.com
+
+＃套件安装。
+#d -i镜像/套件字符串拉伸
+#Suite用于加载安装程序组件（可选）。
+#d -i mirror / udeb / suite string stretch
+＃用于加载安装程序组件的组件（可选）。
+#d -i mirror / udeb / components multiselect main，restricted
+
+###帐户设置
+＃跳过创建root帐户（普通用户帐户将能够
+#use sudo）。默认值为false;如果你想设置，则将其预设为true
+#on root密码。
+#d -i passwd / root-login boolean false
+＃或者，跳过创建普通用户帐户。
+#d -i passwd / make-user布尔值false
+
+#Root密码，以明文形式显示
+#d -i passwd / root-password password r00tme
+#d -i passwd / root-password-again password r00tme
+＃或使用crypt（3）哈希加密。
+#d -i passwd / root-password-crypted password [crypt（3）hash]
+
+＃创建普通用户帐户。
+#d -i passwd / user-fullname string Ubuntu User
+#d -i passwd / username string ubuntu
+＃普通用户的密码，可以是明文
+#d -i passwd / user-password密码不安全
+#d -i passwd / user-password-again密码不安全
+＃或使用crypt（3）哈希加密。
+#d -i passwd / user-password-crypted password [crypt（3）hash]
+＃创建具有指定UID而不是默认UID的第一个用户。
+#d -i passwd / user-uid string 1010
+＃安装程序将警告弱密码。如果你确定你知道
+＃你正在做什么并想要覆盖它，取消注释。
+#d -i user-setup / allow-password-weak boolean true
+
+＃用户帐户将添加到某些标准初始组。至
+＃覆盖它，使用它。
+#d -i passwd / user-default-groups string audio cdrom video
+
+＃如果要加密第一个用户的主目录，则设置为true。
+d -i user-setup / encrypt-home布尔值false
+
+###时钟和时区设置
+＃控制硬件时钟是否设置为UTC。
+d-i clock-setup / utc boolean true
+
+＃您可以将此设置为$ TZ的任何有效设置;看到的内容
+＃/ usr / share / zoneinfo /表示有效值。
+d-i时间/区域字符串US / Eastern
+
+＃控制在安装过程中是否使用NTP设置时钟
+d-i clock-setup / ntp boolean true
+#NTP服务器使用。这里的默认值几乎总是很好。
+#d -i clock-setup / ntp-server string ntp.example.com
+
+### i386特定磁盘存储
+＃激活DASD磁盘
+#d -i s390-dasd / dasd string 0.0.0200,0.0.0300,0.0.0400
+
+#DASD配置;默认为dasdfmt（低级格式），如果需要
+#d -i s390-dasd / auto-format boolean true
+#d -i s390-dasd / force-format boolean true
+
+#zFCP激活和配置
+#d -i s390-zfcp / zfcp string 0.0.1b34：0x400870075678a1b2：0x201480c800000000，\
+＃0.0.1b34：0x400870075679a1b2：0x201480c800000000
+
+###分区
+##分区示例
+＃如果系统有可用空间，您可以选择仅对该空间进行分区。
+＃如果未设置partman-auto / method（下面），则仅限于此。
+＃替代品：custom，some_device，some_device_crypto，some_device_lvm。
+#d -i partman-auto / init_automatically_partition选择largest_free
+
+＃或者，您可以指定要分区的磁盘。如果系统只有
+＃一个磁盘，安装程序将默认使用该磁盘，否则设备
+#name必须以传统的非devfs格式给出（例如/ dev / sda
+＃而不是例如的/ dev /光盘/ DISC0 /盘）。
+＃例如，要使用第一个SCSI / SATA硬盘：
+#d -i partman-auto / disk string / dev / sda
+＃此外，您还需要指定要使用的方法。
+＃目前可用的方法是：
+＃ -  regular：为您的架构使用通常的分区类型
+＃ -  lvm：使用LVM对磁盘进行分区
+＃ -  crypto：在加密分区中使用LVM
+d-i partman-auto / method string lvm
+
+＃如果其中一个磁盘将自动分区
+＃包含旧的LVM配置，用户通常会收到一个
+＃ 警告。这可以预先播种......
+d-i partman-lvm / device_remove_lvm布尔值为true
+＃同样适用于预先存在的软件RAID阵列：
+d-i partman-md / device_remove_md布尔值为true
+＃同样适用于写入lvm分区的确认。
+d-i partman-lvm / confirm布尔值为true
+d-i partman-lvm / confirm_nooverwrite boolean true
+
+＃对于LVM分区，您可以选择要使用的卷组的数量
+＃为逻辑卷。
+#d -i partman-auto-lvm / guided_size string max
+#d -i partman-auto-lvm / guided_size string 10GB
+#d -i partman-auto-lvm / guided_size string 50％
+
+＃您可以选择三种预定义分区配方中的一种：
+＃ -  atomic：一个分区中的所有文件
+＃ -  home：单独/家庭分区
+＃ -  multi：separate / home，/ var和/ tmp分区
+d-i partman-auto / choose_recipe select atomic
+
+＃或提供自己的食谱......
+＃如果您有办法将配方文件放入d-i环境，您可以
+＃只是指着它。
+#d -i partman-auto / expert_recipe_file string / hd-media / recipe
+
+＃如果没有，您可以将整个配方放入预配置文件中
+＃（逻辑）行。此示例创建一个适合的小/启动分区
+#swap，并将剩余的空间用于根分区：
+＃d -i partman-auto / expert_recipe string \
+#boot-root :: \
+＃40 50 100 ext3 \
+＃$ primary {} $ bootable {} \
+＃method {format} format {} \
+#use_filesystem {} filesystem {ext3} \
+#mountpoint {/ boot} \
+＃。 \
+＃500 10000 1000000000 ext3 \
+＃method {format} format {} \
+#use_filesystem {} filesystem {ext3} \
+#mountpoint {/} \
+＃。 \
+＃64 512 300％linux-swap \
+＃method {swap} format {} \
+＃。
+
+＃如果您只想将默认文件系统从ext3更改为某些内容
+＃else，你可以在不提供完整配方的情况下做到这一点。
+#d -i partman / default_filesystem string ext4
+
+＃完整的配方格式记录在partman-auto-recipe.txt文件中
+＃包含在'debian-installer'包中或可从D-I源获得
+#repository。这也记录了如何指定文件等设置
+#system标签，卷组名称以及要包含的物理设备
+卷组中的＃。
+
+＃这使得partman在没有确认的情况下自动分区
+＃你告诉它使用上述方法之一做什么。
+d-i partman-partitioning / confirm_write_new_label boolean true
+d-i partman / choose_partition选择完成
+d-i partman / confirm布尔值为true
+d-i partman / confirm_nooverwrite boolean true
+
+##使用RAID进行分区
+＃该方法应设置为“raid”。
+#d -i partman-auto / method string raid
+＃指定要分区的磁盘。他们都会得到相同的布局，
+＃所以这只有在磁盘大小相同的情况下才有效。
+#d -i partman-auto / disk string / dev / sda / dev / sdb
+
+#Next接下来需要指定将要使用的物理分区。
+＃d -i partman-auto / expert_recipe string \
+#redraid :: \
+＃1000 5000 4000 raid \
+＃$ primary {}方法{raid} \
+＃。 \
+＃64 512 300％raid \
+＃method {raid} \
+＃。 \
+＃500 10000 1000000000 raid \
+＃method {raid} \
+＃。
+
+＃最后，您需要指定先前定义的分区的方式
+＃用于RAID设置。请记住使用正确的分区号
+＃用于逻辑分区。支持RAID级别0,1,5,6和10;
+＃个设备使用“＃”分隔。
+＃参数是：
+＃&lt;raidtype&gt; &lt;devcount&gt; &lt;sparecount&gt; &lt;fstype&gt; &lt;mountpoint&gt; \
+＃&lt;devices&gt; &lt;sparedevices&gt;
+
+#d -i partman-auto-raid / recipe string \
+＃1 2 0 ext3 / \
+＃/ dev / sda1＃/ dev / sdb1 \
+＃。 \
+＃1 2 0交换 -  \
+＃/ dev / sda5＃/ dev / sdb5 \
+＃。 \
+＃0 2 0 ext3 / home \
+＃/ dev / sda6＃/ dev / sdb6 \
+＃。
+
+＃有关其他信息，请参阅文件partman-auto-raid-recipe.txt
+＃包含在'debian-installer'包中或可从D-I源获得
+#repository。
+
+＃这使得partman在没有确认的情况下自动分区。
+d-i partman-md / confirm布尔值为true
+d-i partman-partitioning / confirm_write_new_label boolean true
+d-i partman / choose_partition选择完成
+d-i partman / confirm布尔值为true
+d-i partman / confirm_nooverwrite boolean true
+
+##控制分区的挂载方式
+＃默认是通过UUID挂载，但您也可以选择“传统”来
+＃使用传统的设备名称，或者使用“label”来尝试文件系统标签
+＃回到UUIDs。
+＃d -i partman / mount_style选择uuid
+
+###基本系统安装
+＃配置预配置的基本文件系统的路径。这可以用来
+＃指定安装程序检索文件系统映像的路径
+＃被部署到磁盘并用作安装的基本系统。
+#d -i live-installer / net-image string /install/filesystem.squashfs
+&nbsp;
+＃配置APT默认不安装推荐的包。使用此
+＃选项可能导致系统不完整，只能由非常使用
+＃有经验的用户。
+#d -i base-installer / install-recommended布尔值false
+
+＃要安装的内核映像（meta）包;如果没有，可以使用“无”
+#instore将被安装。
+#d -i base-installer / kernel / image string linux-generic
+
+### Apt设置
+＃您可以选择安装受限和Universe软件，也可以安装
+来自backports存储库的＃软件。
+#d -i apt-setup / restricted布尔值true
+#d -i apt-setup / universe boolean true
+#d -i apt-setup / backports布尔值为true
+＃如果您不想使用网络镜像，请取消注释。
+#d -i apt-setup / use_mirror boolean false
+＃选择要使用的更新服务;定义要使用的镜像。
+＃下面显示的值是正常默认值。
+#d -i apt-setup / services-选择多选安全性
+#d -i apt-setup / security_host string security.ubuntu.com
+#d -i apt-setup / security_path string / ubuntu
+
+＃其他存储库，本地[0-9]可用
+#d -i apt-setup / local0 / repository string \
+#http：//local.server/ubuntu stretch main
+#d -i apt-setup / local0 / comment string本地服务器
+＃启用deb-src行
+#d -i apt-setup / local0 / source boolean true
+＃本地存储库的公钥的URL;你必须提供钥匙或
+#apt会抱怨未经身份验证的存储库，所以
+＃sources.list行将被留下注释掉
+#d -i apt-setup / local0 / key string http：//local.server/key
+
+＃默认情况下，安装程序要求对存储库进行身份验证
+＃使用已知的gpg密钥。此设置可用于禁用该设置
+#authentication。警告：不安全，不推荐。
+#d -i debian-installer / allow_unauthenticated布尔值true
+
+＃取消注释以添加i386的multiarch配置
+#d -i apt-setup / multiarch string i386
+
+
+###包装选择
+tasksel tasksel / first multlectlect ubuntu-desktop
+#tasksel tasksel / first multiselect lamp-server，print-server
+#tasksel tasksel / first multiselect kubuntu-desktop
+
+＃要安装的单个附加软件包
+#d -i pkgsel / include string openssh-server build-essential
+#debootstrap后是否升级包。
+＃允许值：无，安全升级，全升级
+#d -i pkgsel / upgrade选择none
+
+＃语言包选择
+#d -i pkgsel / language-packs multiselect de，en，zh
+
+＃应用更新的政策。可能是“无”（没有自动更新），
+＃“unattended-upgrades”（自动安装安全更新），或
+＃“landscape”（使用Landscape管理系统）。
+#d -i pkgsel / update-policy选择none
+
+＃某些版本的安装程序可以报告您拥有的软件
+＃installed，以及您使用的软件。默认情况下不报告，
+＃但发送报告有助于项目确定最多的软件
+#popular并将其包含在CD上。
+#elminage-contest popular-contest / participation boolean false
+
+＃默认情况下，系统的locate数据库将在更新后更新
+#installer已完成安装大多数软件包。这可能需要一段时间，所以
+＃如果你不想要它，可以将其设置为“false”以将其关闭。
+#d -i pkgsel / updatedb boolean true
+
+###引导加载程序安装
+#Grub是默认的引导加载程序（对于x86）。如果你想安装lilo
+＃相反，取消注释：
+#d -i grub-installer / skip boolean true
+＃还要跳过安装lilo，并且不安装bootloader，取消注释
+＃太：
+#d -i lilo-installer / skip boolean true
+
+
+＃这是相当安全的设置，它使grub自动安装到MBR
+＃如果机器上未检测到其他操作系统。
+d-i grub-installer / only_debian布尔值true
+
+＃这个使grub-installer安装到MBR，如果它还找到其他的
+#OS，安全性较低，因为它可能无法启动其他操作系统。
+d-i grub-installer / with_other_os布尔值为true
+
+＃特别是由于潜在的USB记忆棒，MBR的位置不可能
+＃一般安全地确定，所以需要指定：
+#d -i grub-installer / bootdev string / dev / sda
+＃要安装到第一个设备（假设它不是USB记忆棒）：
+#d -i grub-installer / bootdev string default
+
+＃或者，如果要安装到mbr以外的位置，
+＃取消注释并编辑这些行：
+#d -i grub-installer / only_debian boolean false
+#d -i grub-installer / with_other_os布尔值false
+#d -i grub-installer / bootdev string（hd0,1）
+＃要将grub安装到多个磁盘：
+#d -i grub-installer / bootdev string（hd0,1）（hd1,1）（hd2,1）
+
+#grub的可选密码，以明文形式显示
+#d -i grub-installer /密码密码r00tme
+#d -i grub-installer / password-again password r00tme
+＃或使用MD5哈希加密，请参阅grub-md5-crypt（8）。
+#d -i grub-installer / password-crypted password [MD5 hash]
+
+＃使用以下选项为其添加其他引导参数
+＃installed system（如果引导加载程序安装程序支持）。
+＃注意：传递给安装程序的选项将自动添加。
+#d -i debian-installer / add-kernel-opts string nousb
+
+###完成安装
+＃从串行控制台安装期间，常规虚拟控制台
+＃（VT1-VT6）通常在/ etc / inittab中禁用。取消注释下一个
+＃行阻止这一点。
+#d -i finish-install / keep-consoles boolean true
+
+＃避免关于安装的最后一条消息完成。
+d-i finish-install / reboot_in_progress笔记
+
+＃这将阻止安装程序在重新启动期间弹出CD，
+＃在某些情况下很有用。
+#d -i cdrom-detect / eject布尔值false
+
+＃这是如何在安装完成后关闭安装程序，但不是
+#reboot进入已安装的系统。
+#d -i debian-installer / exit / halt boolean true
+＃这将关闭机器而不是停止它。
+#d -i debian-installer / exit / poweroff布尔值为true
+
+###预先安装其他包
+＃取决于您选择安装的软件，或者出现问题
+＃在安装过程中，可能还有其他问题
+＃被问到。当然，你也可以预售这些。获取每个的列表
+＃可能在安装过​​程中被问到的问题，做一个
+#install，然后运行以下命令：
+#debconf-get-selections --installer&gt; file
+#decconf-get-selections &gt;&gt;文件
+
+
+＃＃＃＃ 高级选项
+###在安装过程中运行自定义命令
+## i386预备示例
+#d -i preseeding本身就不安全。安装程序中没有任何内容检查
+＃尝试缓冲区溢出或其他a值的攻击
+#preteiguration file就像这样。仅使用来自的预配置文件
+＃信任的位置！为了开车回家，因为它通常很有用，
+＃here是一种在安装程序中运行任何shell命令的方法，
+＃自动。
+
+＃第一个命令尽可能早地运行
+#preseeding被读取。
+#d -i preseed / early_command string anna-install some-udeb
+＃此命令在分区程序启动之前立即运行。它可能是
+＃对于应用依赖于状态的动态分区器预置非常有用
+磁盘数量（当preseed / early_command运行时可能不可见）。
+#d -i partman / early_command \
+#string debconf-set partman-auto / disk“$（list-devices disk | head -n1）”
+＃此命令在安装完成之前运行，但是在有安装完成时运行
+＃仍然是可用/目标目录。您可以chroot到/ target并使用它
+#sirect，或使用apt-install和in-target命令轻松安装
+#package并在目标系统中运行命令。
+#d -i preseed / late_command string apt-install zsh;目标chsh -s / bin / zsh

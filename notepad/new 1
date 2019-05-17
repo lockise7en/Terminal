@@ -1,0 +1,3 @@
+  fi
+  export VIRTUALBOX_BOOT2DOCKER_URL='http://192.168.168.2/boot2docker.iso'
+  docker-machine create --engine-registry-mirror=http://77f86377.m.daocloud.io -d virtualbox default

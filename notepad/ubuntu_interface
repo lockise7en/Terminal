@@ -1,0 +1,8 @@
+auto ens32
+iface ens32 inet static  
+address 192.168.168.197
+gateway 192.168.168.1
+netmask 255.255.255.0  
+network 192.168.168.1
+#broadcast 192.168.168.255 
+dns-nameservers 192.168.168.1

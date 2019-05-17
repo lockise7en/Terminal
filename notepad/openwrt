@@ -1,0 +1,47 @@
+dest root /
+dest ram /tmp
+lists_dir ext /var/opkg-lists
+option overlay_root /overlay
+option check_signature 1
+
+echo "src/gz chaos_calmer_base http://downloads.openwrt.org/chaos_calmer/15.05.1/brcm47xx/generic/packages/base
+echo "src/gz chaos_calmer_luci http://downloads.openwrt.org/chaos_calmer/15.05.1/brcm47xx/generic/packages/luci
+echo "src/gz chaos_calmer_packages http://downloads.openwrt.org/chaos_calmer/15.05.1/brcm47xx/generic/packages/packages
+echo "src/gz chaos_calmer_routing http://downloads.openwrt.org/chaos_calmer/15.05.1/brcm47xx/generic/packages/routing
+echo "src/gz chaos_calmer_telephony http://downloads.openwrt.org/chaos_calmer/15.05.1/brcm47xx/generic/packages/telephony
+echo "src/gz chaos_calmer_management http://downloads.openwrt.org/chaos_calmer/15.05.1/brcm47xx/generic/packages/management
+
+echo "src/gz chaos_calmer_base http://downloads.openwrt.org/chaos_calmer/15.05.1/x86/64/packages/base" >> distfeeds.conf
+echo "src/gz chaos_calmer_luci http://downloads.openwrt.org/chaos_calmer/15.05.1/x86/64/packages/luci" >> distfeeds.conf
+echo "src/gz chaos_calmer_packages http://downloads.openwrt.org/chaos_calmer/15.05.1/x86/64/packages/packages" >> distfeeds.conf
+echo "src/gz chaos_calmer_routing http://downloads.openwrt.org/chaos_calmer/15.05.1/x86/64/packages/routing" >> distfeeds.conf
+echo "src/gz chaos_calmer_telephony http://downloads.openwrt.org/chaos_calmer/15.05.1/x86/64/packages/telephony" >> distfeeds.conf
+echo "src/gz chaos_calmer_management http://downloads.openwrt.org/chaos_calmer/15.05.1/x86/64/packages/management" >> distfeeds.conf
+
+echo "src/gz chaos_calmer_base http://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/x86/64/packages/base" >> distfeeds.conf
+echo "src/gz chaos_calmer_luci http://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/x86/64/packages/luci" >> distfeeds.conf
+echo "src/gz chaos_calmer_packages http://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/x86/64/packages/packages" >> distfeeds.conf
+echo "src/gz chaos_calmer_routing http://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/x86/64/packages/routing" >> distfeeds.conf
+echo "src/gz chaos_calmer_telephony http://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/x86/64/packages/telephony" >> distfeeds.conf
+echo "src/gz chaos_calmer_management http://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/x86/64/packages/management" >> distfeeds.conf
+
+
+echo "src/gz chaos_calmer_base http://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/brcm47xx/generic/packages/base" >> distfeeds.conf
+echo "src/gz chaos_calmer_luci http://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/brcm47xx/generic/packages/luci" >> distfeeds.conf
+echo "src/gz chaos_calmer_packages http://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/brcm47xx/generic/packages/packages" >> distfeeds.conf
+echo "src/gz chaos_calmer_routing http://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/brcm47xx/generic/packages/routing" >> distfeeds.conf
+echo "src/gz chaos_calmer_telephony http://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/brcm47xx/generic/packages/telephony" >> distfeeds.conf
+echo "src/gz chaos_calmer_management http://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/brcm47xx/generic/packages/management" >> distfeeds.conf
+# add your custom package feeds here
+#
+# echo "src/gz example_feed_name http://www.example.com/path/to/files
+echo "src/gz chaos_calmer_base http://downloads.openwrt.org/chaos_calmer/15.05.1/bcm53xx/generic/packages/base
+echo "src/gz chaos_calmer_luci http://downloads.openwrt.org/chaos_calmer/15.05.1/bcm53xx/generic/packages/luci
+echo "src/gz chaos_calmer_packages http://downloads.openwrt.org/chaos_calmer/15.05.1/bcm53xx/generic/packages/packages
+echo "src/gz chaos_calmer_routing http://downloads.openwrt.org/chaos_calmer/15.05.1/bcm53xx/generic/packages/routing
+echo "src/gz chaos_calmer_telephony http://downloads.openwrt.org/chaos_calmer/15.05.1/bcm53xx/generic/packages/telephony
+echo "src/gz chaos_calmer_management http://downloads.openwrt.org/chaos_calmer/15.05.1/bcm53xx/generic/packages/management
+
+
+luci-i18n-base-zh-cn luci-i18n-commands-zh-cn luci-i18n-ddns-zh-cn luci-i18n-firewall-zh-cn luci-i18n-multiwan-zh-cn luci-i18n-openvpn-zh-cn luci-i18n-samba-zh-cn luci-i18n-tinyproxy-zh-cn
+

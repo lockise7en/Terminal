@@ -1,0 +1,5 @@
+#!/bin/bash
+export LD_LIBRARY_PATH=/usr/local/pgsql/lib:$LD_LIBRARY_PATH
+export PATH=/usr/local/pgsql/bin:$PATH
+export PGDATA=/usr/local/pgsql/data
+export MANPATH=$MANPATH:/usr/local/pgsql/man

@@ -1,0 +1,36 @@
+#!/bin/bash
+read -r -p "Enable[e] or Disable[d] SSL support for Bitnami Apache? [e/d] " input
+case $input in
+    [eE])
+		echo "Enable SSL support for Apache"
+		sed -i "s|SSLEngine off|SSLEngine on|g" /opt/bitnami/apache2/conf/bitnami/bitnami.conf
+		sed -i "s|SSLEngine off|SSLEngine on|g" /opt/bitnami/apache2/conf/extra/httpd-ssl.conf
+		sed -i "s|SSLEngine off|SSLEngine on|g" /opt/bitnami/apache2/conf/original/extra/httpd-ssl.conf
+		sed -i "s|#SSLProtocol|SSLProtocol|g" /opt/bitnami/apache2/conf/bitnami/bitnami.conf
+		sed -i "s|#SSLProtocol|SSLProtocol|g" /opt/bitnami/apache2/conf/extra/httpd-ssl.conf
+		sed -i "s|#SSLProtocol|SSLProtocol|g" /opt/bitnami/apache2/conf/original/extra/httpd-ssl.conf
+		echo "Enable SSL support for Bitnami Apache"
+		exit 0
+		;;
+    [dD]) 
+		echo "Disable SSL support for Apache"
+		sed -i "s|SSLEngine on|SSLEngine off|g" /opt/bitnami/apache2/conf/bitnami/bitnami.conf
+		sed -i "s|SSLEngine on|SSLEngine off|g" /opt/bitnami/apache2/conf/extra/httpd-ssl.conf
+		sed -i "s|SSLEngine on|SSLEngine off|g" /opt/bitnami/apache2/conf/original/extra/httpd-ssl.conf
+		sed -i "s|SSLProtocol|#SSLProtocol|g" /opt/bitnami/apache2/conf/bitnami/bitnami.conf
+		sed -i "s|SSLProtocol|#SSLProtocol|g" /opt/bitnami/apache2/conf/extra/httpd-ssl.conf
+		sed -i "s|SSLProtocol|#SSLProtocol|g" /opt/bitnami/apache2/conf/original/extra/httpd-ssl.conf
+		sed -i "s|SSLEngine on|SSLEngine off|g" /etc/apache2/mods-available/ssl.conf
+		sed -i "s|SSLEngine on|SSLEngine off|g" /etc/apache2/sites-available/default-ssl.conf
+		echo "Disable SSL support for Bitnami Apache"		
+		exit 0
+       	;;
+    [qQ])
+		echo "No"
+       		;;
+
+    *)
+	echo "Invalid input..."
+	exit 0
+	;;
+esac

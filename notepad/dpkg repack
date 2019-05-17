@@ -1,0 +1,45 @@
+
+linux是自由的无论他的哪一种分支都应该是的,为了任性为了自由我们每个人都应该努力学习。往往有一些令人烦恼的事情,那就是安装了某种软件使用发现，某一处有不是要的那种完美，最好的办法就是解开他的包修改然后从新打包安装这样就痛快了，记的很久以前我就是为了这些发愁，这论坛那博客满嘴理论看的人头都是晕的大的你也不会学到什么东西，直到某天在外网看到一个人讲解了这些，简单易用，我牢牢地记住在心里，今天在这里分享一下，也许会帮到谁谁谁！
+
+
+1：首先把你要解包的deb文件放到桌面上，然后打开终端进入桌面
+
+cd Desktop(英文桌面)
+如果中文的就这样
+cd 桌面
+
+
+2：ls -a
+看看你要分解的deb文件是不是在桌面上
+
+
+3：mkdir -p extroot/DEBIAN
+sudo  dpkg-deb -x aptoncd_0.1.98+bzr117-1.4_all.deb   extroot
+sudo dpkg-deb -e aptoncd_0.1.98+bzr117-1.4_all.deb   extroot/DEBIAN
+
+find opt/ -type f -print0 | xargs -0 md5sum >  DEBIAN/md5sums 
+echo "生成"
+md5sum -c  DEBIAN/md5sums 
+检查
+(package.deb)要更换你要解包的文件名而且操作要注意建造文件或文件夹的名字大小写奥
+
+到这里一个deb文件就彻底解包了如果要修改哪里可以进入文件夹了，修-e改/好了还要终端回到面上进行操作。
+
+
+4：还要建造一个文件夹建造好了就从新打包
+
+mkdir build
+dpkg-deb -b gitlab_11.6.3_xenial/ build/
+
+好了生成的文件就在build文件夹里面了，你可以从新安装了，mkdir -p是镶套式建造文件夹
+dpkg-deb -x    -e  选项式彻底的解包提取文件到你建造的文件夹中
+dpkg-deb -b      选项是把这些提取分散的文件从新打包
+
+ apt-get install dpkg-repack
+ dpkg-repack 
+ 
+ 
+  apt-get install build-essential autoconf automake \
+autotools-dev dh-make debhelper devscripts fakeroot \
+xutils lintian pbuilder
+ dpkg-buildpackage -rfakeroot

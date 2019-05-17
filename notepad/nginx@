@@ -1,0 +1,90 @@
+       gzip_disable   "MSIE [1-6]\.";
+        #limit_conn_zone $binary_remote_addr zone=perip:10m;
+        ##If enable limit_conn_zone,add "limit_conn perip 10;" to server section.
+        server_tokens off;
+        #log format
+        log_format  access  '$remote_addr - $remote_user [$time_local] "$request" '
+             '$status $body_bytes_sent "$http_referer" '
+             '"$http_user_agent" $http_x_forwarded_for';
+                access_log off;
+server
+    {
+        listen 80;
+        #listen [::]:80 default_server ipv6only=on;
+        server_name www.lnmp.org;
+        index index.html index.htm index.php;
+        root  /home/wwwroot/default;
+        #error_page   404   /404.html;
+        include enable-php.conf;
+        location /nginx_status
+        {
+            stub_status on;
+            access_log   off;
+        }
+        location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$
+        {
+            expires      30d;
+        server_name www.lnmp.org;
+        index index.html index.htm index.php;
+        root  /home/wwwroot/default;
+        #error_page   404   /404.html;
+        include enable-php.conf;
+        location /nginx_status
+        {
+            stub_status on;
+            access_log   off;
+        }
+        location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$
+        {
+            expires      30d;
+        }
+        location ~ .*\.(js|css)?$
+        {
+            expires      12h;
+        }
+        location ~ /\.
+        {
+            deny all;
+        }
+        access_log  /home/wwwlogs/access.log  access;
+    }
+include /usr/local/nginx/conf/vhost/*.conf;
+}
+
+server{
+   listen 80;
+   server_name test.com;
+   root /home/www/html;
+   index index.php index.html;
+  
+   location /my {
+       alias /home/www/my;
+       index index.html;
+   }
+   location ~ /my/(?<after_ali>(.*)\.(php|php5)?$) {
+           root /home/www/my;
+            fastcgi_pass  unix:/tmp/php-cgi.sock;
+            fastcgi_index index.php;
+            include fcgi.conf;
+            fastcgi_param SCRIPT_FILENAME $document_root/${after_ali};
+   } 
+
+	location /trade {
+       alias /home/www/trade;
+       index index.html;
+   }
+   location ~ /trade/(?<after_ali>(.*)\.(php|php5)?$) {
+           root /home/www/trade;
+            fastcgi_pass  unix:/tmp/php-cgi.sock;
+            fastcgi_index index.php;
+            include fcgi.conf;
+            fastcgi_param SCRIPT_FILENAME $document_root/${after_ali};
+   }
+
+  location ~ .*\.(php|php5)?$
+                        {
+                                fastcgi_pass  unix:/tmp/php-cgi.sock;
+                                fastcgi_index index.php;
+                                include fcgi.conf;
+                        }
+}

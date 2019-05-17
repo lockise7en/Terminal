@@ -1,0 +1,33 @@
+#!/bin/bash
+
+VM=${DOCKER_MACHINE_NAME-default}
+DOCKER_MACHINE=/usr/local/bin/docker-machine
+STEP="Checking status on $VM"
+VM_STATUS="$(${DOCKER_MACHINE} status ${VM} 2>&1)"
+if [ "${VM_STATUS}" != "Running" ]; then
+  "${DOCKER_MACHINE}" start "${VM}"
+  yes | "${DOCKER_MACHINE}" regenerate-certs "${VM}"
+fi
+
+STEP="Setting env"
+eval "$(${DOCKER_MACHINE} env --shell=bash ${VM})"
+
+STEP="Finalize"
+clear
+cat << EOF
+
+
+                        ##         .
+                  ## ## ##        ==
+               ## ## ## ## ##    ===
+           /"""""""""""""""""\___/ ===
+      ~~~ {~~ ~~~~ ~~~ ~~~~ ~~~ ~ /  ===- ~~~
+           \______ o           __/
+             \    \         __/
+              \____\_______/
+
+EOF
+echo -e "${BLUE}docker${NC} is configured to use the ${GREEN}${VM}${NC} machine with IP ${GREEN}$(${DOCKER_MACHINE} ip ${VM})${NC}"
+echo "For help getting started, check out the docs at https://docs.docker.com"
+echo
+

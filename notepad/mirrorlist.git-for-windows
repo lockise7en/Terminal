@@ -1,0 +1,4 @@
+# Git for Windows
+Server = http://192.168.168.33/repo/msys2/pacman/mingw/$arch/
+Server = http://192.168.168.33/repo/msys2/pacman/msys2/$arch/
+SigLevel = Optional

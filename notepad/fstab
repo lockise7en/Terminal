@@ -1,0 +1,61 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# / was on /dev/sda1 during installation
+UUID=080ef256-a35e-458b-9fc8-5f310f30e175 /               ext4    errors=remount-ro 0       1
+# swap was on /dev/sda5 during installation
+UUID=da594c58-d477-4210-a3b1-364bd98eda82 none            swap    sw              0       0
+# /volume1
+/dev/sdb1 none swap sw              0       0
+UUID=1fd549bc-05c6-4ad0-b184-327d61840d45 /volume1 ext4 defaults              0       0
+/volume1/apt-cacher-ng /var/cache/apt-cacher-ng  none bind 0 0
+/volume1/apt-mirror /var/spool/apt-mirror/mirror  none bind 0 0
+
+/dev/sdc1 none swap sw              0       0
+UUID=c55158b6-fdca-4d39-b06b-bdf26e4c83f7 /var/lib/docker  ext4 defaults              0       0
+/volume1/apt-cacher-ng/data /var/cache/apt-cacher-ng  none bind 0 0
+/volume1/apt-cacher-ng/config /etc/apt-cacher-ng  none bind 0 0
+/volume1/home /home  none bind 0 0
+/volume1/apt-mirror /var/spool/apt-mirror/mirror  none bind 0 0
+/volume1/gitlab/var/opt/gitlab /var/opt/gitlab    none bind 0 0
+/volume1/gitlab/var/log/gitlab /var/log/gitlab none bind 0 0
+/volume1/gitlab/etc/gitlab /etc/gitlab  none bind 0 0
+
+
+blkid
+###########################################    #######################################################
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# / was on /dev/sda2 during installation
+UUID=f8238347-88cf-46fc-bd0e-67a54d2d6753 /               ext4    errors=remount-ro 0       1
+# /boot/efi was on /dev/sda1 during installation
+UUID=8156-51D2  /boot/efi       vfat    umask=0077      0       1
+# /home was on /dev/sda3 during installation
+UUID=8c558ed1-dde0-4057-b32b-91e42f5f3e9c /home           ext4    defaults        0       2
+
+UUID=6b8d88e0-3457-4e1a-bb55-de6d8fe7928f /volume1        ext4    defaults        0       2
+# /volume2 was on /dev/sdb2 during installation
+UUID=B5444442835C8175 /volume2        ntfs    defaults        0       2
+# swap was on /dev/sdb1 during installation
+UUID=060e107a-337f-4e64-b76e-6e7e927b5878 none            swap    sw              0       0
+# swap was on /dev/sdc1 during installation
+UUID=dae22c96-848e-409b-bed5-845dc8da7964 none            swap    sw              0       0
+
+#apt-cacher-ng
+/volume1/apt-cacher-ng/data /var/cache/apt-cacher-ng  none bind 0 0
+/volume1/apt-cacher-ng/config /etc/apt-cacher-ng  none bind 0 0
+
+#harbor
+/volume1/docker/registry/harbor_data /data  none bind 0 0
+/volume1/docker/registry/harbor_config /etc/harbor  none bind 0 0
+#go 
+/volume1/go /home/fengshun/go  none bind 0 0

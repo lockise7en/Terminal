@@ -1,0 +1,32 @@
+iapt-get update && 
+sudo apt-get -y install  unzip \
+xz-utils \
+curl \
+bc \
+git \
+build-essential \
+cpio \
+gcc libc6 libc6-dev \
+kmod \
+squashfs-tools \
+genisoimage \
+xorriso \
+syslinux \
+isolinux \
+automake \
+pkg-config \
+p7zip-full
+
+  apt-key adv --keyserver hkp://keyserver.ubuntu.com:80  --recv-keys 73C62A1B 3B1510FD D259B7555E1D3C58 \
+  409B6B1796C275462A1703113804BB82D39DC0E3 E1DD270288B4E6030699E45FA1715D88E1DF1F24  80F70E11F0F0D5F10CB20E62F5DA5F09C3173AA6 \
+  8B3981E7A6852F782CC4951600A6F0A3C300EE8C \
+  4F4EA0AAE5267A6C 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+  
+	gpg --import ~/.ssh/private.key		
+			E9A33FE7
+			apt-get install gnupg-agent snap-confine
+			gpg --export-secret-key  2842642B EE9B672E 0C6C94A8 B21539D1 DA83C5CB 902D540D 4C902895 73C62A1B 3B1510FD EE9B672E 4C902895 25E4BCB7 B21539D1 D39DC0E3 39499BDB 11F63C51> private.key
+			gpg --export EE9B672E 73C62A1B 3B1510FD 4C902895 25E4BCB7 B21539D1 D39DC0E3 39499BDB 11F63C51  >> private.key
+
+			gpg --export EE9B672E > public.key
+			gpg --export-secret-subkeys 0C6C94A8 > signing.key		

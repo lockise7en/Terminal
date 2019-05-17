@@ -1,0 +1,152 @@
+docker run -ti \
+-v /root/docker/myimage:/root \
+-p 14001:4000 \
+--name fedora \
+-d \
+fedora:21
+docker run -d \
+    --hostname gitlab.example.com \
+    -p 3080:80 \
+    -p 22:22 \
+    --name gitlab \
+    --restart unless-stopped \
+    -v /volume1/gitlab/config:/etc/gitlab \
+    -v /volume1/gitlab/logs:/var/log/gitlab \
+    -v /volume1/gitlab/data:/var/opt/gitlab \
+    --network harbor_harbor \
+    twang2218/gitlab-ce-zh:11.1.4
+docker run -d --net registry-ui-net -p 80:80 -e REGISTRY_URL=http://registry-srv:5000 -e DELETE_IMAGES=true -e REGISTRY_TITLE="My registry" joxit/docker-registry-ui:static
+docker ps
+ docker run -d \
+-e "AKID=LTAIjOpei6JyjXv3" \
+-e "AKSCT=amHOrs1WVGzjJ2F50GHh0NMTKJtoQC" \
+-e "DOMAIN=lockyse7en.com" \
+-e "DOMAIN=nas.lockyse7en.com" \
+-e "REDO=600" \
+--restart=always \
+--name ddns \
+chenhw2/aliyun-ddns-cli
+	
+docker run -d  \
+--restart=always \
+--name ui-for-docker   --net=host --privileged -v /var/run/docker.sock:/var/run/docker.sock uifd/ui-for-docker
+docker run -d -p 0.0.0.0:8787:8787 \
+--restart=always \
+--name lantern \
+-d \
+kent72/lantern
+docker run -d --restart=always --net=host -v /root/docker/images/dockerfiles/vnc/crossover/VNC:/share --name crossover  bda8765cd012
+/var/packages/Docker/target/docker/cert/192.168.168.199:5555
+
+cd /volume2/docker/certs /packages/Docker/target/docker/cert/192.168.168.199:5555
+
+--insecure-registry=[192.168.168.199:5555]
+
+FROM starefossen/github-pages:onbuild
+
+VOLUME /usr/src/app
+
+EXPOSE 4000
+
+CMD jekyll serve -d /_site --watch -H 0.0.0.0 -P 4000
+
+docker  run 
+docker run -it 
+docker run \
+-v "$PWD":/usr/src/app \
+-e JEKYLL_GITHUB_TOKEN=my-github-token \
+-p "14000:4000" starefossen/github-pages
+
+docker run -ti \
+-v "$PWD":/usr/src/app \
+-p 14001:4000 \
+--restart=always \
+--name gitboot \
+-d \
+jekyll
+
+docker run -d \
+  --restart=always \
+  --name registry \
+  -v /data/cert:/certs \
+  -v /data/registry:/var/lib/registry \
+  -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/server.crt \
+  -e REGISTRY_HTTP_TLS_KEY=/certs/server.key \
+  -p 5000:5000 \
+  registry
+  
+  docker run -ti -d \
+   --user 0 \
+  --net=host \
+  --restart=always \
+  --name vnc  \
+  -e VNC_PW=my-pw \
+  docker-headless-vnc
+  
+  docker run -d \
+  --restart=always \
+  --name registry \
+  -v /home/gitlab/certs/:/certs \
+  -v /var/opt/gitlab/registry:/var/lib/registry \
+  -e REGISTRY_HTTP_ADDR=0.0.0.0:443 \
+  -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/server.crt \
+  -e REGISTRY_HTTP_TLS_KEY=/certs/server.key \
+  -p 443:443 \
+  registry
+docker run -d \
+--restart=always \
+ -v /var/run/docker.sock:/var/run/docker.sock \
+ --name  ui \
+ -v  /volume1/docker_volume/portainer_data:/data portainer/portainer
+  
+docker run -d \
+--restart=always \
+--net=host \
+--name ddns \
+-e "AKID=LTAIjOpei6JyjXv3" \
+-e "AKSCT=amHOrs1WVGzjJ2F50GHh0NMTKJtoQC" \
+-e "DOMAIN=mir.lockyse7en.com" \
+-e "REDO=600" \
+chenhw2/aliyun-ddns-cli
+
+
+docker run -it -d \
+--restart=always \
+--name tunasync \
+-v /volume1/docker/tunasync/scripts:/scripts \
+-v /volume1/web/h5ai:/data \
+-v /volume1/docker/tunasync/demo:/demo \
+-v /volume1/web/h5ai/ubuntu:/var/spool/apt-mirror \
+-e TUNASYNC_WORKING_DIR=/data \
+tunathu/tunasync-scripts /bin/bash
+
+
+
+  docker service create \
+  --name registry \
+  --secret server.crt \
+  --secret server.key \
+  --constraint 'node.labels.registry==true' \
+  --mount type=bind,src=/mnt/registry,dst=/var/lib/registry \
+  -e REGISTRY_HTTP_ADDR=0.0.0.0:443 \
+  -e REGISTRY_HTTP_TLS_CERTIFICATE=/run/secrets/domain.crt \
+  -e REGISTRY_HTTP_TLS_KEY=/run/secrets/domain.key \
+  --publish published=443,target=443 \
+  --replicas 1 \
+  registry
+  
+docker run -d --net registry-ui-net \
+-p 80:80 \
+-e REGISTRY_URL=http://registry-srv:5000 \
+-e DELETE_IMAGES=true \
+-e REGISTRY_TITLE="My registry" \
+joxit/docker-registry-ui:static  
+  
+  
+docker run -d  \
+--restart=always --name registry \
+-v /data/registry:/var/lib/registry \
+-v /etc/docker/registry/:/etc/docker/registry/:z \
+-v /etc/docker/registry/config.yml:/etc/docker/registry/config.yml \
+--net=host \
+registry

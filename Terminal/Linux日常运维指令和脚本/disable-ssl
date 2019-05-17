@@ -1,0 +1,24 @@
+#!/bin/bash
+read -r -p "Enable[e] or Disable[d] SSL support for Apache? [e/d] " input
+case $input in
+    [eE])
+		sed -i "s|SSLEngine off|SSLEngine on|g" /etc/apache2/mods-available/ssl.conf
+		sed -i "s|SSLEngine off|SSLEngine on|g" /etc/apache2/sites-available/default-ssl.conf
+		echo "Enable SSL support for Apache"
+		exit 0
+		;;
+    [dD]) 
+		sed -i "s|SSLEngine on|SSLEngine off|g" /etc/apache2/mods-available/ssl.conf
+		sed -i "s|SSLEngine on|SSLEngine off|g" /etc/apache2/sites-available/default-ssl.conf
+		echo "Disable SSL support for Apache"		
+		exit 0
+       	;;
+    [qQ])
+		echo "No"
+       	;;
+
+    *)
+	echo "Invalid input..."
+	exit 0
+	;;
+esac

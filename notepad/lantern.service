@@ -1,0 +1,14 @@
+[Unit]
+Description=Start lantern server at startup
+After=syslog.target network.target
+
+[Service]
+Type=forking
+User=root
+Group=root
+WorkingDirectory=/root
+
+PIDFile=/root/.lantern/%H:%i.pid
+ExecStartPre=nohup /root/.lantern/bin/lantern -headless true >/dev/null 2>&1 &
+ExecStart=/root/.lantern/bin/lantern -headless true
+ExecStop= kill $(pgrep -l lantern)

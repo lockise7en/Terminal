@@ -1,0 +1,127 @@
+ docker --registry-mirror=http://77f86377.m.daocloud.io -d   
+sudo mkdir /mnt/cdrom
+sudo mount /dev/sr0 /mnt/cdrom
+cd /mnt/cdrom 
+sudo tar -xzvf /mnt/cdrom/*.tar.gz -C /tmp/ 
+cd /tmp/vmware-tools-distrib/ 
+echo y | sudo ./vmware-install.pl 
+reboot
+dd if=/dev/sr0 of=/dev/sdb
+ tar -xzvf *.tar.gz -C /tmp/ 
+sudo apt-get dist-upgrade nvram
+ssh-keygen -t rsa -C "GitLab" -b 4096
+tcuser
+sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup && wget http://192.168.168.195/CentOS-Base.repo && 
+sudo mv CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo
+
+
+
+sudo sed -i "s|EXTRA_ARGS='|EXTRA_ARGS='--default-ulimit core=-1' |g" /var/lib/boot2docker/profile
+sudo sed -i "s|EXTRA_ARGS='|EXTRA_ARGS='--registry-mirror=https://docker.mirrors.ustc.edu.cn |g" /var/lib/boot2docker/profile
+sudo sed -i "s|EXTRA_ARGS='|EXTRA_ARGS='--insecure-registries=http://192.168.168.4 |g" /var/lib/boot2docker/profile
+sudo sed -i "s|EXTRA_ARGS='|EXTRA_ARGS='--insecure-registries=http://localhost |g" /var/lib/boot2docker/profile
+insecure-registries
+
+
+wget http://192.168.168.195/harbor.tar.gz
+tar -xvzf harbor.tar.gz
+dd if=/dev/sr0 of=/dev/sdb
+
+docker-machine ssh default "echo $'EXTRA_ARGS=\"--insecure-registry 192.168.168.7:8880\"' | sudo tee -a /var/lib/boot2docker/profile && sudo /etc/init.d/docker restart"
+git config --global user.name "lockyse7en"
+git config --global user.email lockyse7en@outlook.com
+git init
+
+git config --global http.proxy http://127.0.0.1:8787
+git config --global http.proxy http://192.168.168.2:8787
+git config --global socks.proxy http://127.0.0.1:1080
+
+https://git.io/jww
+docker rm $(docker ps -a -q)
+docker run -d -p 5000:5000 --restart=always --name registry \
+  -v `pwd`/auth:/auth \
+  -e "REGISTRY_AUTH=htpasswd" \
+  -e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm" \
+  -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \
+  -v `pwd`/certs:/certs \
+  -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/server.cert \
+  -e REGISTRY_HTTP_TLS_KEY=/certs/server.key \
+  registry:2.5.0
+
+sudo sed -i "s|EXTRA_ARGS='|EXTRA_ARGS='https://g2ql68fp.mirror.aliyuncs.com |g" /var/lib/boot2docker/profile
+exit
+
+esxcli software vib install --no-sig-check  -v /tmp/vmware-esx-vmdkops-0.6.vib
+etc/init.d/vmdk-opsd status
+
+openssl rsa -in server.key -out server.key
+
+docker --registry-mirror=http://localhost:5000 -d
+
+docker run -d -p 443:5000 --restart=always --name registry registry:2
+
+docker run -d -p 5000:5000 -v /opt/data/registry:/tmp/registry registry 
+
+esxcli software vib install --no-sig-check  -v /tmp/vmware-esx-vmdkops-0.7.vib
+hub.c.163.com/
+docker pull hub.c.163.com/re waggle/beehive-cert
+
+sudo rpm -ivh docker-volume-vsphere-0.6-1.x86_64.rpm
+
+get-ExecutionPolicy
+Set-ExecutionPolicy Unrestricted
+curl -sSL https://get.daocloud.io/docker | sh
+ chmod -R 777 
+uname -r
+sudo yum update
+sudo tee /etc/yum.repos.d/docker.repo <<-'EOF'
+[dockerrepo]
+name=Docker Repository
+baseurl=https://yum.dockerproject.org/repo/main/centos/7/
+enabled=1
+gpgcheck=1
+gpgkey=https://yum.dockerproject.org/gpg
+EOF
+sudo yum install docker-engine
+sudo service docker start
+sudo chkconfig docker on
+sudo rpm --import "https://sks-keyservers.net/pks/lookup?op=get&search=0xee6d536cf7dc86e2d7d56f59a178ac6c6238f52e"
+sudo yum install -y yum-utils
+sudo systemctl enable gitlab.service
+sudo systemctl start docker.service
+
+
+ /etc/docker/daemon.json
+ {
+  "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"]
+}
+$ docker -H tcp://0.0.0.0:2375 ps
+# or
+$ export DOCKER_HOST="tcp://0.0.0.0:2375"
+$ docker ps
+# both are equal
+
+vi /etc/sudoers
+%administrators ALL=NOPASSWD: ALL
+ synouser --setpw root 661297
+
+rm -r /volume1/docker/registry/data/database
+rm -r /volume1/docker/registry/data/registry
+rm -r /data/database
+rm -r /data/registry
+
+8841eb5e416e88666c484313b896961c8e701b90
+
+
+sudo add-apt-repository ppa:pitti/systemd
+sudo apt-ge
+sudo apt-get install systemd systemd-services libpam-systemd systemd-ui
+
+sudo sed -i 's/archive.ubuntu.com/192.168.168.9/repo/ubuntu/g' /etc/apt/sources.list
+
+. (Resolve-Path "$env:LOCALAPPDATA\GitHub\shell.ps1")
+. $env:github_posh_git\profile.example.ps1
+sudo sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+sed -i 's/httpredir.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+sudo docker run --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.2 
+http://ubuntu.local:80/v1/scripts/  x11-xserver-utils xdg-utils za

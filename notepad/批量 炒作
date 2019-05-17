@@ -1,0 +1,77 @@
+DOCKER_PS=$(docker ps -a -q)
+echo $DOCKER_PS
+docker export -o harbor_filesystem.tar $DOCKER_PS
+echo "docker export harbor_filesystem.tar"
+
+
+cat $DOCKER_PS |while read harbor_filesystem
+do
+docker   $harbor_filesystem.tar.gz  
+done
+
+echo "docker rm containers"
+docker export -o   harbor_filesystem.tar $(docker ps -a -q)
+exit 0
+A=$(ls -R)
+echo $A >> 2
+
+apt-get update -y 
+cat list |while read line
+do
+apt-get install --reinstall $line -yfd
+done
+ ls  >> list 
+ cat prog-exc.txt |while read exclude_file
+ do
+md5sum $line >> md5sum.txt
+ done
+ 
+cat list |while read line
+do
+proxychains wget $line
+done
+
+cat f |while read line
+do
+sed -i "s|casper|budgie|g" $line
+done
+sed -i "s|SSLEngine off|SSLEngine on|g"
+
+mv *.gz /www/
+ cat prog-exc.txt |while read exclude_file
+ do
+ tar --exclude-from=$exclude_file --one-file-system  --xattrs -czpvf ubunru_backup.tar.gz  /
+ done
+exclude_file
+
+cat list  |while read bb
+do 
+tar  -czpf /root/bitnami_ruby/$bb.tar.gz $bb
+done
+
+
+cat list  |while read bb
+do 
+tar  -xzpvf $bb -C .
+
+cat list  |while read bb
+do 
+cp $bb ../p/ -R
+done
+cat 2  |while read bb
+do 
+sed -i "s|/opt/bitnami|/bitnami|g" $bb
+done
+cat list  |while read bb
+do 
+find $bb/ -type f -print0 | xargs -0 md5sum | sort >"$bb"_md5.txt
+done
+cp  $bb  /volume1/apt-cacher-ng/data/_import/ -R 
+done
+
+
+
+cat /root/123 |while read line
+do
+apt-get download $line
+done

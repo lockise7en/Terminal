@@ -1,0 +1,43 @@
+src/gz chaos_calmer_base https://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/x86/64/packages/base
+src/gz chaos_calmer_luci https://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/x86/64/packages/luci
+src/gz chaos_calmer_packages https://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/x86/64/packages/packages
+src/gz chaos_calmer_routing https://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/x86/64/packages/routing
+src/gz chaos_calmer_telephony https://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/x86/64/packages/telephony
+src/gz chaos_calmer_management https://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/x86/64/packages/management
+
+src/gz chaos_calmer_base https://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/x86/64/packages/base
+src/gz chaos_calmer_luci https://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/x86/64/packages/luci
+src/gz chaos_calmer_packages https://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/x86/64/packages/packages
+src/gz chaos_calmer_routing https://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/x86/64/packages/routing
+src/gz chaos_calmer_telephony https://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/x86/64/packages/telephony
+src/gz chaos_calmer_management https://mirror.tuna.tsinghua.edu.cn/openwrt/chaos_calmer/15.05.1/x86/64/packages/management
+
+https://downloads.openwrt.org/latest/x86/generic/packages/
+
+#src/gz chaos_calmer_base http://downloads.openwrt.org/chaos_calmer/15.05.1/x86/generic/packages/base
+#src/gz chaos_calmer_luci http://downloads.openwrt.org/chaos_calmer/15.05.1/x86/generic/packages/luci
+#src/gz chaos_calmer_packages http://downloads.openwrt.org/chaos_calmer/15.05.1/x86/generic/packages/packages
+#src/gz chaos_calmer_routing http://downloads.openwrt.org/chaos_calmer/15.05.1/x86/generic/packages/routing
+#src/gz chaos_calmer_telephony http://downloads.openwrt.org/chaos_calmer/15.05.1/x86/generic/packages/telephony
+#src/gz chaos_calmer_management http://downloads.openwrt.org/chaos_calmer/15.05.1/x86/generic/packages/management
+
+
+
+src/gz chaos_calmer_base http://downloads.openwrt.org/chaos_calmer/15.05.1/brcm47xx/generic/packages/base
+src/gz chaos_calmer_luci http://downloads.openwrt.org/chaos_calmer/15.05.1/brcm47xx/generic/packages/luci
+src/gz chaos_calmer_packages http://downloads.openwrt.org/chaos_calmer/15.05.1/brcm47xx/generic/packages/packages
+src/gz chaos_calmer_routing http://downloads.openwrt.org/chaos_calmer/15.05.1/brcm47xx/generic/packages/routing
+src/gz chaos_calmer_telephony http://downloads.openwrt.org/chaos_calmer/15.05.1/brcm47xx/generic/packages/telephony
+src/gz chaos_calmer_management http://downloads.openwrt.org/chaos_calmer/15.05.1/brcm47xx/generic/packages/management
+
+src/gz chaos_calmer_base http://downloads.openwrt.org/chaos_calmer/15.05.1/bcm53xx/generic/packages/base
+src/gz chaos_calmer_luci http://downloads.openwrt.org/chaos_calmer/15.05.1/bcm53xx/generic/packages/luci
+src/gz chaos_calmer_packages http://downloads.openwrt.org/chaos_calmer/15.05.1/bcm53xx/generic/packages/packages
+src/gz chaos_calmer_routing http://downloads.openwrt.org/chaos_calmer/15.05.1/bcm53xx/generic/packages/routing
+src/gz chaos_calmer_telephony http://downloads.openwrt.org/chaos_calmer/15.05.1/bcm53xx/generic/packages/telephony
+src/gz chaos_calmer_management http://downloads.openwrt.org/chaos_calmer/15.05.1/bcm53xx/generic/packages/management
+
+luci-i18n-ahcp-zh-cn luci-i18n-base-zh-cn luci-i18n-commands-zh-cn luci-i18n-ddns-zh-cn luci-i18n-diag-core-zh-cn luci-i18n-firewall-zh-cn luci-i18n-hd-idle-zh-cn luci-i18n-meshwizard-zh-cn luci-i18n-minidlna-zh-cn 
+luci-i18n-ntpc-zh-cn luci-i18n-olsr-zh-cn luci-i18n-openvpn-zh-cn luci-i18n-p910nd-zh-cn luci-i18n-polipo-zh-cn luci-i18n-privoxy-zh-cn 
+luci-i18n-samba-zh-cn luci-i18n-splash-zh-cn luci-i18n-statistics-zh-cn luci-i18n-tinyproxy-zh-cn luci-i18n-transmission-zh-cn luci-i18n-upnp-zh-cn luci-i18n-wshaper-zh-cn
+https://github.com/vmware/open-vm-tools/archive/open-vm-tools-10.0.0-3000743.tar.gz

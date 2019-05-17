@@ -1,0 +1,7 @@
+[photon-local]
+name=VMWare Photon Linux local 2.0(x86_64)
+baseurl=http://192.168.168.3/photon/RPMS
+gpgkey=http://192.168.168.3/photon/VMWARE-RPM-GPG-KEY
+gpgcheck=0
+enabled=1
+skip_if_unavailable=True
