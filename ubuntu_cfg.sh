@@ -156,6 +156,7 @@ chmod 644 ~/.ssh/id_rsa.pub
 chmod 644 ~/.ssh/authorized_keys
 cp ~/.ssh/authorized_keys ~/.ssh/authorized_keys2
 chmod 644 ~/.ssh/authorized_keys2
+rm -rf ~/.ssh/known_hosts
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_rsa
 #gpg --armor --export 
